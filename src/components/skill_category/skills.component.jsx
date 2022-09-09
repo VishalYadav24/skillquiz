@@ -2,7 +2,19 @@ import React, { Fragment } from "react";
 import { Card, CardContent, Typography } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import { Link } from "react-router-dom";
-const Skills = ({ listOfTopics }) => {
+import Instructions from "../instructions/instructions.component";
+const Skills = ({
+  listOfTopics,
+  levels,
+  limit,
+  questionLevel,
+  questionsRange,
+  setQuestionsRange,
+  setQuestionLevel,
+}) => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <Fragment>
       <Box textAlign="center" bgcolor="skyblue">
@@ -29,7 +41,19 @@ const Skills = ({ listOfTopics }) => {
                   ></img>
                   <Typography padding="16px">{listOfTopic.topic}</Typography>
                   {/* Button which will check if user has registered or not */}
-                  <Link to="/register">Take a quiz</Link>
+                  <Instructions
+                    open={open}
+                    handleClose={handleClose}
+                    handleOpen={handleOpen}
+                    levels={levels}
+                    limit={limit}
+                    questionLevel={questionLevel}
+                    setQuestionLevel={setQuestionLevel}
+                    questionsRange={questionsRange}
+                    setQuestionsRange={setQuestionsRange}
+                  >
+                    Take a quiz
+                  </Instructions>
                 </Box>
               </CardContent>
             </Card>

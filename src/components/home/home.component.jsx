@@ -6,23 +6,37 @@ import DevOpsIcon from "../../assets/icons/devops.png";
 import JavaScriptIcon from "../../assets/icons/js.png";
 import SqlIcon from "../../assets/icons/sql-server.png";
 import Questions from "../questionsTab/questions.component";
+import Skills from "../skill_category/skills.component";
 import axios from "axios";
+import { Outlet } from "react-router-dom";
 
-const Home = () => {
-  const topics = [
-    { id: 0, topic: "HTML", src: HtmlIcon },
-    { id: 1, topic: "JavaScript", src: JavaScriptIcon },
-    { id: 2, topic: "SQL", src: SqlIcon },
-    { id: 3, topic: "DevOps", src: DevOpsIcon },
-  ];
-  const [questions, setQuestions] = useState([]);
+const Home = ({
+  questions,
+  setQuestions,
+  setIsLogined,
+  isLogined,
+  questionLevel,
+  setQuestionLevel,
+  questionsRange,
+  setQuestionsRange,
+  topics,
+  limit,
+  levels,
+}) => {
+  const user = JSON.parse(localStorage.getItem("User"));
+  console.log(user);
   useEffect(() => {
     const getQuestions = async () => {
       try {
-        const response = await axios.get(
-          "https://quizapi.io/api/v1/questions?apiKey=V7RxLSLo3E2DHXbKsRe3e6PLFsvCtlOg2GI8lJSh&tags=HTML&difficulty=Medium&limit=10"
-        );
-        setQuestions(constructObject(response.data));
+        if (user) {
+          setIsLogined(true);
+        } else {
+          const response = await axios.get(
+            "https://quizapi.io/api/v1/questions?apiKey=V7RxLSLo3E2DHXbKsRe3e6PLFsvCtlOg2GI8lJSh&tags=HTML&difficulty=Medium&limit=10"
+          );
+          setQuestions(constructObject(response.data));
+          console.log("hello");
+        }
       } catch (error) {
         if (error.response) {
           console.log(error.response.data);
@@ -32,7 +46,7 @@ const Home = () => {
       }
     };
     getQuestions();
-    console.log("rendered",questions)
+    console.log("rendered", questions);
   }, []);
 
   const constructObject = (data) => {
@@ -50,27 +64,35 @@ const Home = () => {
 
   const constructOptions = (listOfOptions) => {
     return [
-      { id: 1, value: (listOfOptions?.answer_a || "" )},
+      { id: 1, value: listOfOptions?.answer_a || "" },
       {
         id: 2,
-        value: (listOfOptions?.answer_b || ""),
+        value: listOfOptions?.answer_b || "",
       },
       {
         id: 3,
-        value:( listOfOptions?.answer_c|| ""),
+        value: listOfOptions?.answer_c || "",
       },
       {
         id: 4,
-        value: (listOfOptions?.answer_d||""),
+        value: listOfOptions?.answer_d || "",
       },
     ];
   };
   return (
     <Fragment>
-      <Navbar></Navbar>
+      <Navbar user={user || "User Name"} isLogined={isLogined}></Navbar>
       <Container>
-        {/* <Skills listOfTopics={topics}></Skills> */}
-        {/* <Questions questions={questions} /> */}
+        <Skills
+          listOfTopics={topics}
+          levels={levels}
+          limit={limit}
+          questionLevel={questionLevel}
+          setQuestionLevel={setQuestionLevel}
+          questionsRange={questionsRange}
+          setQuestionsRange={setQuestionsRange}
+        ></Skills>
+        <Outlet></Outlet>
       </Container>
     </Fragment>
   );
