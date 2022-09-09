@@ -32,6 +32,7 @@ const Home = () => {
       }
     };
     getQuestions();
+    console.log("rendered",questions)
   }, []);
 
   const constructObject = (data) => {
@@ -49,18 +50,18 @@ const Home = () => {
 
   const constructOptions = (listOfOptions) => {
     return [
-      { id: 1, value: listOfOptions?.answer_a },
+      { id: 1, value: (listOfOptions?.answer_a || "" )},
       {
         id: 2,
-        value: listOfOptions?.answer_b,
+        value: (listOfOptions?.answer_b || ""),
       },
       {
         id: 3,
-        value: listOfOptions?.answer_c,
+        value:( listOfOptions?.answer_c|| ""),
       },
       {
         id: 4,
-        value: listOfOptions?.answer_d,
+        value: (listOfOptions?.answer_d||""),
       },
     ];
   };
@@ -69,7 +70,7 @@ const Home = () => {
       <Navbar></Navbar>
       <Container>
         {/* <Skills listOfTopics={topics}></Skills> */}
-        <Questions questions={questions} />
+        {/* <Questions questions={questions} /> */}
       </Container>
     </Fragment>
   );
