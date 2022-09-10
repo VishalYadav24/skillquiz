@@ -27,6 +27,7 @@ function App() {
   ];
   const [questions, setQuestions] = useState([]);
   const [isLogined, setIsLogined] = useState(false);
+  const [selectedTopic, setSelectedTopic] = useState("")
   const [questionLevel, setQuestionLevel] = useState("");
   const [questionsRange, setQuestionsRange] = useState("");
 
@@ -38,6 +39,8 @@ function App() {
                 setQuestions={setQuestions}
                 setIsLogined={setIsLogined}
                 isLogined={isLogined}
+                selectedTopic={selectedTopic}
+                setSelectedTopic={setSelectedTopic}
                 questionLevel={questionLevel}
                 setQuestionLevel={setQuestionLevel}
                 questionsRange={questionsRange}

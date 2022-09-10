@@ -7,13 +7,19 @@ const Skills = ({
   listOfTopics,
   levels,
   limit,
+  selectedTopic,
+  setSelectedTopic,
   questionLevel,
   questionsRange,
   setQuestionsRange,
   setQuestionLevel,
 }) => {
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => {setOpen(true);setQuestionLevel("Easy");setQuestionsRange(5)};
+  const handleOpen = () => {
+    setOpen(true);
+    setQuestionLevel("Easy");
+    setQuestionsRange(5);
+  };
   const handleClose = () => setOpen(false);
   return (
     <Fragment>
@@ -51,9 +57,16 @@ const Skills = ({
                     setQuestionLevel={setQuestionLevel}
                     questionsRange={questionsRange}
                     setQuestionsRange={setQuestionsRange}
-                    
                   >
-                    Take a quiz
+                    <Typography
+                      padding="16px"
+                      variant="body"
+                      onClick={() => {
+                        setSelectedTopic(listOfTopic?.topic);
+                      }}
+                    >
+                      Take a quiz
+                    </Typography>
                   </Instructions>
                 </Box>
               </CardContent>

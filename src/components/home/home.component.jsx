@@ -16,6 +16,8 @@ const Home = ({
   setQuestions,
   setIsLogined,
   isLogined,
+  selectedTopic,
+  setSelectedTopic,
   questionLevel,
   setQuestionLevel,
   questionsRange,
@@ -85,6 +87,8 @@ const Home = ({
           listOfTopics={topics}
           levels={levels}
           limit={limit}
+          selectedTopic={selectedTopic}
+          setSelectedTopic={setSelectedTopic}
           questionLevel={questionLevel}
           setQuestionLevel={setQuestionLevel}
           questionsRange={questionsRange}
@@ -92,7 +96,7 @@ const Home = ({
         ></Skills>
         <Outlet></Outlet>
         <Timer></Timer>
-        {[questionLevel,questionsRange]}
+        {[questionLevel,questionsRange,selectedTopic]}
       </Container>
     </Fragment>
   );
