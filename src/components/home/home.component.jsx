@@ -31,36 +31,11 @@ const Home = ({
   user
 }) => {
   
-  useEffect(() => {
-    const getQuestions = async () => {
-      try {
-        if (user) {
-          setIsLogined(true);
-        } else {
-          const response = await axios.get(
-            "https://quizapi.io/api/v1/questions?apiKey=V7RxLSLo3E2DHXbKsRe3e6PLFsvCtlOg2GI8lJSh&tags=HTML&difficulty=Medium&limit=10"
-          );
-          setQuestions(constructObject(response.data));
-        }
-      } catch (error) {
-        if (error.response) {
-          console.log(error.response.data);
-        } else {
-          console.log(`Error${error.message}`);
-        }
-      }
-    };
-    getQuestions();
-  }, []);
-
-
-
-
   return (
     <Fragment>
       <Navbar user={user || {name:"User name"}} isLogined={isLogined}></Navbar>
       <Container>
-       { !userAgreed && <Skills
+       {  !userAgreed &&<Skills
           listOfTopics={topics}
           levels={levels}
           limit={limit}
@@ -73,7 +48,7 @@ const Home = ({
           userAgreed={userAgreed}
           setUserAgreed={setUserAgreed}
         ></Skills>}
-        <Outlet></Outlet>
+        {userAgreed && <Outlet></Outlet>}
         <Timer></Timer>
         {[questionLevel,questionsRange,selectedTopic]}
       </Container>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/home/home.component";
 import Questions from "./components/questionsTab/questions.component";
@@ -7,6 +7,7 @@ import HtmlIcon from "../src/assets/icons/html-5.png";
 import JavaScriptIcon from "../src/assets/icons/js.png";
 import SqlIcon from "../src/assets/icons/sql-server.png";
 import DevOpsIcon from "../src/assets/icons/devops.png";
+import axios from "axios";
 function App() {
   const topics = [
     { id: 0, topic: "HTML", src: HtmlIcon },
@@ -32,6 +33,19 @@ function App() {
   const [questionsRange, setQuestionsRange] = useState("");
   const [userAgreed, setUserAgreed] = useState(false);
   const user = JSON.parse(localStorage.getItem("User"));
+
+  useEffect(() => {
+    const getQuestions = async () => {
+      if (user && userAgreed) {
+        const API_KEY = "V7RxLSLo3E2DHXbKsRe3e6PLFsvCtlOg2GI8lJSh";
+        const response = await axios.get(
+          `https://quizapi.io/api/v1/questions?apiKey=${API_KEY}&tags=${selectedTopic}&difficulty=${questionLevel}&limit=${questionsRange}`
+        );
+       setQuestions( constructObject(response.data));
+      }
+    };
+    getQuestions();
+  }, [userAgreed]);
 
   const constructObject = (data) => {
     let questionsList = [];
@@ -92,7 +106,7 @@ function App() {
             />
           }
         >
-          <Route path="/questions" element={<Questions />}></Route>
+          <Route path="/questions" element={<Questions questions={questions} />}></Route>
         </Route>
         <Route path="/register" element={<Register></Register>} />
       </Routes>
