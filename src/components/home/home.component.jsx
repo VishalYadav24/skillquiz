@@ -9,6 +9,7 @@ import Questions from "../questionsTab/questions.component";
 import Skills from "../skill_category/skills.component";
 import axios from "axios";
 import { Outlet } from "react-router-dom";
+import Timer from "../timer/timer.component";
 
 const Home = ({
   questions,
@@ -81,7 +82,7 @@ const Home = ({
   };
   return (
     <Fragment>
-      <Navbar user={user || "User Name"} isLogined={isLogined}></Navbar>
+      <Navbar user={user || {name:"User name"}} isLogined={isLogined}></Navbar>
       <Container>
         <Skills
           listOfTopics={topics}
@@ -93,6 +94,8 @@ const Home = ({
           setQuestionsRange={setQuestionsRange}
         ></Skills>
         <Outlet></Outlet>
+        <Timer></Timer>
+        {[questionLevel,questionsRange]}
       </Container>
     </Fragment>
   );

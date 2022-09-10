@@ -4,8 +4,6 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { MenuItem, Select } from "@mui/material";
-import { Stack } from "@mui/system";
-import { useNavigate } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -19,7 +17,7 @@ const style = {
   p: 4,
 };
 
-const Instructions = ( props ) => {
+const Instructions = (props) => {
   const {
     open,
     handleClose,
@@ -32,10 +30,9 @@ const Instructions = ( props ) => {
     questionLevel,
     setQuestionLevel,
   } = props;
-  const navigate = useNavigate();
- const onStart = () =>{
-  navigate("/questions");
-  }
+  const onStart = () => {
+    handleClose();
+  };
   return (
     <div>
       <Button onClick={handleOpen}>{children}</Button>
@@ -58,7 +55,7 @@ const Instructions = ( props ) => {
             >
               {levels.map((difficulty) => {
                 return (
-                  <MenuItem value={difficulty.label}>
+                  <MenuItem key={difficulty?.id} value={difficulty.label}>
                     {difficulty.label}
                   </MenuItem>
                 );
@@ -69,20 +66,26 @@ const Instructions = ( props ) => {
               variant="standard"
               sx={{ fontSize: "18px" }}
               value={questionsRange}
+              defaultValue={5}
               onChange={(event) => {
-                setQuestionsRange(event.target.value);
+                console.log(event);
+                setQuestionsRange(event.target?.value);
               }}
             >
               {limit.map((noOfQuestions) => {
                 return (
-                  <MenuItem value={noOfQuestions.range}>
+                  <MenuItem key={noOfQuestions?.id} value={noOfQuestions.range}>
                     {noOfQuestions.range}
                   </MenuItem>
                 );
               })}
             </Select>
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Typography
+            component="div"
+            id="modal-modal-description"
+            sx={{ mt: 2 }}
+          >
             <ul>
               <li>User can select no of question to attempt</li>
               <li>User can select difficulty of question to attempt</li>
@@ -90,7 +93,13 @@ const Instructions = ( props ) => {
             </ul>
           </Typography>
 
-          <Button variant="outlined" color="success" onClick={()=>{onStart()}}>
+          <Button
+            variant="outlined"
+            color="success"
+            onClick={() => {
+              onStart();
+            }}
+          >
             Start
           </Button>
         </Box>

@@ -28,10 +28,11 @@ function App() {
   const [questions, setQuestions] = useState([]);
   const [isLogined, setIsLogined] = useState(false);
   const [questionLevel, setQuestionLevel] = useState("");
-  const [questionsRange, setQuestionsRange] = useState(5);
+  const [questionsRange, setQuestionsRange] = useState("");
 
   return (
     <div className="App">
+      {questionLevel}
       <Routes>
         <Route path="/" element={<Home  questions={questions}
                 setQuestions={setQuestions}
@@ -39,7 +40,8 @@ function App() {
                 isLogined={isLogined}
                 questionLevel={questionLevel}
                 setQuestionLevel={setQuestionLevel}
-                questionsRange={setQuestionsRange}
+                questionsRange={questionsRange}
+                setQuestionsRange={setQuestionsRange}
                 topics={topics}
                 levels={levels}
                 limit={limit}

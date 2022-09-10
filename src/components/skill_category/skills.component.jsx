@@ -13,7 +13,7 @@ const Skills = ({
   setQuestionLevel,
 }) => {
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {setOpen(true);setQuestionLevel("Easy");setQuestionsRange(5)};
   const handleClose = () => setOpen(false);
   return (
     <Fragment>
@@ -51,6 +51,7 @@ const Skills = ({
                     setQuestionLevel={setQuestionLevel}
                     questionsRange={questionsRange}
                     setQuestionsRange={setQuestionsRange}
+                    
                   >
                     Take a quiz
                   </Instructions>
