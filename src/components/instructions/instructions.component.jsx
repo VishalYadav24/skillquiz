@@ -68,7 +68,6 @@ const Instructions = (props) => {
               value={questionsRange}
               defaultValue={5}
               onChange={(event) => {
-                console.log(event);
                 setQuestionsRange(event.target?.value);
               }}
             >

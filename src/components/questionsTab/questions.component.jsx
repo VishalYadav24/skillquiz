@@ -15,11 +15,9 @@ import { Box } from "@mui/system";
 import React, { Fragment, useEffect, useState } from "react";
 
 const Questions = ({ questions }) => {
-  console.log("called");
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
   const handleClick = (event,value) => {
-    console.log(value,event)
     // const nextQuestion = currentQuestion + 1;
     if (value < questions.length) {
       setCurrentQuestion(value);

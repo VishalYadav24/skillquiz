@@ -25,7 +25,6 @@ const Home = ({
   levels,
 }) => {
   const user = JSON.parse(localStorage.getItem("User"));
-  console.log(user);
   useEffect(() => {
     const getQuestions = async () => {
       try {
@@ -36,7 +35,6 @@ const Home = ({
             "https://quizapi.io/api/v1/questions?apiKey=V7RxLSLo3E2DHXbKsRe3e6PLFsvCtlOg2GI8lJSh&tags=HTML&difficulty=Medium&limit=10"
           );
           setQuestions(constructObject(response.data));
-          console.log("hello");
         }
       } catch (error) {
         if (error.response) {
@@ -47,7 +45,6 @@ const Home = ({
       }
     };
     getQuestions();
-    console.log("rendered", questions);
   }, []);
 
   const constructObject = (data) => {
