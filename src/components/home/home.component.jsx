@@ -25,8 +25,12 @@ const Home = ({
   topics,
   limit,
   levels,
+  userAgreed,
+  setUserAgreed,
+  constructObject,
+  user
 }) => {
-  const user = JSON.parse(localStorage.getItem("User"));
+  
   useEffect(() => {
     const getQuestions = async () => {
       try {
@@ -49,41 +53,14 @@ const Home = ({
     getQuestions();
   }, []);
 
-  const constructObject = (data) => {
-    let questionsList = [];
-    data.map((list, index) => {
-      questionsList.push({
-        id: index + 1,
-        question: list?.question,
-        options: constructOptions(list?.answers),
-        answer: list?.correct_answer,
-      });
-    });
-    return questionsList;
-  };
 
-  const constructOptions = (listOfOptions) => {
-    return [
-      { id: 1, value: listOfOptions?.answer_a || "" },
-      {
-        id: 2,
-        value: listOfOptions?.answer_b || "",
-      },
-      {
-        id: 3,
-        value: listOfOptions?.answer_c || "",
-      },
-      {
-        id: 4,
-        value: listOfOptions?.answer_d || "",
-      },
-    ];
-  };
+
+
   return (
     <Fragment>
       <Navbar user={user || {name:"User name"}} isLogined={isLogined}></Navbar>
       <Container>
-        <Skills
+       { !userAgreed && <Skills
           listOfTopics={topics}
           levels={levels}
           limit={limit}
@@ -93,7 +70,9 @@ const Home = ({
           setQuestionLevel={setQuestionLevel}
           questionsRange={questionsRange}
           setQuestionsRange={setQuestionsRange}
-        ></Skills>
+          userAgreed={userAgreed}
+          setUserAgreed={setUserAgreed}
+        ></Skills>}
         <Outlet></Outlet>
         <Timer></Timer>
         {[questionLevel,questionsRange,selectedTopic]}

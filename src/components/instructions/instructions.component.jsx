@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { MenuItem, Select } from "@mui/material";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -29,9 +30,14 @@ const Instructions = (props) => {
     setQuestionsRange,
     questionLevel,
     setQuestionLevel,
+    userAgreed,
+    setUserAgreed
   } = props;
+  const navigate = useNavigate();
   const onStart = () => {
     handleClose();
+    navigate("/questions");
+    setUserAgreed(true);
   };
   return (
     <div>

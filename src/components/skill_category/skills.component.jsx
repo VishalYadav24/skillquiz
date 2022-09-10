@@ -13,6 +13,8 @@ const Skills = ({
   questionsRange,
   setQuestionsRange,
   setQuestionLevel,
+  userAgreed,
+  setUserAgreed
 }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
@@ -57,6 +59,8 @@ const Skills = ({
                     setQuestionLevel={setQuestionLevel}
                     questionsRange={questionsRange}
                     setQuestionsRange={setQuestionsRange}
+                    userAgreed={userAgreed}
+                    setUserAgreed={setUserAgreed}
                   >
                     <Typography
                       padding="16px"
