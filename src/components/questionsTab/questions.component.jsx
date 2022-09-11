@@ -13,36 +13,37 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { Fragment, useEffect, useState } from "react";
+import ResponsiveDrawer from "../drawer/drawer.component";
+import Timer from "../timer/timer.component";
 
-const Questions = ({ questions }) => {
+const Questions = ({
+  questions,
+  questionsRange,
+  navbarHeight,
+  mobileOpen,
+  setMobileOpen,
+  handleDrawerToggle,
+}) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
-  const handleClick = (event,value) => {
-    // const nextQuestion = currentQuestion + 1;
-    if (value < questions.length) {
-      setCurrentQuestion(value);
+  const handleClick = (event, value) => {
+    console.log(value);
+    if (value <= questions.length) {
+      setCurrentQuestion(value - 1);
     }
   };
 
   return (
     <Fragment>
+      <ResponsiveDrawer
+        questions={questions}
+        navbarHeight={navbarHeight}
+        mobileOpen={mobileOpen}
+        setMobileOpen={setMobileOpen}
+        handleDrawerToggle={handleDrawerToggle}
+      ></ResponsiveDrawer>
       <Box textAlign="center">
-        <Stack direction="row" gap={2} flexWrap="wrap">
-          {questions.map((data) => {
-            return (
-              <Box key={data?.id}>
-                <Button variant="outlined">
-                  <Typography variant="span">
-                    Question
-                    <br />
-                    {data?.id}
-                  </Typography>
-                </Button>
-              </Box>
-            );
-          })}
-        </Stack>
-        <Divider>Question {currentQuestion + 1}</Divider>
+        <Divider>Question {currentQuestion + 1} </Divider>
         <Stack spacing={2} alignItems="self-start">
           <Typography variant="body">
             {questions[currentQuestion]?.question}
@@ -66,10 +67,13 @@ const Questions = ({ questions }) => {
           </Box>
         </Stack>
         <Divider></Divider>
-        <Stack spacing={2}>
-      <Typography>Page: {currentQuestion +1 }</Typography>
-      <Pagination count={10} page={currentQuestion+1} onChange={handleClick} />
-    </Stack>
+        <Stack>
+          <Pagination
+            count={questionsRange}
+            page={currentQuestion + 1}
+            onChange={handleClick}
+          />
+        </Stack>
         <Divider>Finish Quiz</Divider>
         <Box padding={2}>
           <Button fullWidth variant="outlined" color="success">
@@ -77,6 +81,7 @@ const Questions = ({ questions }) => {
           </Button>
         </Box>
       </Box>
+      <Timer questionsRange={questionsRange}></Timer>
     </Fragment>
   );
 };

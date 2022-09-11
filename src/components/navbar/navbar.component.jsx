@@ -3,11 +3,11 @@ import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import { Menu } from "@mui/icons-material";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
-const Navbar = ({ user,isLogined }) => {
+const Navbar = ({ user,isLogined,navbarHeight,handleDrawerToggle }) => {
   console.log(user);
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{height: navbarHeight}}>
         <Toolbar>
           <IconButton
             size="large"
@@ -15,6 +15,7 @@ const Navbar = ({ user,isLogined }) => {
             color="inherit"
             aria-label="menu"
             sx={{ marginRight: 2 }}
+            onClick={handleDrawerToggle}
           >
             <Menu />
           </IconButton>

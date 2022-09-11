@@ -12,7 +12,7 @@ function App() {
   const topics = [
     { id: 0, topic: "HTML", src: HtmlIcon },
     { id: 1, topic: "JavaScript", src: JavaScriptIcon },
-    { id: 2, topic: "SQL", src: SqlIcon },
+    { id: 2, topic: "Sql", src: SqlIcon },
     { id: 3, topic: "DevOps", src: DevOpsIcon },
   ];
   const levels = [
@@ -26,12 +26,14 @@ function App() {
     { id: 2, range: 15 },
     { id: 3, range: 20 },
   ];
+  const navbarHeight = "64px";
   const [questions, setQuestions] = useState([]);
   const [isLogined, setIsLogined] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState("");
   const [questionLevel, setQuestionLevel] = useState("");
   const [questionsRange, setQuestionsRange] = useState("");
   const [userAgreed, setUserAgreed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const user = JSON.parse(localStorage.getItem("User"));
 
   useEffect(() => {
@@ -41,7 +43,7 @@ function App() {
         const response = await axios.get(
           `https://quizapi.io/api/v1/questions?apiKey=${API_KEY}&tags=${selectedTopic}&difficulty=${questionLevel}&limit=${questionsRange}`
         );
-       setQuestions( constructObject(response.data));
+        setQuestions(constructObject(response.data));
       }
     };
     getQuestions();
@@ -78,14 +80,18 @@ function App() {
     ];
   };
 
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
   return (
     <div className="App">
-      {questionLevel}
       <Routes>
         <Route
           path="/"
           element={
             <Home
+            navbarHeight={navbarHeight}
               questions={questions}
               setQuestions={setQuestions}
               setIsLogined={setIsLogined}
@@ -103,10 +109,23 @@ function App() {
               setUserAgreed={setUserAgreed}
               user={user}
               constructObject={constructObject}
+              handleDrawerToggle={handleDrawerToggle}
             />
           }
         >
-          <Route path="/questions" element={<Questions questions={questions} />}></Route>
+          <Route
+            path="/questions"
+            element={
+              <Questions
+                questions={questions}
+                questionsRange={questionsRange}
+                navbarHeight={navbarHeight}
+                mobileOpen={mobileOpen}
+                setMobileOpen={setMobileOpen}
+                handleDrawerToggle={handleDrawerToggle}
+              />
+            }
+          ></Route>
         </Route>
         <Route path="/register" element={<Register></Register>} />
       </Routes>

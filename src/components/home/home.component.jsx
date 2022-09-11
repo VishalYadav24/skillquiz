@@ -9,7 +9,7 @@ import Questions from "../questionsTab/questions.component";
 import Skills from "../skill_category/skills.component";
 import axios from "axios";
 import { Outlet } from "react-router-dom";
-import Timer from "../timer/timer.component";
+
 
 const Home = ({
   questions,
@@ -28,12 +28,14 @@ const Home = ({
   userAgreed,
   setUserAgreed,
   constructObject,
-  user
+  navbarHeight,
+  user,
+  handleDrawerToggle
 }) => {
   
   return (
     <Fragment>
-      <Navbar user={user || {name:"User name"}} isLogined={isLogined}></Navbar>
+      <Navbar user={user || {name:"User name"}} navbarHeight={navbarHeight} isLogined={isLogined} handleDrawerToggle={handleDrawerToggle}></Navbar>
       <Container>
        {  !userAgreed &&<Skills
           listOfTopics={topics}
@@ -47,10 +49,9 @@ const Home = ({
           setQuestionsRange={setQuestionsRange}
           userAgreed={userAgreed}
           setUserAgreed={setUserAgreed}
+          
         ></Skills>}
         {userAgreed && <Outlet></Outlet>}
-        <Timer></Timer>
-        {[questionLevel,questionsRange,selectedTopic]}
       </Container>
     </Fragment>
   );
