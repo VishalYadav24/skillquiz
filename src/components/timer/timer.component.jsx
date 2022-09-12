@@ -23,7 +23,7 @@ const Timer = ({ questionsRange }) => {
 
   return (
     <div>
-      Countdown:{minute} minutes : {seconds} seconds
+      {minute} minutes : {seconds} seconds
     </div>
   );
 };

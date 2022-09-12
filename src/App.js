@@ -118,6 +118,8 @@ function App() {
             element={
               <Questions
                 questions={questions}
+                selectedTopic={selectedTopic}
+                questionLevel={questionLevel}
                 questionsRange={questionsRange}
                 navbarHeight={navbarHeight}
                 mobileOpen={mobileOpen}

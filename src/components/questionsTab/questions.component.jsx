@@ -1,9 +1,15 @@
+import { More } from "@mui/icons-material";
 import {
+  Avatar,
   Button,
+  Card,
+  CardContent,
+  CardHeader,
   Divider,
   FormControl,
   FormControlLabel,
   FormLabel,
+  IconButton,
   Pagination,
   Paper,
   Radio,
@@ -23,6 +29,8 @@ const Questions = ({
   mobileOpen,
   setMobileOpen,
   handleDrawerToggle,
+  selectedTopic,
+  questionLevel,
 }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
@@ -42,46 +50,73 @@ const Questions = ({
         setMobileOpen={setMobileOpen}
         handleDrawerToggle={handleDrawerToggle}
       ></ResponsiveDrawer>
-      <Box textAlign="center">
-        <Divider>Question {currentQuestion + 1} </Divider>
-        <Stack spacing={2} alignItems="self-start">
-          <Typography variant="body">
-            {questions[currentQuestion]?.question}
-          </Typography>
-          <Box textAlign="left">
-            <FormControl>
-              <FormLabel id="radio-options">Options</FormLabel>
-              <RadioGroup>
-                {questions[currentQuestion]?.options.map((optionList) => {
-                  return (
-                    <FormControlLabel
-                      key={optionList?.id}
-                      value={optionList?.value}
-                      control={<Radio />}
-                      label={optionList?.value}
-                    />
-                  );
-                })}
-              </RadioGroup>
-            </FormControl>
-          </Box>
-        </Stack>
+      <Card>
+        <CardContent>
+          <Stack direction="row" justifyContent="space-between">
+            <Box>
+              <Typography variant="h5">{selectedTopic}</Typography>
+              <Typography>{questionLevel}</Typography>
+            </Box>
+            <Stack
+              direction="row"
+              alignItems="center"
+              bgcolor="black"
+              sx={{
+                border: "1px solid lightskyblue",
+                borderRadius: "5px",
+                color: "white",
+                padding: "16px",
+              }}
+            >
+              <Timer questionsRange={questionsRange}></Timer>
+            </Stack>
+          </Stack>
+        </CardContent>
         <Divider></Divider>
-        <Stack>
-          <Pagination
-            count={questionsRange}
-            page={currentQuestion + 1}
-            onChange={handleClick}
-          />
-        </Stack>
-        <Divider>Finish Quiz</Divider>
-        <Box padding={2}>
-          <Button fullWidth variant="outlined" color="success">
-            SUBMIT
-          </Button>
-        </Box>
-      </Box>
-      <Timer questionsRange={questionsRange}></Timer>
+        <CardContent>
+          <Box>
+            <Stack spacing={2} alignItems="self-start">
+              <Typography variant="h6">
+                {`${currentQuestion + 1} . ${
+                  questions[currentQuestion]?.question
+                }`}
+              </Typography>
+              <Box textAlign="left">
+                <FormControl>
+                  <FormLabel id="radio-options">Options</FormLabel>
+                  <RadioGroup>
+                    {questions[currentQuestion]?.options.map((optionList) => {
+                      return (
+                        <FormControlLabel
+                          key={optionList?.id}
+                          value={optionList?.value}
+                          control={<Radio />}
+                          label={optionList?.value}
+                        />
+                      );
+                    })}
+                  </RadioGroup>
+                </FormControl>
+              </Box>
+            </Stack>
+            <Stack direction="row" justifyContent="center">
+              <Pagination
+                count={questionsRange}
+                page={currentQuestion + 1}
+                onChange={handleClick}
+              />
+            </Stack>
+          </Box>
+        </CardContent>
+        <Divider style={{ padding: "16px" }}>Finish Quiz</Divider>
+        <CardContent>
+          <Box textAlign="end">
+            <Button variant="contained" color="success">
+              SUBMIT
+            </Button>
+          </Box>
+        </CardContent>
+      </Card>
     </Fragment>
   );
 };
