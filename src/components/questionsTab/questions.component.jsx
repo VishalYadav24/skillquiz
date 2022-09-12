@@ -31,9 +31,11 @@ const Questions = ({
   handleDrawerToggle,
   selectedTopic,
   questionLevel,
+  userResponse,
+  setUserResponse
 }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-
+ 
   const handleClick = (event, value) => {
     console.log(value);
     if (value <= questions.length) {
@@ -84,7 +86,7 @@ const Questions = ({
               <Box textAlign="left">
                 <FormControl>
                   <FormLabel id="radio-options">Options</FormLabel>
-                  <RadioGroup>
+                  <RadioGroup >
                     {questions[currentQuestion]?.options.map((optionList) => {
                       return (
                         <FormControlLabel

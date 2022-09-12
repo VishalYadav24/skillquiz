@@ -34,6 +34,7 @@ function App() {
   const [questionsRange, setQuestionsRange] = useState("");
   const [userAgreed, setUserAgreed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [userResponse,setUserResponse] = useState([]);
   const user = JSON.parse(localStorage.getItem("User"));
 
   useEffect(() => {
@@ -84,6 +85,11 @@ function App() {
     setMobileOpen(!mobileOpen);
   };
 
+  const onQuizSubmit = (event) => {
+    event.preventDefault();
+    console.log("form submitted",userResponse)
+  };
+
   return (
     <div className="App">
       <Routes>
@@ -91,7 +97,7 @@ function App() {
           path="/"
           element={
             <Home
-            navbarHeight={navbarHeight}
+              navbarHeight={navbarHeight}
               questions={questions}
               setQuestions={setQuestions}
               setIsLogined={setIsLogined}
@@ -125,6 +131,9 @@ function App() {
                 mobileOpen={mobileOpen}
                 setMobileOpen={setMobileOpen}
                 handleDrawerToggle={handleDrawerToggle}
+                onQuizSubmit={onQuizSubmit}
+                userResponse={userResponse}
+                setUserResponse={setUserResponse}
               />
             }
           ></Route>

@@ -4,7 +4,6 @@ import { Menu } from "@mui/icons-material";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
 const Navbar = ({ user,isLogined,navbarHeight,handleDrawerToggle }) => {
-  console.log(user);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{height: navbarHeight}}>
