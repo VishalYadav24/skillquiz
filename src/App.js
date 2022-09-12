@@ -8,6 +8,7 @@ import JavaScriptIcon from "../src/assets/icons/js.png";
 import SqlIcon from "../src/assets/icons/sql-server.png";
 import DevOpsIcon from "../src/assets/icons/devops.png";
 import axios from "axios";
+import Score from "./components/score/score.component";
 function App() {
   const topics = [
     { id: 0, topic: "HTML", src: HtmlIcon },
@@ -34,7 +35,8 @@ function App() {
   const [questionsRange, setQuestionsRange] = useState("");
   const [userAgreed, setUserAgreed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [userResponse,setUserResponse] = useState([]);
+  const [userResponse, setUserResponse] = useState([]);
+  const [score, setScore] = useState(0);
   const user = JSON.parse(localStorage.getItem("User"));
 
   useEffect(() => {
@@ -57,7 +59,7 @@ function App() {
         id: index + 1,
         question: list?.question,
         options: constructOptions(list?.answers),
-        answer: list?.correct_answer,
+        answer: constructAnswer(list?.correct_answer),
       });
     });
     return questionsList;
@@ -81,14 +83,68 @@ function App() {
     ];
   };
 
+  const constructAnswer = (answer) => {
+    const answerObj = [
+      {
+        id: 1,
+        value: "answer_a",
+      },
+      {
+        id: 2,
+        value: "answer_b",
+      },
+      {
+        id: 3,
+        value: "answer_c",
+      },
+      {
+        id: 4,
+        value: "answer_d",
+      },
+    ];
+
+    return answerObj.find((data) => data.value === answer);
+  };
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const onQuizSubmit = (event) => {
     event.preventDefault();
-    console.log("form submitted",userResponse)
+    const temp = userResponse;
+    // const questionIds = temp.map((data) => data.questionId);
+    // const Ids = questionIds.filter(
+    //   (id, index) => questionIds.indexOf(id) === index
+    // );
+    const count = {};
+    temp.forEach((data) => {
+      if (count[data.questionId]) {
+        count[data.questionId] = data.response;
+      } else {
+        count[data.questionId] = data.response;
+      }
+    });
+
+    for (const key in count) {
+      questions.map((data) => {
+        if (data.id === Number(key)) {
+          console.log(data.answer, count[key]);
+          if (data.answer.id === count[key][0]?.id) {
+            setScore((prev) => prev + 1);
+          }
+        }
+      });
+    }
+    submitDataToLocalStorage();
   };
+
+ const submitDataToLocalStorage=()=>{
+   const userData = JSON.parse(localStorage.getItem('User'));
+   console.log((userData))
+   const d = {...userData,questions,userResponse,selectedTopic,questionLevel,questionsRange};
+   console.log(d)
+  }
 
   return (
     <div className="App">
@@ -140,6 +196,7 @@ function App() {
         </Route>
         <Route path="/register" element={<Register></Register>} />
       </Routes>
+      <Score></Score>
     </div>
   );
 }

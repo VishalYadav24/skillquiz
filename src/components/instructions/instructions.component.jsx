@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { MenuItem, Select } from "@mui/material";
+import { Fade, MenuItem, Select } from "@mui/material";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const style = {
@@ -31,7 +31,7 @@ const Instructions = (props) => {
     questionLevel,
     setQuestionLevel,
     userAgreed,
-    setUserAgreed
+    setUserAgreed,
   } = props;
   const navigate = useNavigate();
   const onStart = () => {
@@ -49,65 +49,71 @@ const Instructions = (props) => {
         aria-describedby="modal-modal-description"
         sx={{ backgroundColor: "white" }}
       >
-        <Box sx={style} component="form">
-          <Typography id="modal-title" variant="h6" component="h2">
-            Select Level
-            <Select
-              variant="standard"
-              value={questionLevel}
-              onChange={(event) => {
-                setQuestionLevel(event.target.value);
-              }}
+        <Fade in={open}>
+          <Box sx={style} component="form">
+            <Typography id="modal-title" variant="h6" component="h2">
+              Select Level
+              <Select
+                variant="standard"
+                value={questionLevel}
+                onChange={(event) => {
+                  setQuestionLevel(event.target.value);
+                }}
+              >
+                {levels.map((difficulty) => {
+                  return (
+                    <MenuItem key={difficulty?.id} value={difficulty.label}>
+                      {difficulty.label}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+              No of questions{" "}
+              <Select
+                variant="standard"
+                sx={{ fontSize: "18px" }}
+                value={questionsRange}
+                defaultValue={5}
+                onChange={(event) => {
+                  setQuestionsRange(event.target?.value);
+                }}
+              >
+                {limit.map((noOfQuestions) => {
+                  return (
+                    <MenuItem
+                      key={noOfQuestions?.id}
+                      value={noOfQuestions.range}
+                    >
+                      {noOfQuestions.range}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+            </Typography>
+            <Typography
+              component="div"
+              id="modal-modal-description"
+              sx={{ mt: 2 }}
             >
-              {levels.map((difficulty) => {
-                return (
-                  <MenuItem key={difficulty?.id} value={difficulty.label}>
-                    {difficulty.label}
-                  </MenuItem>
-                );
-              })}
-            </Select>
-            No of questions{" "}
-            <Select
-              variant="standard"
-              sx={{ fontSize: "18px" }}
-              value={questionsRange}
-              defaultValue={5}
-              onChange={(event) => {
-                setQuestionsRange(event.target?.value);
-              }}
-            >
-              {limit.map((noOfQuestions) => {
-                return (
-                  <MenuItem key={noOfQuestions?.id} value={noOfQuestions.range}>
-                    {noOfQuestions.range}
-                  </MenuItem>
-                );
-              })}
-            </Select>
-          </Typography>
-          <Typography
-            component="div"
-            id="modal-modal-description"
-            sx={{ mt: 2 }}
-          >
-            <ul>
-              <li>User can select no of question to attempt</li>
-              <li>User can select difficulty of question to attempt</li>
-              <li>Time limit 15 sec.</li>
-            </ul>
-          </Typography>
+              <ul>
+                <li>User can select no of question to attempt</li>
+                <li>User can select difficulty of question to attempt</li>
+                <li>Time limit 20 sec.</li>
+                <li> correct : +1 incorrect: 0</li>
+              </ul>
+            </Typography>
 
-          <Button
-            variant="outlined"
-            color="success"
-            onClick={() => {
-              onStart();
-            }}
-          >
-            Start
-          </Button>
-        </Box>
+            <Button
+              variant="outlined"
+              color="success"
+              onClick={() => {
+                onStart();
+              }}
+            >
+              Start
+            </Button>
+          </Box>
+        </Fade>
       </Modal>
     </div>
   );

@@ -32,10 +32,11 @@ const Questions = ({
   selectedTopic,
   questionLevel,
   userResponse,
-  setUserResponse
+  setUserResponse,
+  onQuizSubmit,
 }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
- 
+
   const handleClick = (event, value) => {
     console.log(value);
     if (value <= questions.length) {
@@ -52,7 +53,7 @@ const Questions = ({
         setMobileOpen={setMobileOpen}
         handleDrawerToggle={handleDrawerToggle}
       ></ResponsiveDrawer>
-      <Card>
+      <Card component="form" onSubmit={onQuizSubmit}>
         <CardContent>
           <Stack direction="row" justifyContent="space-between">
             <Box>
@@ -83,23 +84,30 @@ const Questions = ({
                   questions[currentQuestion]?.question
                 }`}
               </Typography>
-              <Box textAlign="left">
-                <FormControl>
-                  <FormLabel id="radio-options">Options</FormLabel>
-                  <RadioGroup >
-                    {questions[currentQuestion]?.options.map((optionList) => {
-                      return (
-                        <FormControlLabel
-                          key={optionList?.id}
-                          value={optionList?.value}
-                          control={<Radio />}
-                          label={optionList?.value}
-                        />
-                      );
-                    })}
-                  </RadioGroup>
-                </FormControl>
-              </Box>
+              <Stack direction="column" textAlign="left">
+                {questions[currentQuestion]?.options?.map((listOfTopic) => {
+                  return (
+                    <Button
+                      key={listOfTopic?.id}
+                      sx={{ margin: "16px" }}
+                      onClick={() =>
+                        setUserResponse((prev) => [
+                          ...prev,
+                          {
+                            questionId: currentQuestion + 1,
+                            response: [
+                              { id: listOfTopic?.id, value: listOfTopic.value },
+                            ],
+                          },
+                        ])
+                      }
+                      variant="outlined"
+                    >
+                      {listOfTopic.value}
+                    </Button>
+                  );
+                })}
+              </Stack>
             </Stack>
             <Stack direction="row" justifyContent="center">
               <Pagination
@@ -113,7 +121,7 @@ const Questions = ({
         <Divider style={{ padding: "16px" }}>Finish Quiz</Divider>
         <CardContent>
           <Box textAlign="end">
-            <Button variant="contained" color="success">
+            <Button variant="contained" color="success" type="submit">
               SUBMIT
             </Button>
           </Box>
