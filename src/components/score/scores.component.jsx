@@ -20,6 +20,7 @@ import { Box } from "@mui/system";
 import React, { Fragment } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Image from "../../assets/annie-spratt-0ZPSX_mQ3xI-unsplash.jpg";
 
 const CustomButton1 = styled(Button)({
@@ -45,6 +46,7 @@ const CustomButton2 = styled(Button)({
 
 const Scores = ({}) => {
   const [userData, setUserData] = useState();
+  const navigate = useNavigate();
   useEffect(() => {
     const getData = JSON.parse(localStorage.getItem("User"));
     setUserData(() => {
@@ -99,8 +101,8 @@ const Scores = ({}) => {
               <CustomButton1 variant="outlined" startIcon={<Replay />}>
                 Retest
               </CustomButton1>
-              <CustomButton2 variant="contained" endIcon={<Home />}>
-                Send
+              <CustomButton2 variant="contained" endIcon={<Home />} onClick={()=> navigate("/")}>
+                Home
               </CustomButton2>
             </CardActions>
           </Card>
