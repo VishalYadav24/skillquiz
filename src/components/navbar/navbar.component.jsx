@@ -7,7 +7,7 @@ const Navbar = ({ user,isLogined,navbarHeight,handleDrawerToggle }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{height: navbarHeight}}>
-        <Toolbar>
+        <Toolbar sx={{bgcolor:"#926dde"}}>
           <IconButton
             size="large"
             edge="start"

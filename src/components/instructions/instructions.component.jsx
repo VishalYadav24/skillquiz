@@ -12,8 +12,8 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "background.primary",
-  border: "2px solid #413f3f",
+  bgcolor: "#fff",
+  border: "2px solid #f7f0f0",
   boxShadow: 24,
   p: 4,
 };
@@ -57,7 +57,8 @@ const Instructions = (props) => {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        sx={{ backgroundColor: "white" }}
+        
+        
       >
         <Fade in={open}>
           <Box sx={style} component="form">
