@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { Fade, MenuItem, Select } from "@mui/material";
+import { Fade, MenuItem, Select, styled } from "@mui/material";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const style = {
@@ -18,6 +18,16 @@ const style = {
   p: 4,
 };
 
+const CustomButton = styled(Button)({
+  borderColor: "#3cd458",
+  backgroundColor: "#fff",
+  ":hover":{
+    color: "#fff",
+    backgroundColor: "#3cd458",
+    borderColor: "#3cd458",
+    boxShadow: "0 1px 10px rgb(60 212 88 / 40%)"
+  }
+})
 const Instructions = (props) => {
   const {
     open,
@@ -103,7 +113,7 @@ const Instructions = (props) => {
               </ul>
             </Typography>
 
-            <Button
+            <CustomButton
               variant="outlined"
               color="success"
               onClick={() => {
@@ -111,7 +121,7 @@ const Instructions = (props) => {
               }}
             >
               Start
-            </Button>
+            </CustomButton>
           </Box>
         </Fade>
       </Modal>

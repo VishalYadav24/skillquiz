@@ -15,6 +15,7 @@ import {
   Radio,
   RadioGroup,
   Stack,
+  styled,
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
@@ -23,6 +24,16 @@ import { useNavigate } from "react-router-dom";
 import ResponsiveDrawer from "../drawer/drawer.component";
 import Timer from "../timer/timer.component";
 
+const CustomButton = styled(Button)({
+  borderColor: "#3cd458",
+  backgroundColor: "#fff",
+  ":hover":{
+    color: "#fff",
+    backgroundColor: "#3cd458",
+    borderColor: "#3cd458",
+    boxShadow: "0 1px 10px rgb(60 212 88 / 40%)"
+  }
+})
 const count = {};
 
 const Questions = ({
@@ -215,9 +226,9 @@ const Questions = ({
         <Divider style={{ padding: "16px" }}>Finish Quiz</Divider>
 
         <Box textAlign="end">
-          <Button variant="contained" color="success" type="submit">
+          <CustomButton variant="contained" color="success" type="submit">
             SUBMIT
-          </Button>
+          </CustomButton>
         </Box>
       </form>
     </Fragment>

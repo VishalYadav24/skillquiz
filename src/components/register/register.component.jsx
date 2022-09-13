@@ -5,12 +5,24 @@ import {
   CardContent,
   CardHeader,
   Divider,
+  styled,
   TextField,
 } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Image from "../../assets/annie-spratt-0ZPSX_mQ3xI-unsplash.jpg";
+
+const CustomButton = styled(Button)({
+  borderColor: "#3cd458",
+  backgroundColor: "#fff",
+  ":hover":{
+    color: "#fff",
+    backgroundColor: "#3cd458",
+    borderColor: "#3cd458",
+    boxShadow: "0 1px 10px rgb(60 212 88 / 40%)"
+  }
+})
 
 const Register = () => {
   const navigate = useNavigate();
@@ -81,9 +93,9 @@ const Register = () => {
                   setUserPassword(event.target.value);
                 }}
               ></TextField>
-              <Button variant="outlined" type="submit">
+              <CustomButton variant="outlined" type="submit">
                 REGISTER
-              </Button>
+              </CustomButton>
             </Stack>
             <Divider sx={{ paddingTop: "16px" }} variant="fullWidth">
               or Continue with
