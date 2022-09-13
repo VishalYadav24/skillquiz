@@ -36,7 +36,7 @@ function App() {
   const [userAgreed, setUserAgreed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [userResponse, setUserResponse] = useState(null);
-  const [score, setScore] = useState(0);
+  
   const user = JSON.parse(localStorage.getItem("User"));
 
   useEffect(() => {
@@ -152,8 +152,6 @@ function App() {
                 mobileOpen={mobileOpen}
                 setMobileOpen={setMobileOpen}
                 handleDrawerToggle={handleDrawerToggle}
-                setScore={setScore}
-                score={score}
                 userResponse={userResponse}
                 setUserResponse={setUserResponse}
               />

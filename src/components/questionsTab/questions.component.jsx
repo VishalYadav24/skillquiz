@@ -35,11 +35,13 @@ const Questions = ({
   questionLevel,
   userResponse,
   setUserResponse,
-  score,
-  setScore,
 }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentOption, setCurrentOption] = useState("");
+  const [totalTimeTaken, setTotalTimeTaken] = useState(0);
+  const [score, setScore] = useState(0);
+  
+
 
   const handleClick = (event, value) => {
     if (value <= questions.length) {
@@ -57,30 +59,38 @@ const Questions = ({
   };
   const onQuizSubmit = (event) => {
     event.preventDefault();
-    setUserResponse(() => count);
+
     for (const key in userResponse) {
       questions.map((data) => {
         if (data.id === Number(key)) {
           if (data.answer?.id === userResponse[key]?.id) {
-            setScore((prevScore) => prevScore + 1);
+            setScore((prev) => Number(prev) + 1);
           }
         }
       });
     }
 
-    submitDataToLocalStorage();
+    
+      submitDataToLocalStorage();
+    
   };
 
   const submitDataToLocalStorage = () => {
     const userData = JSON.parse(localStorage.getItem("User"));
+
     const d = {
       ...userData,
-      questions,
-      userResponse,
-      selectedTopic,
-      questionLevel,
-      questionsRange,
+      selectedTopic: selectedTopic,
+      providedQuestions: questions,
+      provideQuestionsCount: questionsRange,
+      providedQuestionsLevel: questionLevel,
+      timeSpent: totalTimeTaken,
+      userResponse: userResponse,
+      score: score,
+      allAttempted: "",
     };
+    localStorage.clear();
+    localStorage.setItem("User", JSON.stringify(d));
   };
 
   return (
@@ -111,7 +121,11 @@ const Questions = ({
                   padding: "16px",
                 }}
               >
-                <Timer questionsRange={questionsRange}></Timer>
+                <Timer
+                  questionsRange={questionsRange}
+                  totalTimeTaken={totalTimeTaken}
+                  setTotalTimeTaken={setTotalTimeTaken}
+                ></Timer>
               </Stack>
             </Stack>
           </CardContent>
@@ -169,6 +183,7 @@ const Questions = ({
                           };
                         }
                         setCurrentOption(count[currentQuestion + 1]?.value);
+                        setUserResponse(() => count);
                       }}
                     >
                       {questions[currentQuestion]?.options.map((optionList) => {
