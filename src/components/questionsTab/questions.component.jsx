@@ -19,6 +19,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { Fragment, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ResponsiveDrawer from "../drawer/drawer.component";
 import Timer from "../timer/timer.component";
 
@@ -40,7 +41,7 @@ const Questions = ({
   const [currentOption, setCurrentOption] = useState("");
   const [totalTimeTaken, setTotalTimeTaken] = useState(0);
   const [score, setScore] = useState(0);
-  
+  const navigate = useNavigate();
 
 
   const handleClick = (event, value) => {
@@ -91,6 +92,7 @@ const Questions = ({
     };
     localStorage.clear();
     localStorage.setItem("User", JSON.stringify(d));
+    navigate("/score")
   };
 
   return (

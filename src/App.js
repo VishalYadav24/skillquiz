@@ -8,7 +8,22 @@ import JavaScriptIcon from "../src/assets/icons/js.png";
 import SqlIcon from "../src/assets/icons/sql-server.png";
 import DevOpsIcon from "../src/assets/icons/devops.png";
 import axios from "axios";
-import Score from "./components/score/score.component";
+import Score from "./components/score/scores.component";
+import Scores from "./components/score/scores.component";
+import { createTheme, ThemeProvider } from "@mui/material";
+const theme = createTheme({
+  palette: {
+    success: {
+      main: "#3cd458",
+    },
+    secondary:{
+      main:"#926dde"
+    }
+  },
+  typography:{
+    fontFamily:"Quicksand"
+  }
+});
 function App() {
   const topics = [
     { id: 0, topic: "HTML", src: HtmlIcon },
@@ -36,7 +51,7 @@ function App() {
   const [userAgreed, setUserAgreed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [userResponse, setUserResponse] = useState(null);
-  
+
   const user = JSON.parse(localStorage.getItem("User"));
 
   useEffect(() => {
@@ -110,58 +125,59 @@ function App() {
     setMobileOpen(!mobileOpen);
   };
 
-
   return (
-    <div className="App">
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              navbarHeight={navbarHeight}
-              questions={questions}
-              setQuestions={setQuestions}
-              setIsLogined={setIsLogined}
-              isLogined={isLogined}
-              selectedTopic={selectedTopic}
-              setSelectedTopic={setSelectedTopic}
-              questionLevel={questionLevel}
-              setQuestionLevel={setQuestionLevel}
-              questionsRange={questionsRange}
-              setQuestionsRange={setQuestionsRange}
-              topics={topics}
-              levels={levels}
-              limit={limit}
-              userAgreed={userAgreed}
-              setUserAgreed={setUserAgreed}
-              user={user}
-              constructObject={constructObject}
-              handleDrawerToggle={handleDrawerToggle}
-            />
-          }
-        >
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <Routes>
           <Route
-            path="/questions"
+            path="/"
             element={
-              <Questions
-                questions={questions}
-                selectedTopic={selectedTopic}
-                questionLevel={questionLevel}
-                questionsRange={questionsRange}
+              <Home
                 navbarHeight={navbarHeight}
-                mobileOpen={mobileOpen}
-                setMobileOpen={setMobileOpen}
+                questions={questions}
+                setQuestions={setQuestions}
+                setIsLogined={setIsLogined}
+                isLogined={isLogined}
+                selectedTopic={selectedTopic}
+                setSelectedTopic={setSelectedTopic}
+                questionLevel={questionLevel}
+                setQuestionLevel={setQuestionLevel}
+                questionsRange={questionsRange}
+                setQuestionsRange={setQuestionsRange}
+                topics={topics}
+                levels={levels}
+                limit={limit}
+                userAgreed={userAgreed}
+                setUserAgreed={setUserAgreed}
+                user={user}
+                constructObject={constructObject}
                 handleDrawerToggle={handleDrawerToggle}
-                userResponse={userResponse}
-                setUserResponse={setUserResponse}
               />
             }
-          ></Route>
-        </Route>
-        <Route path="/register" element={<Register></Register>} />
-      </Routes>
-      <Score></Score>
-    </div>
+          >
+            <Route
+              path="/questions"
+              element={
+                <Questions
+                  questions={questions}
+                  selectedTopic={selectedTopic}
+                  questionLevel={questionLevel}
+                  questionsRange={questionsRange}
+                  navbarHeight={navbarHeight}
+                  mobileOpen={mobileOpen}
+                  setMobileOpen={setMobileOpen}
+                  handleDrawerToggle={handleDrawerToggle}
+                  userResponse={userResponse}
+                  setUserResponse={setUserResponse}
+                />
+              }
+            ></Route>
+          </Route>
+          <Route path="score" element={<Scores />}></Route>
+          <Route path="/register" element={<Register></Register>} />
+        </Routes>
+      </div>
+    </ThemeProvider>
   );
 }
 
