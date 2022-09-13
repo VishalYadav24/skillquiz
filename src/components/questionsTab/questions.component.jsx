@@ -35,33 +35,53 @@ const Questions = ({
   questionLevel,
   userResponse,
   setUserResponse,
-  onQuizSubmit,
+  score,
+  setScore,
 }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [currentOption,setCurrentOption] = useState("");
+  const [currentOption, setCurrentOption] = useState("");
 
-  useEffect(()=>{
-    setUserResponse(()=> count)
-   },[currentOption]);
-  
   const handleClick = (event, value) => {
-    
     if (value <= questions.length) {
-      handlePageMovement(value)
+      handlePageMovement(value);
       setCurrentQuestion(value - 1);
     }
-    
   };
 
- const handlePageMovement = (value)=>{
-    if(value < currentQuestion+1){
+  const handlePageMovement = (value) => {
+    if (value < currentQuestion + 1) {
       setCurrentOption(count[currentQuestion]?.value);
-    }else{
+    } else {
       setCurrentOption(count[value]?.value);
     }
-   
-  }
+  };
+  const onQuizSubmit = (event) => {
+    event.preventDefault();
+    setUserResponse(() => count);
+    for (const key in userResponse) {
+      questions.map((data) => {
+        if (data.id === Number(key)) {
+          if (data.answer?.id === userResponse[key]?.id) {
+            setScore((prevScore) => prevScore + 1);
+          }
+        }
+      });
+    }
 
+    submitDataToLocalStorage();
+  };
+
+  const submitDataToLocalStorage = () => {
+    const userData = JSON.parse(localStorage.getItem("User"));
+    const d = {
+      ...userData,
+      questions,
+      userResponse,
+      selectedTopic,
+      questionLevel,
+      questionsRange,
+    };
+  };
 
   return (
     <Fragment>
@@ -72,107 +92,117 @@ const Questions = ({
         setMobileOpen={setMobileOpen}
         handleDrawerToggle={handleDrawerToggle}
       ></ResponsiveDrawer>
-      <Card>
-        <CardContent>
-          <Stack direction="row" justifyContent="space-between">
-            <Box>
-              <Typography variant="h5">{selectedTopic}</Typography>
-              <Typography>{questionLevel}</Typography>
-            </Box>
-            <Stack
-              direction="row"
-              alignItems="center"
-              bgcolor="black"
-              sx={{
-                border: "1px solid lightskyblue",
-                borderRadius: "5px",
-                color: "white",
-                padding: "16px",
-              }}
-            >
-              <Timer questionsRange={questionsRange}></Timer>
-            </Stack>
-          </Stack>
-        </CardContent>
-        <Divider></Divider>
-        <CardContent>
-          <Box>
-            <Stack spacing={2} alignItems="self-start">
-              <Typography variant="h6">
-                {`${currentQuestion + 1} . ${
-                  questions[currentQuestion]?.question
-                }`}
-              </Typography>
-              <Stack direction="column" textAlign="left">
-                {/* {questions[currentQuestion]?.options?.map((listOfTopic) => {
-                  return (
-                    <Button
-                      key={listOfTopic?.id}
-                      sx={{ margin: "16px" }}
-                      onClick={() =>
-                        setUserResponse((prev) => [
-                          ...prev,
-                          {
-                            questionId: currentQuestion + 1,
-                            response: [
-                              { id: listOfTopic?.id, value: listOfTopic.value },
-                            ],
-                          },
-                        ])
-                      }
-                      variant="outlined"
-                    >
-                      {listOfTopic.value}
-                    </Button>
-                  );
-                })} */}
-
-                <FormControl>
-                  <FormLabel id="radio-options">Options</FormLabel>
-                  <RadioGroup
-                    value={currentOption}
-                    onChange={(e) => {
-                      if (count[currentQuestion+1]) {
-                        count[currentQuestion+1] = {id:questions[currentQuestion].options.find((data)=> data.value === e.target.value)?.id,value:e.target.value};
-                      } else {
-                        count[currentQuestion+1] = {id:questions[currentQuestion].options.find((data)=> data.value === e.target.value)?.id,value:e.target.value};
-                      }
-                      setCurrentOption(count[currentQuestion+1]?.value)
-                     
-                    }}
-                  >
-                    {questions[currentQuestion]?.options.map((optionList) => {
-                      return (
-                        <FormControlLabel
-                          key={optionList?.id}
-                          value={optionList?.value}
-                          control={<Radio />}
-                          label={optionList?.value}
-                        />
-                      );
-                    })}
-                  </RadioGroup>
-                </FormControl>
+      <form onSubmit={onQuizSubmit}>
+        <Card>
+          <CardContent>
+            <Stack direction="row" justifyContent="space-between">
+              <Box>
+                <Typography variant="h5">{selectedTopic}</Typography>
+                <Typography>{questionLevel}</Typography>
+              </Box>
+              <Stack
+                direction="row"
+                alignItems="center"
+                bgcolor="black"
+                sx={{
+                  border: "1px solid lightskyblue",
+                  borderRadius: "5px",
+                  color: "white",
+                  padding: "16px",
+                }}
+              >
+                <Timer questionsRange={questionsRange}></Timer>
               </Stack>
             </Stack>
-            <Stack direction="row" justifyContent="center">
-              <Pagination
-                count={questionsRange}
-                page={currentQuestion + 1}
-                onChange={handleClick}
-              />
-            </Stack>
-          </Box>
-        </CardContent>
+          </CardContent>
+          <Divider></Divider>
+          <CardContent>
+            <Box>
+              <Stack spacing={2} alignItems="self-start">
+                <Typography variant="h6">
+                  {`${currentQuestion + 1} . ${
+                    questions[currentQuestion]?.question
+                  }`}
+                </Typography>
+                <Stack direction="column" textAlign="left">
+                  {/* {questions[currentQuestion]?.options?.map((listOfTopic) => {
+                  return (
+                    <Button
+                    key={listOfTopic?.id}
+                    sx={{ margin: "16px" }}
+                    onClick={() =>
+                      setUserResponse((prev) => [
+                        ...prev,
+                        {
+                          questionId: currentQuestion + 1,
+                          response: [
+                            { id: listOfTopic?.id, value: listOfTopic.value },
+                          ],
+                        },
+                      ])
+                    }
+                    variant="outlined"
+                    >
+                    {listOfTopic.value}
+                    </Button>
+                    );
+                  })} */}
+
+                  <FormControl>
+                    <FormLabel id="radio-options">Options</FormLabel>
+                    <RadioGroup
+                      value={currentOption}
+                      onChange={(e) => {
+                        if (count[currentQuestion + 1]) {
+                          count[currentQuestion + 1] = {
+                            id: questions[currentQuestion].options.find(
+                              (data) => data.value === e.target.value
+                            )?.id,
+                            value: e.target.value,
+                          };
+                        } else {
+                          count[currentQuestion + 1] = {
+                            id: questions[currentQuestion].options.find(
+                              (data) => data.value === e.target.value
+                            )?.id,
+                            value: e.target.value,
+                          };
+                        }
+                        setCurrentOption(count[currentQuestion + 1]?.value);
+                      }}
+                    >
+                      {questions[currentQuestion]?.options.map((optionList) => {
+                        return (
+                          <FormControlLabel
+                            key={optionList?.id}
+                            value={optionList?.value}
+                            control={<Radio />}
+                            label={optionList?.value}
+                          />
+                        );
+                      })}
+                    </RadioGroup>
+                  </FormControl>
+                </Stack>
+              </Stack>
+              <Stack direction="row" justifyContent="center">
+                <Pagination
+                  count={questionsRange}
+                  page={currentQuestion + 1}
+                  onChange={handleClick}
+                />
+              </Stack>
+            </Box>
+          </CardContent>
+        </Card>
         <Divider style={{ padding: "16px" }}>Finish Quiz</Divider>
-        <CardContent>
-          <Box textAlign="end">
-            <Button variant="contained" color="success" onClick={()=> onQuizSubmit}>
-              SUBMIT
-            </Button>
-          </Box>
-        </CardContent>
-      </Card>
+
+        <Box textAlign="end">
+          <Button variant="contained" color="success" type="submit">
+            SUBMIT
+          </Button>
+        </Box>
+      </form>
     </Fragment>
   );
 };

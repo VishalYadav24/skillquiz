@@ -110,34 +110,6 @@ function App() {
     setMobileOpen(!mobileOpen);
   };
 
-  const onQuizSubmit = (event) => {
-    event.preventDefault();
-    let userScore = 0;
-    for (const key in userResponse) {
-      questions.map((data) => {
-        if (data.id === Number(key)) {
-          if (data.answer?.id === userResponse[key]?.id) {
-            setScore(userScore);
-          }
-        }
-      });
-    }
-    
-
-    submitDataToLocalStorage();
-  };
-
-  const submitDataToLocalStorage = () => {
-    const userData = JSON.parse(localStorage.getItem("User"));
-    const d = {
-      ...userData,
-      questions,
-      userResponse,
-      selectedTopic,
-      questionLevel,
-      questionsRange,
-    };
-  };
 
   return (
     <div className="App">
@@ -180,7 +152,8 @@ function App() {
                 mobileOpen={mobileOpen}
                 setMobileOpen={setMobileOpen}
                 handleDrawerToggle={handleDrawerToggle}
-                onQuizSubmit={onQuizSubmit}
+                setScore={setScore}
+                score={score}
                 userResponse={userResponse}
                 setUserResponse={setUserResponse}
               />
