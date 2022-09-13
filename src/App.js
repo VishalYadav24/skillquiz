@@ -173,7 +173,7 @@ function App() {
               }
             ></Route>
           </Route>
-          <Route path="score" element={<Scores />}></Route>
+          <Route path="score" element={<Scores setUserAgreed={setUserAgreed} />}></Route>
           <Route path="/register" element={<Register></Register>} />
         </Routes>
       </div>

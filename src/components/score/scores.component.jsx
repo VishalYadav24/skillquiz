@@ -44,7 +44,7 @@ const CustomButton2 = styled(Button)({
   }
 })
 
-const Scores = ({}) => {
+const Scores = ({setUserAgreed}) => {
   const [userData, setUserData] = useState();
   const navigate = useNavigate();
   useEffect(() => {
@@ -101,7 +101,7 @@ const Scores = ({}) => {
               <CustomButton1 variant="outlined" startIcon={<Replay />}>
                 Retest
               </CustomButton1>
-              <CustomButton2 variant="contained" endIcon={<Home />} onClick={()=> navigate("/")}>
+              <CustomButton2 variant="contained" endIcon={<Home />} onClick={()=> {setUserAgreed(false);navigate("/")}}>
                 Home
               </CustomButton2>
             </CardActions>
