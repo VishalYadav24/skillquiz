@@ -2,6 +2,7 @@ import { Home, Replay } from "@mui/icons-material";
 import { CardCover } from "@mui/joy";
 import {
   Avatar,
+  Button,
   Card,
   CardActionArea,
   CardActions,
@@ -12,6 +13,7 @@ import {
   Modal,
   Paper,
   Stack,
+  styled,
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
@@ -19,6 +21,28 @@ import React, { Fragment } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import Image from "../../assets/annie-spratt-0ZPSX_mQ3xI-unsplash.jpg";
+
+const CustomButton1 = styled(Button)({
+  borderColor: "#3cd458",
+  backgroundColor: "#fff",
+  ":hover":{
+    color: "#fff",
+    backgroundColor: "#3cd458",
+    borderColor: "#3cd458",
+    boxShadow: "0 1px 10px rgb(60 212 88 / 40%)"
+  }
+})
+const CustomButton2 = styled(Button)({
+  borderColor: "#fff",
+  backgroundColor: "#3cd458",
+  ":hover":{
+    color: "#3cd458",
+    backgroundColor: "#fff",
+    borderColor: "#3cd458",
+    boxShadow: "0 1px 10px rgb(60 212 88 / 40%)"
+  }
+})
+
 const Scores = ({}) => {
   const [userData, setUserData] = useState();
   useEffect(() => {
@@ -71,22 +95,13 @@ const Scores = ({}) => {
                 </Typography>
               </Stack>
             </CardContent>
-            <CardActions>
-              
-
-              <Paper sx={{width:"150px"}}>
-                <Typography>Retest</Typography>
-                <IconButton>
-                  <Replay></Replay>
-                </IconButton>
-              </Paper>
-              <Paper>
-                <Typography>Home</Typography>
-                <IconButton>
-                  <Home />
-                </IconButton>
-              </Paper>
-             
+            <CardActions sx={{ justifyContent: "space-between" }}>
+              <CustomButton1 variant="outlined" startIcon={<Replay />}>
+                Retest
+              </CustomButton1>
+              <CustomButton2 variant="contained" endIcon={<Home />}>
+                Send
+              </CustomButton2>
             </CardActions>
           </Card>
         </Stack>
