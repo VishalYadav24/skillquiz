@@ -35,7 +35,7 @@ function App() {
   const [questionsRange, setQuestionsRange] = useState("");
   const [userAgreed, setUserAgreed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [userResponse, setUserResponse] = useState([]);
+  const [userResponse, setUserResponse] = useState(null);
   const [score, setScore] = useState(0);
   const user = JSON.parse(localStorage.getItem("User"));
 
@@ -112,39 +112,32 @@ function App() {
 
   const onQuizSubmit = (event) => {
     event.preventDefault();
-    const temp = userResponse;
-    // const questionIds = temp.map((data) => data.questionId);
-    // const Ids = questionIds.filter(
-    //   (id, index) => questionIds.indexOf(id) === index
-    // );
-    const count = {};
-    temp.forEach((data) => {
-      if (count[data.questionId]) {
-        count[data.questionId] = data.response;
-      } else {
-        count[data.questionId] = data.response;
-      }
-    });
-
-    for (const key in count) {
+    let userScore = 0;
+    for (const key in userResponse) {
       questions.map((data) => {
         if (data.id === Number(key)) {
-          console.log(data.answer, count[key]);
-          if (data.answer.id === count[key][0]?.id) {
-            setScore((prev) => prev + 1);
+          if (data.answer?.id === userResponse[key]?.id) {
+            setScore(userScore);
           }
         }
       });
     }
+    
+
     submitDataToLocalStorage();
   };
 
- const submitDataToLocalStorage=()=>{
-   const userData = JSON.parse(localStorage.getItem('User'));
-   console.log((userData))
-   const d = {...userData,questions,userResponse,selectedTopic,questionLevel,questionsRange};
-   console.log(d)
-  }
+  const submitDataToLocalStorage = () => {
+    const userData = JSON.parse(localStorage.getItem("User"));
+    const d = {
+      ...userData,
+      questions,
+      userResponse,
+      selectedTopic,
+      questionLevel,
+      questionsRange,
+    };
+  };
 
   return (
     <div className="App">

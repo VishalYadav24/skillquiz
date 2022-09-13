@@ -22,6 +22,8 @@ import React, { Fragment, useEffect, useState } from "react";
 import ResponsiveDrawer from "../drawer/drawer.component";
 import Timer from "../timer/timer.component";
 
+const count = {};
+
 const Questions = ({
   questions,
   questionsRange,
@@ -36,13 +38,30 @@ const Questions = ({
   onQuizSubmit,
 }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentOption,setCurrentOption] = useState("");
 
+  useEffect(()=>{
+    setUserResponse(()=> count)
+   },[currentOption]);
+  
   const handleClick = (event, value) => {
-    console.log(value);
+    
     if (value <= questions.length) {
+      handlePageMovement(value)
       setCurrentQuestion(value - 1);
     }
+    
   };
+
+ const handlePageMovement = (value)=>{
+    if(value < currentQuestion+1){
+      setCurrentOption(count[currentQuestion]?.value);
+    }else{
+      setCurrentOption(count[value]?.value);
+    }
+   
+  }
+
 
   return (
     <Fragment>
@@ -53,7 +72,7 @@ const Questions = ({
         setMobileOpen={setMobileOpen}
         handleDrawerToggle={handleDrawerToggle}
       ></ResponsiveDrawer>
-      <Card component="form" onSubmit={onQuizSubmit}>
+      <Card>
         <CardContent>
           <Stack direction="row" justifyContent="space-between">
             <Box>
@@ -85,7 +104,7 @@ const Questions = ({
                 }`}
               </Typography>
               <Stack direction="column" textAlign="left">
-                {questions[currentQuestion]?.options?.map((listOfTopic) => {
+                {/* {questions[currentQuestion]?.options?.map((listOfTopic) => {
                   return (
                     <Button
                       key={listOfTopic?.id}
@@ -106,7 +125,34 @@ const Questions = ({
                       {listOfTopic.value}
                     </Button>
                   );
-                })}
+                })} */}
+
+                <FormControl>
+                  <FormLabel id="radio-options">Options</FormLabel>
+                  <RadioGroup
+                    value={currentOption}
+                    onChange={(e) => {
+                      if (count[currentQuestion+1]) {
+                        count[currentQuestion+1] = {id:questions[currentQuestion].options.find((data)=> data.value === e.target.value)?.id,value:e.target.value};
+                      } else {
+                        count[currentQuestion+1] = {id:questions[currentQuestion].options.find((data)=> data.value === e.target.value)?.id,value:e.target.value};
+                      }
+                      setCurrentOption(count[currentQuestion+1]?.value)
+                     
+                    }}
+                  >
+                    {questions[currentQuestion]?.options.map((optionList) => {
+                      return (
+                        <FormControlLabel
+                          key={optionList?.id}
+                          value={optionList?.value}
+                          control={<Radio />}
+                          label={optionList?.value}
+                        />
+                      );
+                    })}
+                  </RadioGroup>
+                </FormControl>
               </Stack>
             </Stack>
             <Stack direction="row" justifyContent="center">
@@ -121,7 +167,7 @@ const Questions = ({
         <Divider style={{ padding: "16px" }}>Finish Quiz</Divider>
         <CardContent>
           <Box textAlign="end">
-            <Button variant="contained" color="success" type="submit">
+            <Button variant="contained" color="success" onClick={()=> onQuizSubmit}>
               SUBMIT
             </Button>
           </Box>
