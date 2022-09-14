@@ -35,7 +35,7 @@ const Home = ({
   
   return (
     <Fragment>
-      <Navbar user={user || {name:"User name"}} navbarHeight={navbarHeight} isLogined={isLogined} handleDrawerToggle={handleDrawerToggle}></Navbar>
+      <Navbar user={ isLogined? user :{name:"User name"}} navbarHeight={navbarHeight} isLogined={isLogined} setIsLogined={setIsLogined} handleDrawerToggle={handleDrawerToggle}></Navbar>
       <Container>
        {  !userAgreed &&<Skills
           listOfTopics={topics}

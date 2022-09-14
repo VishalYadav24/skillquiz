@@ -24,7 +24,7 @@ const CustomButton = styled(Button)({
   }
 })
 
-const Register = () => {
+const Register = ({setIsLogined}) => {
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -38,6 +38,7 @@ const Register = () => {
     };
     try {
       localStorage.setItem("User", JSON.stringify(User));
+      setIsLogined(()=> true)
       navigate("/");
     } catch (error) {
       console.log(error.message);

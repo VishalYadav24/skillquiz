@@ -44,7 +44,8 @@ function App() {
   ];
   const navbarHeight = "64px";
   const [questions, setQuestions] = useState([]);
-  const [isLogined, setIsLogined] = useState(false);
+  const [isLogined, setIsLogined] = useState(()=> localStorage.key(0)?true:false);
+  console.log(localStorage.key(0));
   const [selectedTopic, setSelectedTopic] = useState("");
   const [questionLevel, setQuestionLevel] = useState("");
   const [questionsRange, setQuestionsRange] = useState("");
@@ -174,7 +175,7 @@ function App() {
             ></Route>
           </Route>
           <Route path="score" element={<Scores setUserAgreed={setUserAgreed} />}></Route>
-          <Route path="/register" element={<Register></Register>} />
+          <Route path="/register" element={<Register setIsLogined={setIsLogined} />} />
         </Routes>
       </div>
     </ThemeProvider>
