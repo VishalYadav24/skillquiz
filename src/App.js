@@ -193,7 +193,7 @@ function App() {
               }
             ></Route>
           </Route>
-          <Route path="score" element={<Scores setUserAgreed={setUserAgreed} setRetry={setRetry} />}></Route>
+          <Route path="score" element={<Scores setUserAgreed={setUserAgreed} setRetry={setRetry} setUserResponse={setUserResponse} />}></Route>
           <Route path="/register" element={<Register setIsLogined={setIsLogined} />} />
         </Routes>
       </div>

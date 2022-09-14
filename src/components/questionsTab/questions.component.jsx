@@ -30,7 +30,7 @@ const CustomButton = styled(Button)({
   },
 });
 const count = {};
-const countScore = {};
+
 
 const Questions = ({
   questions,
@@ -49,7 +49,7 @@ const Questions = ({
   const [currentOption, setCurrentOption] = useState("");
   const [totalTimeTaken, setTotalTimeTaken] = useState(0);
   const navigate = useNavigate();
-
+  const countScore = {score:0};
   const handleClick = (event, value) => {
     if (value <= questions.length) {
       setCurrentQuestion(value - 1);
