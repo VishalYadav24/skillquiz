@@ -121,6 +121,7 @@ const Register = ({ setIsLogined }) => {
                 name="Email"
                 required
                 placeholder="E-mail"
+                type="email"
                 value={userEmail}
                 onChange={(event) => {
                   setUserEmail(event.target.value);
@@ -130,6 +131,7 @@ const Register = ({ setIsLogined }) => {
               <TextField
                 name="Password"
                 required
+                type="password"
                 placeholder="Password"
                 value={userPassword}
                 onChange={(event) => {
