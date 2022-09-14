@@ -44,7 +44,7 @@ const CustomButton2 = styled(Button)({
   }
 })
 
-const Scores = ({setUserAgreed}) => {
+const Scores = ({setUserAgreed,setRetry}) => {
   const [userData, setUserData] = useState();
   const navigate = useNavigate();
   useEffect(() => {
@@ -52,6 +52,7 @@ const Scores = ({setUserAgreed}) => {
     setUserData(() => {
       return getData;
     });
+    setRetry(false)
   }, []);
 
   return (
@@ -98,10 +99,10 @@ const Scores = ({setUserAgreed}) => {
               </Stack>
             </CardContent>
             <CardActions sx={{ justifyContent: "space-between" }}>
-              <CustomButton1 variant="outlined" startIcon={<Replay />}>
+              <CustomButton1 variant="outlined" onClick={()=> {setUserAgreed(()=>true);setRetry(()=>true);navigate("/questions")}} startIcon={<Replay />}>
                 Retest
               </CustomButton1>
-              <CustomButton2 variant="contained" endIcon={<Home />} onClick={()=> {setUserAgreed(false);navigate("/")}}>
+              <CustomButton2 variant="contained" endIcon={<Home />} onClick={()=> {setUserAgreed(false);setRetry(()=>false);navigate("/")}}>
                 Home
               </CustomButton2>
             </CardActions>

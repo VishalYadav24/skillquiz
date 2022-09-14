@@ -52,6 +52,7 @@ function App() {
   const [userAgreed, setUserAgreed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [userResponse, setUserResponse] = useState(null);
+  const [retry,setRetry] = useState(false);
 
   const user = JSON.parse(localStorage.getItem("User"));
 
@@ -59,10 +60,17 @@ function App() {
     const getQuestions = async () => {
       if (user && userAgreed) {
         const API_KEY = "V7RxLSLo3E2DHXbKsRe3e6PLFsvCtlOg2GI8lJSh";
+      if(!retry){
         const response = await axios.get(
           `https://quizapi.io/api/v1/questions?apiKey=${API_KEY}&tags=${selectedTopic}&difficulty=${questionLevel}&limit=${questionsRange}`
         );
-        setQuestions(constructObject(response.data));
+        setQuestions(()=>constructObject(response.data));
+       }
+      if(retry){
+        const userData = JSON.parse(localStorage.getItem("User"));
+        setQuestions(()=> userData?.providedQuestions);
+        console.log(userData)
+      }
       }
     };
     getQuestions();
@@ -170,11 +178,12 @@ function App() {
                   handleDrawerToggle={handleDrawerToggle}
                   userResponse={userResponse}
                   setUserResponse={setUserResponse}
+                  setUserAgreed={setUserAgreed}
                 />
               }
             ></Route>
           </Route>
-          <Route path="score" element={<Scores setUserAgreed={setUserAgreed} />}></Route>
+          <Route path="score" element={<Scores setUserAgreed={setUserAgreed} setRetry={setRetry} />}></Route>
           <Route path="/register" element={<Register setIsLogined={setIsLogined} />} />
         </Routes>
       </div>

@@ -47,6 +47,7 @@ const Questions = ({
   questionLevel,
   userResponse,
   setUserResponse,
+  setUserAgreed
 }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentOption, setCurrentOption] = useState("");
@@ -64,7 +65,6 @@ const Questions = ({
   };
 
   const handlePageMovement = (value) => {
-    console.log(value,currentQuestion+1)
     if (value - currentQuestion + 1 === 1) {
       setCurrentOption(count[currentQuestion]?.value);
     } else {
@@ -105,6 +105,7 @@ const Questions = ({
     };
     localStorage.clear();
     localStorage.setItem("User", JSON.stringify(d));
+    setUserAgreed(false);
     navigate("/score")
   };
 
