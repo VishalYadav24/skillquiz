@@ -1,17 +1,12 @@
-import { More } from "@mui/icons-material";
 import {
-  Avatar,
   Button,
   Card,
   CardContent,
-  CardHeader,
   Divider,
   FormControl,
   FormControlLabel,
   FormLabel,
-  IconButton,
   Pagination,
-  Paper,
   Radio,
   RadioGroup,
   Stack,
@@ -19,7 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ResponsiveDrawer from "../drawer/drawer.component";
 import Timer from "../timer/timer.component";
@@ -53,7 +48,6 @@ const Questions = ({
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentOption, setCurrentOption] = useState("");
   const [totalTimeTaken, setTotalTimeTaken] = useState(0);
-  const [score, setScore] = useState(0);
   const navigate = useNavigate();
 
   const handleClick = (event, value) => {
@@ -78,7 +72,7 @@ const Questions = ({
         if (data.id === Number(key)) {
           if (data.answer?.id === userResponse[key]?.id) {
             if (countScore["score"]) {
-              countScore["score"] = Number(countScore["score"])+ 1;
+              countScore["score"] = Number(countScore["score"]) + 1;
             } else {
               countScore["score"] = 1;
             }
@@ -86,8 +80,7 @@ const Questions = ({
         }
       });
     }
-     setScore(()=> countScore?.score)
-    setInterval(()=> submitDataToLocalStorage() ,1000) 
+    submitDataToLocalStorage();
   };
 
   const submitDataToLocalStorage = () => {
@@ -101,7 +94,7 @@ const Questions = ({
       providedQuestionsLevel: questionLevel,
       timeSpent: totalTimeTaken,
       userResponse: userResponse,
-      score: score,
+      score: countScore?.score,
       allAttempted: "",
     };
     localStorage.clear();
@@ -156,29 +149,6 @@ const Questions = ({
                   }`}
                 </Typography>
                 <Stack direction="column" textAlign="left">
-                  {/* {questions[currentQuestion]?.options?.map((listOfTopic) => {
-                  return (
-                    <Button
-                    key={listOfTopic?.id}
-                    sx={{ margin: "16px" }}
-                    onClick={() =>
-                      setUserResponse((prev) => [
-                        ...prev,
-                        {
-                          questionId: currentQuestion + 1,
-                          response: [
-                            { id: listOfTopic?.id, value: listOfTopic.value },
-                          ],
-                        },
-                      ])
-                    }
-                    variant="outlined"
-                    >
-                    {listOfTopic.value}
-                    </Button>
-                    );
-                  })} */}
-
                   <FormControl>
                     <FormLabel id="radio-options">Options</FormLabel>
                     <RadioGroup

@@ -83,7 +83,7 @@ function App() {
         id: index + 1,
         question: list?.question,
         options: constructOptions(list?.answers),
-        answer: constructAnswer(list?.correct_answer),
+         answer: constructAnswer(list?.correct_answers),
       });
     });
     return questionsList;
@@ -107,27 +107,37 @@ function App() {
     ];
   };
 
-  const constructAnswer = (answer) => {
+  const constructAnswer = (answers) => {
+    let response;
+
     const answerObj = [
       {
         id: 1,
-        value: "answer_a",
+        value: "answer_a_correct",
       },
       {
         id: 2,
-        value: "answer_b",
+        value: "answer_b_correct",
       },
       {
         id: 3,
-        value: "answer_c",
+        value: "answer_c_correct",
       },
       {
         id: 4,
-        value: "answer_d",
+        value: "answer_d_correct",
       },
     ];
 
-    return answerObj.find((data) => data.value === answer);
+    for (const key in answers){
+    
+      if(answers[key]=== "true"){
+        console.log(key,answers[key])
+        response = answerObj.find((data) => data.value === key);
+      }
+      
+    }
+    return response;
   };
 
   const handleDrawerToggle = () => {
