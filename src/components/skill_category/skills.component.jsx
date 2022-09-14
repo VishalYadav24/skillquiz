@@ -15,6 +15,7 @@ const Skills = ({
   setQuestionLevel,
   userAgreed,
   setUserAgreed,
+  isLogined
 
 }) => {
   const [open, setOpen] = React.useState(false);
@@ -62,7 +63,7 @@ const Skills = ({
                     setQuestionsRange={setQuestionsRange}
                     userAgreed={userAgreed}
                     setUserAgreed={setUserAgreed}
-                    
+                    isLogined={isLogined}
                   >
                     <Typography
                       padding="16px"

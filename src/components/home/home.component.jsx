@@ -49,6 +49,7 @@ const Home = ({
           setQuestionsRange={setQuestionsRange}
           userAgreed={userAgreed}
           setUserAgreed={setUserAgreed}
+          isLogined={isLogined}
           
         ></Skills>}
         {userAgreed && <Outlet></Outlet>}
