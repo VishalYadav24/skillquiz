@@ -75,7 +75,7 @@ const Register = ({ setIsLogined }) => {
       if(!userNameError && !userEmailError && !userPasswordError){
         localStorage.setItem("User", JSON.stringify(User));
         setIsLogined(() => true);
-        // navigate("/");
+         navigate("/");
       }
   
     } catch (error) {
