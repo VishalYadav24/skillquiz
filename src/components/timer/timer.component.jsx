@@ -18,7 +18,7 @@ const Timer = ({ questionsRange,totalTimeTaken,setTotalTimeTaken }) => {
     if (minute === 0 && seconds === 0) {
       setSeconds(0);
     }
-    setTotalTimeTaken(()=> (seconds+ minute*60));
+    setTotalTimeTaken(()=> (totalTime -(seconds+ minute*60)));
     return () => clearInterval(Timer);
   }, [seconds]);
 
