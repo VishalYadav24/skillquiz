@@ -27,14 +27,15 @@ import Timer from "../timer/timer.component";
 const CustomButton = styled(Button)({
   borderColor: "#3cd458",
   backgroundColor: "#fff",
-  ":hover":{
+  ":hover": {
     color: "#fff",
     backgroundColor: "#3cd458",
     borderColor: "#3cd458",
-    boxShadow: "0 1px 10px rgb(60 212 88 / 40%)"
-  }
-})
+    boxShadow: "0 1px 10px rgb(60 212 88 / 40%)",
+  },
+});
 const count = {};
+const countScore = {};
 
 const Questions = ({
   questions,
@@ -47,7 +48,7 @@ const Questions = ({
   questionLevel,
   userResponse,
   setUserResponse,
-  setUserAgreed
+  setUserAgreed,
 }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentOption, setCurrentOption] = useState("");
@@ -55,12 +56,10 @@ const Questions = ({
   const [score, setScore] = useState(0);
   const navigate = useNavigate();
 
-
   const handleClick = (event, value) => {
     if (value <= questions.length) {
       setCurrentQuestion(value - 1);
       handlePageMovement(value);
-      
     }
   };
 
@@ -78,15 +77,17 @@ const Questions = ({
       questions.map((data) => {
         if (data.id === Number(key)) {
           if (data.answer?.id === userResponse[key]?.id) {
-            setScore((prev) => Number(prev) + 1);
+            if (countScore["score"]) {
+              countScore["score"] = Number(countScore["score"])+ 1;
+            } else {
+              countScore["score"] = 1;
+            }
           }
         }
       });
     }
-
-    
-      submitDataToLocalStorage();
-    
+     setScore(()=> countScore?.score)
+    setInterval(()=> submitDataToLocalStorage() ,1000) 
   };
 
   const submitDataToLocalStorage = () => {
@@ -106,7 +107,7 @@ const Questions = ({
     localStorage.clear();
     localStorage.setItem("User", JSON.stringify(d));
     setUserAgreed(false);
-    navigate("/score")
+    navigate("/score");
   };
 
   return (
