@@ -57,13 +57,15 @@ const Questions = ({
 
   const handleClick = (event, value) => {
     if (value <= questions.length) {
-      handlePageMovement(value);
       setCurrentQuestion(value - 1);
+      handlePageMovement(value);
+      
     }
   };
 
   const handlePageMovement = (value) => {
-    if (value < currentQuestion + 1) {
+    console.log(value,currentQuestion+1)
+    if (value - currentQuestion + 1 === 1) {
       setCurrentOption(count[currentQuestion]?.value);
     } else {
       setCurrentOption(count[value]?.value);
