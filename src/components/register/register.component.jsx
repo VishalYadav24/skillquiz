@@ -96,8 +96,6 @@ const Register = ({ setIsLogined }) => {
         justifyContent="center"
         alignItems="center"
         component="form"
-        
-        autoComplete="off"
         onSubmit={handleSubmit}
       >
         <Card sx={{ margin: " calc(100vh - 80vh) auto" }}>
