@@ -9,37 +9,75 @@ import {
   TextField,
 } from "@mui/material";
 import { Box, Stack } from "@mui/system";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Image from "../../assets/annie-spratt-0ZPSX_mQ3xI-unsplash.jpg";
 
 const CustomButton = styled(Button)({
   borderColor: "#3cd458",
   backgroundColor: "#fff",
-  ":hover":{
+  ":hover": {
     color: "#fff",
     backgroundColor: "#3cd458",
     borderColor: "#3cd458",
-    boxShadow: "0 1px 10px rgb(60 212 88 / 40%)"
-  }
-})
+    boxShadow: "0 1px 10px rgb(60 212 88 / 40%)",
+  },
+});
 
-const Register = ({setIsLogined}) => {
+const Register = ({ setIsLogined }) => {
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
 
-  const handleSubmit = () => {
+  const [userNameError, setUserNameError] = useState(false);
+  const [userEmailError, setUserEmailError] = useState(false);
+  const [userPasswordError, setUserPasswordError] = useState(false);
+  
+  useEffect(() => {
+    setUserNameError(false);
+    if (userName === "") {
+      setUserNameError(true);
+    }
+  }, [userName]);
+
+  useEffect(() => {
+    setUserEmailError(false);
+    if (userEmail === "") {
+      setUserEmailError(true);
+    }
+  }, [userEmail]);
+
+  useEffect(() => {
+    setUserPasswordError(false);
+    if (userPassword === "") {
+      setUserPasswordError(true);
+    }
+  }, [userPassword]);
+
+  useEffect(() => {
+    setUserEmailError(false);
+    setUserNameError(false);
+    setUserPasswordError(false);
+  }, []);
+
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
     const User = {
       name: userName,
       email: userEmail,
       password: userPassword,
     };
+
     try {
-      localStorage.setItem("User", JSON.stringify(User));
-      setIsLogined(()=> true)
-      navigate("/");
+      if(!userNameError && !userEmailError && !userPasswordError){
+        localStorage.setItem("User", JSON.stringify(User));
+        setIsLogined(() => true);
+        // navigate("/");
+      }
+  
     } catch (error) {
       console.log(error.message);
     }
@@ -58,6 +96,8 @@ const Register = ({setIsLogined}) => {
         justifyContent="center"
         alignItems="center"
         component="form"
+        
+        autoComplete="off"
         onSubmit={handleSubmit}
       >
         <Card sx={{ margin: " calc(100vh - 80vh) auto" }}>
@@ -75,7 +115,8 @@ const Register = ({setIsLogined}) => {
                 onChange={(event) => {
                   setUserName(event.target.value);
                 }}
-              ></TextField>
+                error={userNameError}
+              />
               <TextField
                 name="Email"
                 required
@@ -84,7 +125,8 @@ const Register = ({setIsLogined}) => {
                 onChange={(event) => {
                   setUserEmail(event.target.value);
                 }}
-              ></TextField>
+                error={userEmailError}
+              />
               <TextField
                 name="Password"
                 required
@@ -93,8 +135,9 @@ const Register = ({setIsLogined}) => {
                 onChange={(event) => {
                   setUserPassword(event.target.value);
                 }}
-              ></TextField>
-              <CustomButton variant="outlined" type="submit">
+                error={userPasswordError}
+              />
+              <CustomButton  variant="outlined" type="submit">
                 REGISTER
               </CustomButton>
             </Stack>
