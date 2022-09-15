@@ -46,7 +46,6 @@ function App() {
   const navbarHeight = "64px";
   const [questions, setQuestions] = useState([]);
   const [isLogined, setIsLogined] = useState(()=> localStorage.key(0)?true:false);
-  console.log(localStorage.key(0));
   const [selectedTopic, setSelectedTopic] = useState("");
   const [questionLevel, setQuestionLevel] = useState("");
   const [questionsRange, setQuestionsRange] = useState("");
