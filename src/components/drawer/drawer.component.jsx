@@ -18,6 +18,7 @@ function ResponsiveDrawer(props) {
     mobileOpen,
     setMobileOpen,
     handleDrawerToggle,
+    handleClick
   } = props;
   const drawer = (
     <div>
@@ -25,7 +26,7 @@ function ResponsiveDrawer(props) {
         {questions.map((data) => {
           return (
             <ListItem key={data?.id}>
-              <Button variant="outlined">
+              <Button onClick={()=>handleClick("",data?.id)} variant="outlined">
                 <Typography variant="span">
                   Question
                   <br />

@@ -50,7 +50,7 @@ const Questions = ({
   const [totalTimeTaken, setTotalTimeTaken] = useState(0);
   const navigate = useNavigate();
   const countScore = {score:0};
-  const handleClick = (event, value) => {
+  const handleClick = (event,value) => {
     if (value <= questions.length) {
       setCurrentQuestion(value - 1);
       handlePageMovement(value);
@@ -111,6 +111,7 @@ const Questions = ({
         mobileOpen={mobileOpen}
         setMobileOpen={setMobileOpen}
         handleDrawerToggle={handleDrawerToggle}
+        handleClick={handleClick}
       ></ResponsiveDrawer>
       <form onSubmit={onQuizSubmit}>
         <Card>
