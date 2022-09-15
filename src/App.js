@@ -17,13 +17,13 @@ const theme = createTheme({
     success: {
       main: "#3cd458",
     },
-    secondary:{
-      main:"#926dde"
-    }
+    secondary: {
+      main: "#926dde",
+    },
   },
-  typography:{
-    fontFamily:"Quicksand"
-  }
+  typography: {
+    fontFamily: "Quicksand",
+  },
 });
 function App() {
   const topics = [
@@ -45,16 +45,18 @@ function App() {
   ];
   const navbarHeight = "64px";
   const [questions, setQuestions] = useState([]);
-  const [isLogined, setIsLogined] = useState(()=> localStorage.key(0)?true:false);
+  const [isLogined, setIsLogined] = useState(() =>
+    localStorage.key(0) ? true : false
+  );
   const [selectedTopic, setSelectedTopic] = useState("");
   const [questionLevel, setQuestionLevel] = useState("");
   const [questionsRange, setQuestionsRange] = useState("");
   const [userAgreed, setUserAgreed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [userResponse, setUserResponse] = useState(null);
-  const [retry,setRetry] = useState(false);
-  const[showNotification,setShowNotification] = useState(false);
-  const [notification,setNotification] = useState({message:"",type:"info"});
+  const [retry, setRetry] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
+  const [notification, setNotification] = useState("");
 
   const user = JSON.parse(localStorage.getItem("User"));
 
@@ -63,29 +65,28 @@ function App() {
       try {
         if (user && userAgreed) {
           const API_KEY = "V7RxLSLo3E2DHXbKsRe3e6PLFsvCtlOg2GI8lJSh";
-        if(!retry){
-          const response = await axios.get(
-            `https://quizapi.io/api/v1/questions?apiKey=${API_KEY}&tags=${selectedTopic}&difficulty=${questionLevel}&limit=${questionsRange}`
-          );
-          setQuestions(()=>constructObject(response.data));
-         }
-        if(retry){
-          const userData = JSON.parse(localStorage.getItem("User"));
-          setQuestions(()=> userData?.providedQuestions);
-          console.log(userData)
-        }
+          if (!retry) {
+            const response = await axios.get(
+              `https://quizapi.io/api/v1/questions?apiKey=${API_KEY}&tags=${selectedTopic}&difficulty=${questionLevel}&limit=${questionsRange}`
+            );
+            setQuestions(() => constructObject(response.data));
+          }
+          if (retry) {
+            const userData = JSON.parse(localStorage.getItem("User"));
+            setQuestions(() => userData?.providedQuestions);
+          }
         }
       } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
+         setNotification((notification) => {
+          return { message: error.message, type: "error" };
+        });
         setShowNotification(true);
-        setNotification((notification)=> {return{...notification,message:error.message,type:"error"}});
-        console.log(notification)
       }
     };
     getQuestions();
 
- 
-     return () => setShowNotification(false);
+    return () => setShowNotification(false);
   }, [userAgreed]);
 
   const constructObject = (data) => {
@@ -95,7 +96,7 @@ function App() {
         id: index + 1,
         question: list?.question,
         options: constructOptions(list?.answers),
-         answer: constructAnswer(list?.correct_answers),
+        answer: constructAnswer(list?.correct_answers),
       });
     });
     return questionsList;
@@ -141,13 +142,11 @@ function App() {
       },
     ];
 
-    for (const key in answers){
-    
-      if(answers[key]=== "true"){
-        console.log(key,answers[key])
+    for (const key in answers) {
+      if (answers[key] === "true") {
+
         response = answerObj.find((data) => data.value === key);
       }
-      
     }
     return response;
   };
@@ -158,8 +157,13 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Notifications notification={notification} showNotification={showNotification}/>
+      
       <div className="App">
+      <Notifications
+        notification={notification}
+        showNotification={showNotification}
+        setShowNotification={setShowNotification}
+      />
         <Routes>
           <Route
             path="/"
@@ -184,6 +188,8 @@ function App() {
                 user={user}
                 constructObject={constructObject}
                 handleDrawerToggle={handleDrawerToggle}
+                setShowNotification={setShowNotification}
+                setNotification={setNotification}
               />
             }
           >
@@ -206,8 +212,27 @@ function App() {
               }
             ></Route>
           </Route>
-          <Route path="score" element={<Scores setUserAgreed={setUserAgreed} setRetry={setRetry} setUserResponse={setUserResponse} />}></Route>
-          <Route path="/register" element={<Register setIsLogined={setIsLogined} />} />
+          <Route
+            path="score"
+            element={
+              <Scores
+                setUserAgreed={setUserAgreed}
+                setRetry={setRetry}
+                setUserResponse={setUserResponse}
+              />
+            }
+          ></Route>
+          <Route
+            path="/register"
+            element={
+              <Register
+                setIsLogined={setIsLogined}
+                setShowNotification={setShowNotification}
+                setNotification={setNotification}
+                setUserAgreed={setUserAgreed}
+              />
+            }
+          />
         </Routes>
       </div>
     </ThemeProvider>

@@ -24,7 +24,12 @@ const CustomButton = styled(Button)({
   },
 });
 
-const Register = ({ setIsLogined }) => {
+const Register = ({
+  setIsLogined,
+  setNotification,
+  setShowNotification,
+  setUserAgreed,
+}) => {
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -33,7 +38,7 @@ const Register = ({ setIsLogined }) => {
   const [userNameError, setUserNameError] = useState(false);
   const [userEmailError, setUserEmailError] = useState(false);
   const [userPasswordError, setUserPasswordError] = useState(false);
-  
+
   useEffect(() => {
     setUserNameError(false);
     if (userName === "") {
@@ -61,8 +66,6 @@ const Register = ({ setIsLogined }) => {
     setUserPasswordError(false);
   }, []);
 
-
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const User = {
@@ -72,14 +75,23 @@ const Register = ({ setIsLogined }) => {
     };
 
     try {
-      if(!userNameError && !userEmailError && !userPasswordError){
+      if (!userNameError && !userEmailError && !userPasswordError) {
+        localStorage.clear();
         localStorage.setItem("User", JSON.stringify(User));
         setIsLogined(() => true);
-         navigate("/");
+        setUserAgreed(() => false);
+        setNotification((notification) => {
+          return { message: "Registration Successful", type: "success" };
+        });
+        setShowNotification(() => true);
+        navigate("/");
       }
-  
     } catch (error) {
       console.log(error.message);
+      setNotification((notification) => {
+        return { message: error?.message, type: "error" };
+      });
+      setShowNotification(() => true);
     }
   };
 
@@ -137,7 +149,7 @@ const Register = ({ setIsLogined }) => {
                 }}
                 error={userPasswordError}
               />
-              <CustomButton  variant="outlined" type="submit">
+              <CustomButton variant="outlined" type="submit">
                 REGISTER
               </CustomButton>
             </Stack>
