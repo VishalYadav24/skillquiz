@@ -11,6 +11,7 @@ import axios from "axios";
 import Score from "./components/score/scores.component";
 import Scores from "./components/score/scores.component";
 import { createTheme, ThemeProvider } from "@mui/material";
+import Notifications from "./components/notifications/notifications.component";
 const theme = createTheme({
   palette: {
     success: {
@@ -53,27 +54,39 @@ function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [userResponse, setUserResponse] = useState(null);
   const [retry,setRetry] = useState(false);
+  const[showNotification,setShowNotification] = useState(false);
+  const [notification,setNotification] = useState({message:"",type:"info"});
 
   const user = JSON.parse(localStorage.getItem("User"));
 
   useEffect(() => {
     const getQuestions = async () => {
-      if (user && userAgreed) {
-        const API_KEY = "V7RxLSLo3E2DHXbKsRe3e6PLFsvCtlOg2GI8lJSh";
-      if(!retry){
-        const response = await axios.get(
-          `https://quizapi.io/api/v1/questions?apiKey=${API_KEY}&tags=${selectedTopic}&difficulty=${questionLevel}&limit=${questionsRange}`
-        );
-        setQuestions(()=>constructObject(response.data));
-       }
-      if(retry){
-        const userData = JSON.parse(localStorage.getItem("User"));
-        setQuestions(()=> userData?.providedQuestions);
-        console.log(userData)
-      }
+      try {
+        if (user && userAgreed) {
+          const API_KEY = "V7RxLSLo3E2DHXbKsRe3e6PLFsvCtlOg2GI8lJSh";
+        if(!retry){
+          const response = await axios.get(
+            `https://quizapi.io/api/v1/questions?apiKey=${API_KEY}&tags=${selectedTopic}&difficulty=${questionLevel}&limit=${questionsRange}`
+          );
+          setQuestions(()=>constructObject(response.data));
+         }
+        if(retry){
+          const userData = JSON.parse(localStorage.getItem("User"));
+          setQuestions(()=> userData?.providedQuestions);
+          console.log(userData)
+        }
+        }
+      } catch (error) {
+        console.log(error.message)
+        setShowNotification(true);
+        setNotification((notification)=> {return{...notification,message:error.message,type:"error"}});
+        console.log(notification)
       }
     };
     getQuestions();
+
+ 
+     return () => setShowNotification(false);
   }, [userAgreed]);
 
   const constructObject = (data) => {
@@ -146,6 +159,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Notifications notification={notification} showNotification={showNotification}/>
       <div className="App">
         <Routes>
           <Route
