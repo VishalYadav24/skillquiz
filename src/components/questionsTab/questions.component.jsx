@@ -14,7 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ResponsiveDrawer from "../drawer/drawer.component";
 import Timer from "../timer/timer.component";
@@ -30,7 +30,6 @@ const CustomButton = styled(Button)({
   },
 });
 const count = {};
-
 
 const Questions = ({
   questions,
@@ -48,9 +47,17 @@ const Questions = ({
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentOption, setCurrentOption] = useState("");
   const [totalTimeTaken, setTotalTimeTaken] = useState(0);
+  const [timeOver,setTimeOver] = useState(false);
   const navigate = useNavigate();
-  const countScore = {score:0};
-  const handleClick = (event,value) => {
+  const countScore = { score: 0 };
+
+  useEffect(() => {
+    if(timeOver){
+      calculateScores();
+    }
+  }, [timeOver]);
+
+  const handleClick = (event, value) => {
     if (value <= questions.length) {
       setCurrentQuestion(value - 1);
       handlePageMovement(value);
@@ -66,7 +73,10 @@ const Questions = ({
   };
   const onQuizSubmit = (event) => {
     event.preventDefault();
+    calculateScores();
+  };
 
+  const calculateScores = () => {
     for (const key in userResponse) {
       questions.map((data) => {
         if (data.id === Number(key)) {
@@ -86,7 +96,7 @@ const Questions = ({
   const submitDataToLocalStorage = () => {
     const userData = JSON.parse(localStorage.getItem("User"));
 
-    const d = {
+    const userResponseObj = {
       ...userData,
       selectedTopic: selectedTopic,
       providedQuestions: questions,
@@ -98,7 +108,7 @@ const Questions = ({
       allAttempted: "",
     };
     localStorage.clear();
-    localStorage.setItem("User", JSON.stringify(d));
+    localStorage.setItem("User", JSON.stringify(userResponseObj));
     setUserAgreed(false);
     navigate("/score");
   };
@@ -121,23 +131,26 @@ const Questions = ({
                 <Typography variant="h5">{selectedTopic}</Typography>
                 <Typography>{questionLevel}</Typography>
               </Box>
-             {questions.length > 0 && <Stack
-                direction="row"
-                alignItems="center"
-                bgcolor="black"
-                sx={{
-                  border: "1px solid lightskyblue",
-                  borderRadius: "5px",
-                  color: "white",
-                  padding: "16px",
-                }}
-              >
-                <Timer
-                  questionsRange={questionsRange}
-                  totalTimeTaken={totalTimeTaken}
-                  setTotalTimeTaken={setTotalTimeTaken}
-                ></Timer>
-              </Stack>}
+              {questions.length > 0 && (
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  bgcolor="black"
+                  sx={{
+                    border: "1px solid lightskyblue",
+                    borderRadius: "5px",
+                    color: "white",
+                    padding: "16px",
+                  }}
+                >
+                  <Timer
+                    questionsRange={questionsRange}
+                    totalTimeTaken={totalTimeTaken}
+                    setTotalTimeTaken={setTotalTimeTaken}
+                    setTimeOver={setTimeOver}
+                  ></Timer>
+                </Stack>
+              )}
             </Stack>
           </CardContent>
           <Divider></Divider>

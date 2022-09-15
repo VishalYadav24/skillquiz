@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 
-const Timer = ({ questionsRange,totalTimeTaken,setTotalTimeTaken }) => {
+const Timer = ({ questionsRange,totalTimeTaken,setTotalTimeTaken,setTimeOver }) => {
   const totalTime = (questionsRange * 20);
   const [seconds, setSeconds] = useState(totalTime % 60);
   const [minute, setMinute] = useState(Math.floor(totalTime/60));
@@ -17,6 +17,8 @@ const Timer = ({ questionsRange,totalTimeTaken,setTotalTimeTaken }) => {
     }
     if (minute === 0 && seconds === 0) {
       setSeconds(0);
+      setTimeOver(true);
+      console.log("time is over")
     }
     setTotalTimeTaken(()=> (totalTime -(seconds+ minute*60)));
     return () => clearInterval(Timer);
