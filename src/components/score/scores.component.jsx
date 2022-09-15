@@ -1,17 +1,10 @@
 import { Home, Replay } from "@mui/icons-material";
-import { CardCover } from "@mui/joy";
 import {
-  Avatar,
   Button,
   Card,
-  CardActionArea,
   CardActions,
   CardContent,
   CardHeader,
-  Fade,
-  IconButton,
-  Modal,
-  Paper,
   Stack,
   styled,
   Typography,
@@ -26,25 +19,25 @@ import Image from "../../assets/annie-spratt-0ZPSX_mQ3xI-unsplash.jpg";
 const CustomButton1 = styled(Button)({
   borderColor: "#3cd458",
   backgroundColor: "#fff",
-  ":hover":{
+  ":hover": {
     color: "#fff",
     backgroundColor: "#3cd458",
     borderColor: "#3cd458",
-    boxShadow: "0 1px 10px rgb(60 212 88 / 40%)"
-  }
-})
+    boxShadow: "0 1px 10px rgb(60 212 88 / 40%)",
+  },
+});
 const CustomButton2 = styled(Button)({
   borderColor: "#fff",
   backgroundColor: "#3cd458",
-  ":hover":{
+  ":hover": {
     color: "#3cd458",
     backgroundColor: "#fff",
     borderColor: "#3cd458",
-    boxShadow: "0 1px 10px rgb(60 212 88 / 40%)"
-  }
-})
+    boxShadow: "0 1px 10px rgb(60 212 88 / 40%)",
+  },
+});
 
-const Scores = ({setUserAgreed,setRetry,setUserResponse}) => {
+const Scores = ({ setUserAgreed, setRetry, setUserResponse }) => {
   const [userData, setUserData] = useState();
   const navigate = useNavigate();
   useEffect(() => {
@@ -52,7 +45,7 @@ const Scores = ({setUserAgreed,setRetry,setUserResponse}) => {
     setUserData(() => {
       return getData;
     });
-    setRetry(false)
+    setRetry(false);
   }, []);
 
   return (
@@ -99,10 +92,28 @@ const Scores = ({setUserAgreed,setRetry,setUserResponse}) => {
               </Stack>
             </CardContent>
             <CardActions sx={{ justifyContent: "space-between" }}>
-              <CustomButton1 variant="outlined" onClick={()=> {setUserAgreed(()=>true);setRetry(()=>true);setUserResponse(null);navigate("/questions")}} startIcon={<Replay />}>
+              <CustomButton1
+                variant="outlined"
+                onClick={() => {
+                  setUserAgreed(() => true);
+                  setRetry(() => true);
+                  setUserResponse(null);
+                  navigate("/questions");
+                }}
+                startIcon={<Replay />}
+              >
                 Retest
               </CustomButton1>
-              <CustomButton2 variant="contained" endIcon={<Home />} onClick={()=> {setUserAgreed(false);setRetry(()=>false);setUserResponse(null);navigate("/")}}>
+              <CustomButton2
+                variant="contained"
+                endIcon={<Home />}
+                onClick={() => {
+                  setUserAgreed(false);
+                  setRetry(() => false);
+                  setUserResponse(null);
+                  navigate("/");
+                }}
+              >
                 Home
               </CustomButton2>
             </CardActions>

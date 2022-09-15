@@ -1,19 +1,11 @@
 import { Container } from "@mui/system";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import Navbar from "../navbar/navbar.component";
-import HtmlIcon from "../../assets/icons/html-5.png";
-import DevOpsIcon from "../../assets/icons/devops.png";
-import JavaScriptIcon from "../../assets/icons/js.png";
-import SqlIcon from "../../assets/icons/sql-server.png";
-import Questions from "../questionsTab/questions.component";
 import Skills from "../skill_category/skills.component";
-import axios from "axios";
 import { Outlet } from "react-router-dom";
 
 
 const Home = ({
-  questions,
-  setQuestions,
   setIsLogined,
   isLogined,
   selectedTopic,
@@ -27,7 +19,6 @@ const Home = ({
   levels,
   userAgreed,
   setUserAgreed,
-  constructObject,
   navbarHeight,
   user,
   handleDrawerToggle

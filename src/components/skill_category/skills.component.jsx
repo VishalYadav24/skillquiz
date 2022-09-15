@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { Card, CardContent, Typography } from "@mui/material";
 import { Box, Stack } from "@mui/system";
-import { Link } from "react-router-dom";
 import Instructions from "../instructions/instructions.component";
 const Skills = ({
   listOfTopics,
