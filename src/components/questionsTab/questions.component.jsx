@@ -120,7 +120,7 @@ const Questions = ({
                 <Typography variant="h5">{selectedTopic}</Typography>
                 <Typography>{questionLevel}</Typography>
               </Box>
-              <Stack
+             {questions.length > 0 && <Stack
                 direction="row"
                 alignItems="center"
                 bgcolor="black"
@@ -136,7 +136,7 @@ const Questions = ({
                   totalTimeTaken={totalTimeTaken}
                   setTotalTimeTaken={setTotalTimeTaken}
                 ></Timer>
-              </Stack>
+              </Stack>}
             </Stack>
           </CardContent>
           <Divider></Divider>
