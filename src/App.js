@@ -198,6 +198,7 @@ function App() {
                 setUserAgreed={setUserAgreed}
                 setRetry={setRetry}
                 setUserResponse={setUserResponse}
+                setQuestions={setQuestions}
               />
             }
           ></Route>

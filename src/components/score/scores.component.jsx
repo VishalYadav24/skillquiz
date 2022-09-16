@@ -37,7 +37,7 @@ const CustomButton2 = styled(Button)({
   },
 });
 
-const Scores = ({ setUserAgreed, setRetry, setUserResponse }) => {
+const Scores = ({ setUserAgreed, setRetry, setUserResponse,setQuestions }) => {
   const [userData, setUserData] = useState();
   const navigate = useNavigate();
   useEffect(() => {
@@ -111,6 +111,7 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse }) => {
                   setUserAgreed(false);
                   setRetry(() => false);
                   setUserResponse(null);
+                  setQuestions([])
                   navigate("/");
                 }}
               >
