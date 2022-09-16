@@ -23,10 +23,9 @@ const theme = createTheme({
 });
 function App() {
   const navbarHeight = "64px";
-  const user = JSON.parse(localStorage.getItem("User"));
   const [questions, setQuestions] = useState([]);
   const [isLogined, setIsLogined] = useState(() =>
-    localStorage.key(0) ? true : false
+  localStorage.key(0) ? true : false
   );
   const [selectedTopic, setSelectedTopic] = useState("");
   const [questionLevel, setQuestionLevel] = useState("");
@@ -37,9 +36,10 @@ function App() {
   const [retry, setRetry] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
   const [notification, setNotification] = useState("");
-
+  const user = JSON.parse(localStorage.getItem("User"));
   
-
+  
+  
   useEffect(() => {
     const getQuestions = async () => {
       try {
