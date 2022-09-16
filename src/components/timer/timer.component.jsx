@@ -18,7 +18,6 @@ const Timer = ({ questionsRange,totalTimeTaken,setTotalTimeTaken,setTimeOver }) 
     if (minute === 0 && seconds === 0) {
       setSeconds(0);
       setTimeOver(true);
-      console.log("time is over")
     }
     setTotalTimeTaken(()=> (totalTime -(seconds+ minute*60)));
     return () => clearInterval(Timer);

@@ -9,7 +9,6 @@ const Notifications = ({
   setShowNotification,
 }) => {
   const handleClose = (event, reason) => {
-    console.log(event,reason)
     if (reason === "clickaway") {
       return;
     }

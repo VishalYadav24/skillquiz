@@ -22,7 +22,6 @@ const theme = createTheme({
   },
 });
 function App() {
-  console.log(topics,levels,limit)
   const navbarHeight = "64px";
   const user = JSON.parse(localStorage.getItem("User"));
   const [questions, setQuestions] = useState([]);
@@ -58,7 +57,6 @@ function App() {
           }
         }
       } catch (error) {
-        console.log(error.message);
          setNotification((notification) => {
           return { message: error.message, type: "error" };
         });

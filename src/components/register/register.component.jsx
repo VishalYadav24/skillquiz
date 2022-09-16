@@ -87,7 +87,6 @@ const Register = ({
         navigate("/");
       }
     } catch (error) {
-      console.log(error.message);
       setNotification((notification) => {
         return { message: error?.message, type: "error" };
       });

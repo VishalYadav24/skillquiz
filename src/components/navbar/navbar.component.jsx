@@ -11,7 +11,6 @@ const Navbar = ({
   setIsLogined,
 }) => {
   const navigate = useNavigate();
-  console.log(isLogined);
   const handleLogout = () => {
     localStorage.clear();
     setIsLogined(false);
