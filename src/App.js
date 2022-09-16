@@ -3,12 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./components/home/home.component";
 import Questions from "./components/questionsTab/questions.component";
 import Register from "./components/register/register.component.jsx";
-import HtmlIcon from "../src/assets/icons/html-5.png";
-import JavaScriptIcon from "../src/assets/icons/js.png";
-import SqlIcon from "../src/assets/icons/sql-server.png";
-import DevOpsIcon from "../src/assets/icons/devops.png";
+import {topics,levels,limit} from "./components/constants/constant.jsx"
 import axios from "axios";
-import Score from "./components/score/scores.component";
 import Scores from "./components/score/scores.component";
 import { createTheme, ThemeProvider } from "@mui/material";
 import Notifications from "./components/notifications/notifications.component";
@@ -26,24 +22,9 @@ const theme = createTheme({
   },
 });
 function App() {
-  const topics = [
-    { id: 0, topic: "HTML", src: HtmlIcon },
-    { id: 1, topic: "JavaScript", src: JavaScriptIcon },
-    { id: 2, topic: "Sql", src: SqlIcon },
-    { id: 3, topic: "DevOps", src: DevOpsIcon },
-  ];
-  const levels = [
-    { id: 0, label: "Easy" },
-    { id: 1, label: "Medium" },
-    { id: 2, label: "Hard" },
-  ];
-  const limit = [
-    { id: 0, range: 5 },
-    { id: 1, range: 10 },
-    { id: 2, range: 15 },
-    { id: 3, range: 20 },
-  ];
+  console.log(topics,levels,limit)
   const navbarHeight = "64px";
+  const user = JSON.parse(localStorage.getItem("User"));
   const [questions, setQuestions] = useState([]);
   const [isLogined, setIsLogined] = useState(() =>
     localStorage.key(0) ? true : false
@@ -58,7 +39,7 @@ function App() {
   const [showNotification, setShowNotification] = useState(false);
   const [notification, setNotification] = useState("");
 
-  const user = JSON.parse(localStorage.getItem("User"));
+  
 
   useEffect(() => {
     const getQuestions = async () => {
