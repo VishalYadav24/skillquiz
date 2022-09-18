@@ -36,6 +36,7 @@ function App() {
   const [retry, setRetry] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
   const [notification, setNotification] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const user = JSON.parse(localStorage.getItem("User"));
   
   
@@ -49,7 +50,12 @@ function App() {
             const response = await axios.get(
               `https://quizapi.io/api/v1/questions?apiKey=${API_KEY}&tags=${selectedTopic}&difficulty=${questionLevel}&limit=${questionsRange}`
             );
-            setQuestions(() => constructObject(response.data));
+            if(response.status){
+              setQuestions(() => constructObject(response.data));
+
+ setIsLoading(()=> false)
+            }
+           
           }
           if (retry) {
             const userData = JSON.parse(localStorage.getItem("User"));
@@ -187,6 +193,8 @@ function App() {
                   userResponse={userResponse}
                   setUserResponse={setUserResponse}
                   setUserAgreed={setUserAgreed}
+                  isLoading={isLoading}
+                  setIsLoading={setIsLoading}
                 />
               }
             ></Route>
