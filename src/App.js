@@ -59,7 +59,11 @@ function App() {
           }
           if (retry) {
             const userData = JSON.parse(localStorage.getItem("User"));
-            setQuestions(() => userData?.providedQuestions);
+            if(userData){
+              setQuestions(() => userData?.providedQuestions);
+              setIsLoading(()=>false)
+            }
+           
           }
         }
       } catch (error) {
@@ -88,21 +92,17 @@ function App() {
   };
 
   const constructOptions = (listOfOptions) => {
-    return [
-      { id: 1, value: listOfOptions?.answer_a || "" },
-      {
-        id: 2,
-        value: listOfOptions?.answer_b || "",
-      },
-      {
-        id: 3,
-        value: listOfOptions?.answer_c || "",
-      },
-      {
-        id: 4,
-        value: listOfOptions?.answer_d || "",
-      },
-    ];
+    const optionsArray = [];
+    for(const key in listOfOptions){
+      if(listOfOptions[key]){
+       const optionsObject = {
+        id:optionsArray.length +1,
+        value: listOfOptions[key]
+       }
+        optionsArray.push(optionsObject)
+      }
+    }
+    return optionsArray
   };
 
   const constructAnswer = (answers) => {
