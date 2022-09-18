@@ -74,6 +74,26 @@ const Questions = ({
       setCurrentOption(count[value]?.value);
     }
   };
+  const handleOptionsSelection = (e) => {
+    if (count[currentQuestion + 1]) {
+      count[currentQuestion + 1] = {
+        id: questions[currentQuestion].options.find(
+          (data) => data.value === e.target.value
+        )?.id,
+        value: e.target.value,
+      };
+    } else {
+      count[currentQuestion + 1] = {
+        id: questions[currentQuestion].options.find(
+          (data) => data.value === e.target.value
+        )?.id,
+        value: e.target.value,
+      };
+    }
+    setCurrentOption(count[currentQuestion + 1]?.value);
+    setUserResponse(() => count);
+  };
+
   const onQuizSubmit = (event) => {
     event.preventDefault();
     setIsLoading(() => true);
@@ -176,28 +196,7 @@ const Questions = ({
                     <Stack direction="column" textAlign="left">
                       <FormControl>
                         <FormLabel id="radio-options">Options</FormLabel>
-                        <RadioGroup
-                          value={currentOption}
-                          onChange={(e) => {
-                            if (count[currentQuestion + 1]) {
-                              count[currentQuestion + 1] = {
-                                id: questions[currentQuestion].options.find(
-                                  (data) => data.value === e.target.value
-                                )?.id,
-                                value: e.target.value,
-                              };
-                            } else {
-                              count[currentQuestion + 1] = {
-                                id: questions[currentQuestion].options.find(
-                                  (data) => data.value === e.target.value
-                                )?.id,
-                                value: e.target.value,
-                              };
-                            }
-                            setCurrentOption(count[currentQuestion + 1]?.value);
-                            setUserResponse(() => count);
-                          }}
-                        >
+                        <RadioGroup value={currentOption} onChange={(e) => handleOptionsSelection(e)}>
                           {questions[currentQuestion]?.options.map(
                             (optionList) => {
                               return (
