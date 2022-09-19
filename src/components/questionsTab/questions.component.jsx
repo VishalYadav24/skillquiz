@@ -48,7 +48,7 @@ const Questions = ({
   isLoading,
 }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [currentOption, setCurrentOption] = useState("");
+  const [currentOption, setCurrentOption] = useState("response");
   const [totalTimeTaken, setTotalTimeTaken] = useState(0);
   const [timeOver, setTimeOver] = useState(false);
   const [attempts, setAttempts] = useState([])
@@ -67,7 +67,6 @@ const Questions = ({
         setAttempts((prev)=>[...prev,key])
       }
     }
-    console.log(attempts)
   },[currentOption])
 
   const handleClick = (event, value) => {
@@ -208,7 +207,7 @@ const Questions = ({
                     <Stack direction="column" textAlign="left">
                       <FormControl>
                         <FormLabel id="radio-options">Options</FormLabel>
-                        <RadioGroup value={currentOption} onChange={(e) => handleOptionsSelection(e)}>
+                        <RadioGroup value={currentOption || "" } onChange={(e) => handleOptionsSelection(e)}>
                           {questions[currentQuestion]?.options.map(
                             (optionList) => {
                               return (
