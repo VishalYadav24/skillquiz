@@ -46,12 +46,13 @@ const Questions = ({
   setUserAgreed,
   setIsLoading,
   isLoading,
+  errorOccurred,
 }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentOption, setCurrentOption] = useState("response");
   const [totalTimeTaken, setTotalTimeTaken] = useState(0);
   const [timeOver, setTimeOver] = useState(false);
-  const [attempts, setAttempts] = useState([])
+  const [attempts, setAttempts] = useState([]);
   const navigate = useNavigate();
   const countScore = { score: 0 };
 
@@ -61,13 +62,13 @@ const Questions = ({
     }
   }, [timeOver]);
 
-  useEffect(()=>{
-    for(const key in userResponse){
-      if(attempts.indexOf(key) === -1){
-        setAttempts((prev)=>[...prev,key])
+  useEffect(() => {
+    for (const key in userResponse) {
+      if (attempts.indexOf(key) === -1) {
+        setAttempts((prev) => [...prev, key]);
       }
     }
-  },[currentOption])
+  }, [currentOption]);
 
   const handleClick = (event, value) => {
     if (value <= questions.length) {
@@ -106,7 +107,7 @@ const Questions = ({
   const onQuizSubmit = (event) => {
     event.preventDefault();
     setIsLoading(() => true);
-    count ={};
+    count = {};
     calculateScores();
   };
 
@@ -149,7 +150,13 @@ const Questions = ({
 
   return (
     <Fragment>
-      {isLoading ? (
+      {errorOccurred ? (
+        <Box>
+          <Typography variant="h4" textAlign="center" color="green">
+            Sorry we are unable to fetch question at this moment!
+          </Typography>
+        </Box>
+      ) : isLoading ? (
         <Box textAlign="center">
           <Typography>Please wait...</Typography>
           <Loader />
@@ -207,7 +214,10 @@ const Questions = ({
                     <Stack direction="column" textAlign="left">
                       <FormControl>
                         <FormLabel id="radio-options">Options</FormLabel>
-                        <RadioGroup value={currentOption || "" } onChange={(e) => handleOptionsSelection(e)}>
+                        <RadioGroup
+                          value={currentOption || ""}
+                          onChange={(e) => handleOptionsSelection(e)}
+                        >
                           {questions[currentQuestion]?.options.map(
                             (optionList) => {
                               return (

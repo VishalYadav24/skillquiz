@@ -37,6 +37,7 @@ function App() {
   const [showNotification, setShowNotification] = useState(false);
   const [notification, setNotification] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [errorOccurred, setErrorOccurred] = useState(false);
   const user = JSON.parse(localStorage.getItem("User"));
   
   
@@ -53,7 +54,8 @@ function App() {
             if(response.status){
               setQuestions(() => constructObject(response.data));
 
- setIsLoading(()=> false)
+              setIsLoading(()=> false);
+              setErrorOccurred(()=>false)
             }
            
           }
@@ -61,7 +63,8 @@ function App() {
             const userData = JSON.parse(localStorage.getItem("User"));
             if(userData){
               setQuestions(() => userData?.providedQuestions);
-              setIsLoading(()=>false)
+              setIsLoading(()=>false);
+              setErrorOccurred(()=>false)
             }
            
           }
@@ -71,6 +74,8 @@ function App() {
           return { message: error.message, type: "error" };
         });
         setShowNotification(true);
+        setErrorOccurred(()=>true)
+        setIsLoading(()=> false);
       }
     };
     getQuestions();
@@ -195,6 +200,7 @@ function App() {
                   setUserAgreed={setUserAgreed}
                   isLoading={isLoading}
                   setIsLoading={setIsLoading}
+                  errorOccurred={errorOccurred}
                 />
               }
             ></Route>
