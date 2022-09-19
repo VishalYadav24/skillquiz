@@ -51,6 +51,7 @@ const Questions = ({
   const [currentOption, setCurrentOption] = useState("");
   const [totalTimeTaken, setTotalTimeTaken] = useState(0);
   const [timeOver, setTimeOver] = useState(false);
+  const [attempts, setAttempts] = useState([])
   const navigate = useNavigate();
   const countScore = { score: 0 };
 
@@ -59,6 +60,15 @@ const Questions = ({
       calculateScores();
     }
   }, [timeOver]);
+
+  useEffect(()=>{
+    for(const key in userResponse){
+      if(attempts.indexOf(key) === -1){
+        setAttempts((prev)=>[...prev,key])
+      }
+    }
+    console.log(attempts)
+  },[currentOption])
 
   const handleClick = (event, value) => {
     if (value <= questions.length) {
@@ -154,6 +164,7 @@ const Questions = ({
             setMobileOpen={setMobileOpen}
             handleDrawerToggle={handleDrawerToggle}
             handleClick={handleClick}
+            attempts={attempts}
           ></ResponsiveDrawer>
           <form onSubmit={onQuizSubmit}>
             <Card>
