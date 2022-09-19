@@ -30,7 +30,7 @@ const CustomButton = styled(Button)({
     boxShadow: "0 1px 10px rgb(60 212 88 / 40%)",
   },
 });
-const count = {};
+let count = {};
 
 const Questions = ({
   questions,
@@ -97,6 +97,7 @@ const Questions = ({
   const onQuizSubmit = (event) => {
     event.preventDefault();
     setIsLoading(() => true);
+    count ={};
     calculateScores();
   };
 
