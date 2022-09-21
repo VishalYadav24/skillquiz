@@ -14,7 +14,7 @@ const Navbar = ({
   const handleLogout = () => {
     localStorage.clear();
     setIsLogined(false);
-    navigate("/register");
+    navigate("/register",{replace:true});
   };
   return (
     <Box sx={{ flexGrow: 1 }}>

@@ -47,7 +47,7 @@ const Instructions = (props) => {
   const navigate = useNavigate();
   const onStart = () => {
     handleClose();
-    navigate("/questions");
+    navigate("/questions",{relative:true});
     setUserAgreed(()=>true);
   };
   return (
