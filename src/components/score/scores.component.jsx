@@ -108,7 +108,7 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse,setQuestions }) => {
                 variant="contained"
                 endIcon={<Home />}
                 onClick={() => {
-                  setUserAgreed(false);
+                  setUserAgreed(()=>false);
                   setRetry(() => false);
                   setUserResponse(null);
                   setQuestions([])

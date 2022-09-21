@@ -48,7 +48,7 @@ const Instructions = (props) => {
   const onStart = () => {
     handleClose();
     navigate("/questions");
-    setUserAgreed(true);
+    setUserAgreed(()=>true);
   };
   return (
     <div>

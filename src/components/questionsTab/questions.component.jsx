@@ -144,7 +144,7 @@ const Questions = ({
     };
     localStorage.clear();
     localStorage.setItem("User", JSON.stringify(userResponseObj));
-    setUserAgreed(false);
+    setUserAgreed(()=>false);
     navigate("/score");
   };
 
