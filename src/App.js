@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./components/home/home.component";
 import Questions from "./components/questionsTab/questions.component";
 import Register from "./components/register/register.component.jsx";
-import {topics,levels,limit} from "./components/constants/constant.jsx"
+import { topics, levels, limit } from "./components/constants/constant.jsx";
 import axios from "axios";
 import Scores from "./components/score/scores.component";
 import { createTheme, ThemeProvider } from "@mui/material";
@@ -25,7 +25,7 @@ function App() {
   const navbarHeight = "64px";
   const [questions, setQuestions] = useState([]);
   const [isLogined, setIsLogined] = useState(() =>
-  localStorage.key(0) ? true : false
+    localStorage.key(0) ? true : false
   );
   const [selectedTopic, setSelectedTopic] = useState("");
   const [questionLevel, setQuestionLevel] = useState("");
@@ -38,10 +38,21 @@ function App() {
   const [notification, setNotification] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [errorOccurred, setErrorOccurred] = useState(false);
+  const [showReturnDialog, setShowReturnDialog] = useState(false);
   const user = JSON.parse(localStorage.getItem("User"));
-  
-  
-  
+  const navigate = useNavigate();
+  useEffect(() => {
+    if(user){
+      const { accidentalClose } = user;
+      if (accidentalClose) {
+        console.log("are bhai");
+        setShowReturnDialog(() => true);
+      }
+    }
+
+   
+  }, []);
+
   useEffect(() => {
     const getQuestions = async () => {
       try {
@@ -51,31 +62,29 @@ function App() {
             const response = await axios.get(
               `https://quizapi.io/api/v1/questions?apiKey=${API_KEY}&tags=${selectedTopic}&difficulty=${questionLevel}&limit=${questionsRange}`
             );
-            if(response.status){
+            if (response.status) {
               setQuestions(() => constructObject(response.data));
 
-              setIsLoading(()=> false);
-              setErrorOccurred(()=>false)
+              setIsLoading(() => false);
+              setErrorOccurred(() => false);
             }
-           
           }
           if (retry) {
             const userData = JSON.parse(localStorage.getItem("User"));
-            if(userData){
+            if (userData) {
               setQuestions(() => userData?.providedQuestions);
-              setIsLoading(()=>false);
-              setErrorOccurred(()=>false)
+              setIsLoading(() => false);
+              setErrorOccurred(() => false);
             }
-           
           }
         }
       } catch (error) {
-         setNotification((notification) => {
+        setNotification((notification) => {
           return { message: error.message, type: "error" };
         });
         setShowNotification(true);
-        setErrorOccurred(()=>true)
-        setIsLoading(()=> false);
+        setErrorOccurred(() => true);
+        setIsLoading(() => false);
       }
     };
     getQuestions();
@@ -98,16 +107,16 @@ function App() {
 
   const constructOptions = (listOfOptions) => {
     const optionsArray = [];
-    for(const key in listOfOptions){
-      if(listOfOptions[key]){
-       const optionsObject = {
-        id:optionsArray.length +1,
-        value: listOfOptions[key]
-       }
-        optionsArray.push(optionsObject)
+    for (const key in listOfOptions) {
+      if (listOfOptions[key]) {
+        const optionsObject = {
+          id: optionsArray.length + 1,
+          value: listOfOptions[key],
+        };
+        optionsArray.push(optionsObject);
       }
     }
-    return optionsArray
+    return optionsArray;
   };
 
   const constructAnswer = (answers) => {
@@ -134,7 +143,6 @@ function App() {
 
     for (const key in answers) {
       if (answers[key] === "true") {
-
         response = answerObj.find((data) => data.value === key);
       }
     }
@@ -145,15 +153,30 @@ function App() {
     setMobileOpen(!mobileOpen);
   };
 
+  const handleResume = ()=>{
+    setShowReturnDialog(()=>false)
+    setUserAgreed(() => true);
+    setRetry(() => true);
+    setUserResponse(null);
+    setQuestionsRange(()=> {
+     return user?.provideQuestionsCount
+    })
+    navigate("/questions");
+    
+  }
+ 
+  const handleStartFresh = ()=>{
+   setShowReturnDialog(()=>false);
+  }
+
   return (
     <ThemeProvider theme={theme}>
-      
       <div className="App">
-      <Notifications
-        notification={notification}
-        showNotification={showNotification}
-        setShowNotification={setShowNotification}
-      />
+        <Notifications
+          notification={notification}
+          showNotification={showNotification}
+          setShowNotification={setShowNotification}
+        />
         <Routes>
           <Route
             path="/"
@@ -180,6 +203,9 @@ function App() {
                 handleDrawerToggle={handleDrawerToggle}
                 setShowNotification={setShowNotification}
                 setNotification={setNotification}
+                showReturnDialog={showReturnDialog}
+                handleResume={handleResume}
+                handleStartFresh={handleStartFresh}
               />
             }
           >
