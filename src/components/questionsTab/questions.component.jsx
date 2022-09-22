@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { Fragment, useEffect, useState } from "react";
+import { useBeforeunload } from "react-beforeunload";
 import { useNavigate } from "react-router-dom";
 import ResponsiveDrawer from "../drawer/drawer.component";
 import Loader from "../loading/loader.component";
@@ -55,6 +56,13 @@ const Questions = ({
   const [attempts, setAttempts] = useState([]);
   const navigate = useNavigate();
   const countScore = { score: 0 };
+
+  useBeforeunload((event) => {
+    if (attempts.length > 0) {
+      calculateScores("closeTab");
+      event.returnValue = "";
+    }
+  });
 
   useEffect(() => {
     if (timeOver) {
@@ -111,7 +119,7 @@ const Questions = ({
     calculateScores();
   };
 
-  const calculateScores = () => {
+  const calculateScores = (source) => {
     for (const key in userResponse) {
       questions.map((data) => {
         if (data.id === Number(key)) {
@@ -125,10 +133,11 @@ const Questions = ({
         }
       });
     }
-    submitDataToLocalStorage();
+
+    submitDataToLocalStorage(source);
   };
 
-  const submitDataToLocalStorage = () => {
+  const submitDataToLocalStorage = (source) => {
     const userData = JSON.parse(localStorage.getItem("User"));
 
     const userResponseObj = {
@@ -140,12 +149,15 @@ const Questions = ({
       timeSpent: totalTimeTaken,
       userResponse: userResponse,
       score: countScore?.score,
-      allAttempted: "",
+      allAttempted: attempts?.length === questions?.length,
+      accidentalClose: source? true:false
     };
     localStorage.clear();
     localStorage.setItem("User", JSON.stringify(userResponseObj));
-    setUserAgreed(()=>false);
-    navigate("/score");
+    if (source !== "closeTab") {
+      setUserAgreed(() => false);
+      navigate("/score");
+    }
   };
 
   return (
