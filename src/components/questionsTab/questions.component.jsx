@@ -17,20 +17,12 @@ import { Box } from "@mui/system";
 import React, { Fragment, useEffect, useState } from "react";
 import { useBeforeunload } from "react-beforeunload";
 import { useNavigate } from "react-router-dom";
+import { CustomButton } from "../custom-styles/custom.component";
 import ResponsiveDrawer from "../drawer/drawer.component";
 import Loader from "../loading/loader.component";
 import Timer from "../timer/timer.component";
 
-const CustomButton = styled(Button)({
-  borderColor: "#3cd458",
-  backgroundColor: "#fff",
-  ":hover": {
-    color: "#fff",
-    backgroundColor: "#3cd458",
-    borderColor: "#3cd458",
-    boxShadow: "0 1px 10px rgb(60 212 88 / 40%)",
-  },
-});
+
 let count = {};
 
 const Questions = ({
