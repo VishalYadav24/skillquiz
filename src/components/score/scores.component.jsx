@@ -98,7 +98,7 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse,setQuestions }) => {
                   setUserAgreed(() => true);
                   setRetry(() => true);
                   setUserResponse(null);
-                  navigate("/questions",{replace:true});
+                  navigate("/questions");
                 }}
                 startIcon={<Replay />}
               >
@@ -112,7 +112,7 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse,setQuestions }) => {
                   setRetry(() => false);
                   setUserResponse(null);
                   setQuestions([])
-                  navigate("/",{replace:true});
+                  navigate("/");
                 }}
               >
                 Home

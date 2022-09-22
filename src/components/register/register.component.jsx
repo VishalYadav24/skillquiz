@@ -84,7 +84,7 @@ const Register = ({
           return { message: "Registration Successful", type: "success" };
         });
         setShowNotification(() => true);
-        navigate("/",{replace:true});
+        navigate("/");
       }
     } catch (error) {
       setNotification((notification) => {
