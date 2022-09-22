@@ -7437,7 +7437,7 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.6.2, prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -7532,6 +7532,14 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
+react-beforeunload@^2.5.3:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/react-beforeunload/-/react-beforeunload-2.5.3.tgz#6328296cc56456d4f4543cf22f9f528ad1061f68"
+  integrity sha512-roOH5Qja6DGwydKYDMdzw3LR/mX6CCaglGqOb/1W9VREVBDp+DlOlC+aXKru5K7aH+vxdviBpfgyX3lTutOulg==
+  dependencies:
+    prop-types "^15.8.1"
+    tiny-invariant "^1.2.0"
+
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-12.0.1.tgz#ba92edb4a1f379bd46ccd6bcd4e7bc398df33e73"
@@ -7589,6 +7597,13 @@ react-is@^18.0.0, react-is@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
+
+react-page-visibility@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/react-page-visibility/-/react-page-visibility-7.0.0.tgz#13dfe604790d061e70b900038bad1ca769a36cbc"
+  integrity sha512-d4Kq/8TtJSr8dQc8EJeAZcSKTrGzC5OPTm6UrMur9BnwP0fgTawI9+Nd+ZGB7vwCfn2yZS0qDF9DR3/QYTGazw==
+  dependencies:
+    prop-types "^15.7.2"
 
 react-refresh@^0.11.0:
   version "0.11.0"
@@ -8596,6 +8611,11 @@ thunky@^1.0.2:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/thunky/-/thunky-1.1.0.tgz#5abaf714a9405db0504732bbccd2cedd9ef9537d"
   integrity sha512-eHY7nBftgThBqOyHGVN+l8gF0BucP09fMo0oO/Lb0w1OF80dJv+lDVpXG60WMQvkcxAkNybKsrEIE3ZtKGmPrA==
+
+tiny-invariant@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.2.0.tgz#a1141f86b672a9148c72e978a19a73b9b94a15a9"
+  integrity sha512-1Uhn/aqw5C6RI4KejVeTg6mIS7IqxnLJ8Mv2tV5rTc0qWobay7pDUz6Wi392Cnc8ak1H0F2cjoRzb2/AW4+Fvg==
 
 tmpl@1.0.5:
   version "1.0.5"
