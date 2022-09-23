@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 
 const Timer = ({ questionsRange,totalTimeTaken,setTotalTimeTaken,setTimeOver }) => {
-  const totalTime = (questionsRange * 20);
+  const userData = JSON.parse(localStorage.getItem("User"));
+  const totalTime = userData?.accidentalClose ? (userData?.totalTimeProvided - userData?.timeSpent) : (questionsRange * 20);
   const [seconds, setSeconds] = useState(totalTime % 60);
   const [minute, setMinute] = useState(Math.floor(totalTime/60));
   useEffect(() => {

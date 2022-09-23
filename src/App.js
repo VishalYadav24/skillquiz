@@ -39,19 +39,17 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [errorOccurred, setErrorOccurred] = useState(false);
   const [showReturnDialog, setShowReturnDialog] = useState(false);
-  const [previousUserResponse,setPreviousUserResponse] = useState(null);
+  const [previousUserResponse, setPreviousUserResponse] = useState(null);
   const user = JSON.parse(localStorage.getItem("User"));
   const navigate = useNavigate();
   useEffect(() => {
-    if(user){
+    if (user) {
       const { accidentalClose } = user;
       if (accidentalClose) {
         console.log("are bhai");
         setShowReturnDialog(() => true);
       }
     }
-
-   
   }, []);
 
   useEffect(() => {
@@ -74,12 +72,14 @@ function App() {
             const userData = JSON.parse(localStorage.getItem("User"));
             if (userData) {
               setQuestions(() => userData?.providedQuestions);
-              if(userData?.accidentalClose){
-                const {userResponse,selectedTopic,providedQuestionsLevel} = userData;
-                setPreviousUserResponse(()=> {return {...userResponse}});
-                setSelectedTopic(()=> selectedTopic);
-                setQuestionLevel(()=> providedQuestionsLevel);
-
+              if (userData?.accidentalClose) {
+                const { userResponse, selectedTopic, providedQuestionsLevel } =
+                  userData;
+                setPreviousUserResponse(() => {
+                  return { ...userResponse };
+                });
+                setSelectedTopic(() => selectedTopic);
+                setQuestionLevel(() => providedQuestionsLevel);
               }
               setIsLoading(() => false);
               setErrorOccurred(() => false);
@@ -161,21 +161,25 @@ function App() {
     setMobileOpen(!mobileOpen);
   };
 
-  const handleResume = ()=>{
-    setShowReturnDialog(()=>false)
+  const handleResume = () => {
+    setShowReturnDialog(() => false);
     setUserAgreed(() => true);
     setRetry(() => true);
     setUserResponse(null);
-    setQuestionsRange(()=> {
-     return user?.provideQuestionsCount
-    })
+    setQuestionsRange(() => {
+      return user?.provideQuestionsCount;
+    });
     navigate("/questions");
-    
-  }
- 
-  const handleStartFresh = ()=>{
-   setShowReturnDialog(()=>false);
-  }
+  };
+
+  const handleStartFresh = () => {
+    const userResponseObj = {
+      ...user,
+      accidentalClose: false,
+    };
+    localStorage.setItem("User", JSON.stringify(userResponseObj));
+    setShowReturnDialog(() => false);
+  };
 
   return (
     <ThemeProvider theme={theme}>
