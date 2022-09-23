@@ -46,6 +46,14 @@ function ResponsiveDrawer(props) {
             </ListItem>
           );
         })}
+         <Box padding="16px">
+            <Typography>
+              Answered: {attempts.length}
+            </Typography>
+            <Typography>
+              Un-answered: { questions?.length - attempts?.length}
+            </Typography>
+          </Box>
       </List>
     </div>
   );
