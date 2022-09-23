@@ -39,6 +39,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [errorOccurred, setErrorOccurred] = useState(false);
   const [showReturnDialog, setShowReturnDialog] = useState(false);
+  const [previousUserResponse,setPreviousUserResponse] = useState(null);
   const user = JSON.parse(localStorage.getItem("User"));
   const navigate = useNavigate();
   useEffect(() => {
@@ -73,6 +74,13 @@ function App() {
             const userData = JSON.parse(localStorage.getItem("User"));
             if (userData) {
               setQuestions(() => userData?.providedQuestions);
+              if(userData?.accidentalClose){
+                const {userResponse,selectedTopic,providedQuestionsLevel} = userData;
+                setPreviousUserResponse(()=> {return {...userResponse}});
+                setSelectedTopic(()=> selectedTopic);
+                setQuestionLevel(()=> providedQuestionsLevel);
+
+              }
               setIsLoading(() => false);
               setErrorOccurred(() => false);
             }
@@ -227,6 +235,8 @@ function App() {
                   isLoading={isLoading}
                   setIsLoading={setIsLoading}
                   errorOccurred={errorOccurred}
+                  previousUserResponse={previousUserResponse}
+                  setPreviousUserResponse={setPreviousUserResponse}
                 />
               }
             ></Route>

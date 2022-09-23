@@ -38,6 +38,8 @@ const Questions = ({
   setIsLoading,
   isLoading,
   errorOccurred,
+  previousUserResponse,
+  setPreviousUserResponse
 }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentOption, setCurrentOption] = useState("response");
@@ -46,13 +48,21 @@ const Questions = ({
   const [attempts, setAttempts] = useState([]);
   const navigate = useNavigate();
   const countScore = { score: 0 };
-
+  const userData = JSON.parse(localStorage.getItem("User"));
   useBeforeunload((event) => {
     if (attempts.length > 0) {
       calculateScores("closeTab");
       event.returnValue = "";
     }
   });
+
+  useEffect(()=>{
+    if(userData?.accidentalClose){
+    count = previousUserResponse ? previousUserResponse : {};
+    const firstResponse = (Object.keys(count));
+    setCurrentOption(()=> (count[firstResponse[0]]?.value || ""))};
+    setUserResponse(() => count);
+  },[previousUserResponse])
 
   useEffect(() => {
     if (timeOver) {
@@ -128,7 +138,7 @@ const Questions = ({
   };
 
   const submitDataToLocalStorage = (source) => {
-    const userData = JSON.parse(localStorage.getItem("User"));
+   setPreviousUserResponse(()=> null);
 
     const userResponseObj = {
       ...userData,
@@ -217,7 +227,7 @@ const Questions = ({
                       <FormControl>
                         <FormLabel id="radio-options">Options</FormLabel>
                         <RadioGroup
-                          value={currentOption || ""}
+                          value={currentOption|| ""}
                           onChange={(e) => handleOptionsSelection(e)}
                         >
                           {questions[currentQuestion]?.options.map(
