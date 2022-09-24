@@ -8,13 +8,13 @@ import {
   Pagination,
   Radio,
   RadioGroup,
-  Stack,
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { Fragment, useEffect, useState } from "react";
 import { useBeforeunload } from "react-beforeunload";
 import { useNavigate } from "react-router-dom";
+import CommonStack from "../custom-styles/commonstack.component";
 import { CustomButton } from "../custom-styles/custom.component";
 import ResponsiveDrawer from "../drawer/drawer.component";
 import Loader from "../loading/loader.component";
@@ -187,22 +187,16 @@ const Questions = ({
           <form onSubmit={onQuizSubmit}>
             <Card>
               <CardContent>
-                <Stack direction="row" justifyContent="space-between">
+                <CommonStack direction="row" justifyContent="space-between">
                   <Box>
                     <Typography variant="h5">{selectedTopic}</Typography>
                     <Typography>{questionLevel}</Typography>
                   </Box>
                   {questions.length > 0 && (
-                    <Stack
+                    <CommonStack
                       direction="row"
                       alignItems="center"
-                      bgcolor="black"
-                      sx={{
-                        border: "1px solid lightskyblue",
-                        borderRadius: "5px",
-                        color: "white",
-                        padding: "16px",
-                      }}
+                    
                     >
                       <Timer
                         questionsRange={questionsRange}
@@ -210,20 +204,20 @@ const Questions = ({
                         setTotalTimeTaken={setTotalTimeTaken}
                         setTimeOver={setTimeOver}
                       ></Timer>
-                    </Stack>
+                    </CommonStack>
                   )}
-                </Stack>
+                </CommonStack>
               </CardContent>
               <Divider></Divider>
               <CardContent>
                 <Box>
-                  <Stack spacing={2} alignItems="self-start">
+                  <CommonStack spacing={2} alignItems="self-start">
                     <Typography variant="h6">
                       {`${currentQuestion + 1} . ${
                         questions[currentQuestion]?.question
                       }`}
                     </Typography>
-                    <Stack direction="column" textAlign="left">
+                    <CommonStack direction="column" textAlign="left">
                       <FormControl>
                         <FormLabel id="radio-options">Options</FormLabel>
                         <RadioGroup
@@ -244,15 +238,15 @@ const Questions = ({
                           )}
                         </RadioGroup>
                       </FormControl>
-                    </Stack>
-                  </Stack>
-                  <Stack direction="row" justifyContent="center">
+                    </CommonStack>
+                  </CommonStack>
+                  <CommonStack direction="row" justifyContent="center">
                     <Pagination
                       count={questionsRange}
                       page={currentQuestion + 1}
                       onChange={handleClick}
                     />
-                  </Stack>
+                  </CommonStack>
                 </Box>
               </CardContent>
             </Card>

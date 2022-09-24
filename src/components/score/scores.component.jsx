@@ -5,8 +5,6 @@ import {
   CardActions,
   CardContent,
   CardHeader,
-  Stack,
-  styled,
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
@@ -15,11 +13,14 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Image from "../../assets/annie-spratt-0ZPSX_mQ3xI-unsplash.jpg";
-import  { CustomButton1,CustomButton2 } from "../custom-styles/custom.component";
+import CommonStack from "../custom-styles/commonstack.component";
+import {
+  CustomButton1,
+  CustomButton2,
+} from "../custom-styles/custom.component";
+import CommonButton from "../custom-styles/custombutton.component";
 
-
-
-const Scores = ({ setUserAgreed, setRetry, setUserResponse,setQuestions }) => {
+const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
   const [userData, setUserData] = useState();
   const navigate = useNavigate();
   useEffect(() => {
@@ -40,25 +41,25 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse,setQuestions }) => {
           backgroundSize: "cover",
         }}
       >
-        <Stack
+        <CommonStack
           direction="row"
           justifyContent="center"
           alignItems="center"
           flexWrap="wrap"
-          sx={{ height: "100vh" }}
+          height="100vh"
         >
           <Card sx={{ padding: "16px", width: "500px" }}>
             <CardHeader title={`Congratulation  ${userData?.name}`} />
 
             <CardContent>
-              <Stack direction="row">
+              <CommonStack direction="row">
                 <Typography variant="h4">Your Score : </Typography>
                 <Typography variant="h4">
                   {" "}
                   {`${userData?.score} / ${userData?.provideQuestionsCount}`}{" "}
                 </Typography>
-              </Stack>
-              <Stack direction="column">
+              </CommonStack>
+              <CommonStack direction="column">
                 <Typography>
                   Topic for quiz : {userData?.selectedTopic}{" "}
                 </Typography>
@@ -71,10 +72,10 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse,setQuestions }) => {
                   {" "}
                   Time Spent : {userData?.timeSpent} seconds{" "}
                 </Typography>
-              </Stack>
+              </CommonStack>
             </CardContent>
             <CardActions sx={{ justifyContent: "space-between" }}>
-              <CustomButton1
+              <CommonButton
                 variant="outlined"
                 onClick={() => {
                   setUserAgreed(() => true);
@@ -85,23 +86,23 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse,setQuestions }) => {
                 startIcon={<Replay />}
               >
                 Retest
-              </CustomButton1>
-              <CustomButton2
+              </CommonButton>
+              <CommonButton
                 variant="contained"
                 endIcon={<Home />}
                 onClick={() => {
-                  setUserAgreed(()=>false);
+                  setUserAgreed(() => false);
                   setRetry(() => false);
                   setUserResponse(null);
-                  setQuestions([])
+                  setQuestions([]);
                   navigate("/");
                 }}
               >
                 Home
-              </CustomButton2>
+              </CommonButton>
             </CardActions>
           </Card>
-        </Stack>
+        </CommonStack>
       </Box>
     </Fragment>
   );

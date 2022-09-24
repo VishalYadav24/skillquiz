@@ -9,10 +9,10 @@ import {
   Card,
   CardContent,
   CardHeader,
-  Stack,
   Typography,
 } from "@mui/material";
 import { CustomButton1, CustomButton2 } from "../custom-styles/custom.component";
+import CommonStack from "../custom-styles/commonstack.component";
 const Home = ({
   setIsLogined,
   isLogined,
@@ -46,12 +46,7 @@ const Home = ({
 
       <Container>
         {showReturnDialog ? (
-         <Stack
-         direction="row"
-         justifyContent="center"
-         alignItems="center"
-         flexWrap="wrap"
-         sx={{ height: "80vh"}}
+         <CommonStack
        >
 
          
@@ -75,7 +70,7 @@ const Home = ({
               </CustomButton2>
              </CardContent>
           </Card>
-        </Stack>
+        </CommonStack>
                 
         ):
         (

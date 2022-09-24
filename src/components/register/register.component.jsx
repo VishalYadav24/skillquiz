@@ -8,10 +8,11 @@ import {
   styled,
   TextField,
 } from "@mui/material";
-import { Box, Stack } from "@mui/system";
+import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Image from "../../assets/annie-spratt-0ZPSX_mQ3xI-unsplash.jpg";
+import CommonStack from "../custom-styles/commonstack.component";
 
 const CustomButton = styled(Button)({
   borderColor: "#3cd458",
@@ -103,7 +104,7 @@ const Register = ({
         backgroundSize: "cover",
       }}
     >
-      <Stack
+      <CommonStack
         justifyContent="center"
         alignItems="center"
         component="form"
@@ -115,7 +116,7 @@ const Register = ({
             title="Register you account with us!"
           ></CardHeader>
           <CardContent>
-            <Stack spacing={2}>
+            <CommonStack spacing={2}>
               <TextField
                 name="Name"
                 required
@@ -151,7 +152,7 @@ const Register = ({
               <CustomButton variant="outlined" type="submit">
                 REGISTER
               </CustomButton>
-            </Stack>
+            </CommonStack>
             <Divider sx={{ paddingTop: "16px" }} variant="fullWidth">
               or Continue with
             </Divider>
@@ -163,7 +164,7 @@ const Register = ({
             </Box>
           </CardContent>
         </Card>
-      </Stack>
+      </CommonStack>
     </Box>
   );
 };

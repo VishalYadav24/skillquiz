@@ -1,7 +1,8 @@
 import React, { Fragment } from "react";
 import { Card, CardContent, Typography } from "@mui/material";
-import { Box, Stack } from "@mui/system";
+import { Box } from "@mui/system";
 import Instructions from "../instructions/instructions.component";
+import CommonStack from "../custom-styles/commonstack.component";
 const Skills = ({
   listOfTopics,
   levels,
@@ -32,11 +33,11 @@ const Skills = ({
           Test you knowledge on various topics
         </Typography>
       </Box>
-      <Stack
+      <CommonStack
         direction={{ xs: "column", sm: "row" }}
         flexWrap="wrap"
         bgcolor="skyblue"
-        justifyContent="center"
+        
       >
         {listOfTopics.map((listOfTopic) => {
           return (
@@ -79,7 +80,7 @@ const Skills = ({
             </Card>
           );
         })}
-      </Stack>
+      </CommonStack>
     </Fragment>
   );
 };
