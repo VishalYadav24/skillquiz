@@ -3,14 +3,11 @@ import React, { Fragment } from "react";
 import Navbar from "../navbar/navbar.component";
 import Skills from "../skill_category/skills.component";
 import { Outlet } from "react-router-dom";
+import { Box, Card, CardContent, CardHeader, Typography } from "@mui/material";
 import {
-  Box,
-  Card,
-  CardContent,
-  CardHeader,
-  Typography,
-} from "@mui/material";
-import { CustomButton1, CustomButton2 } from "../custom-styles/custom.component";
+  CustomButton1,
+  CustomButton2,
+} from "../custom-styles/custom.component";
 import CommonStack from "../custom-styles/commonstack.component";
 const Home = ({
   setIsLogined,
@@ -31,7 +28,7 @@ const Home = ({
   handleDrawerToggle,
   showReturnDialog,
   handleResume,
-  handleStartFresh
+  handleStartFresh,
 }) => {
   return (
     <Fragment>
@@ -45,54 +42,46 @@ const Home = ({
 
       <Container>
         {showReturnDialog ? (
-         <CommonStack
-       >
-
-         
+          <CommonStack>
             <Card sx={{ padding: "16px", width: "500px" }}>
-             <CardHeader
-             title="Attention!"
-             subheader="You were not able to complete quiz previously"
-             />
-             <CardContent>
-              <Typography>Do you wish to resume from where you left</Typography>
-             </CardContent>
-             <CardContent>
-              <CustomButton1
-              onClick={()=> handleResume()}
-              >
-                Resume
-              </CustomButton1>
-              <CustomButton2
-              onClick={()=> handleStartFresh()}>
-                Start Fresh!
-              </CustomButton2>
-             </CardContent>
-          </Card>
-        </CommonStack>
-                
-        ):
-        (
+              <CardHeader
+                title="Attention!"
+                subheader="You were not able to complete quiz previously"
+              />
+              <CardContent>
+                <Typography>
+                  Do you wish to resume from where you left
+                </Typography>
+              </CardContent>
+              <CardContent>
+                <CustomButton1 onClick={() => handleResume()}>
+                  Resume
+                </CustomButton1>
+                <CustomButton2 onClick={() => handleStartFresh()}>
+                  Start Fresh!
+                </CustomButton2>
+              </CardContent>
+            </Card>
+          </CommonStack>
+        ) : (
           <Box>
-
-        {!userAgreed && (
-          <Skills
-          listOfTopics={topics}
-          levels={levels}
-          limit={limit}
-          selectedTopic={selectedTopic}
-          setSelectedTopic={setSelectedTopic}
-          questionLevel={questionLevel}
-          setQuestionLevel={setQuestionLevel}
-          questionsRange={questionsRange}
-          setQuestionsRange={setQuestionsRange}
-          userAgreed={userAgreed}
-          setUserAgreed={setUserAgreed}
-          isLogined={isLogined}
-          ></Skills>
-          )}
-        {userAgreed && <Outlet></Outlet>}
-        
+            {!userAgreed && (
+              <Skills
+                listOfTopics={topics}
+                levels={levels}
+                limit={limit}
+                selectedTopic={selectedTopic}
+                setSelectedTopic={setSelectedTopic}
+                questionLevel={questionLevel}
+                setQuestionLevel={setQuestionLevel}
+                questionsRange={questionsRange}
+                setQuestionsRange={setQuestionsRange}
+                userAgreed={userAgreed}
+                setUserAgreed={setUserAgreed}
+                isLogined={isLogined}
+              ></Skills>
+            )}
+            {userAgreed && <Outlet></Outlet>}
           </Box>
         )}
       </Container>
