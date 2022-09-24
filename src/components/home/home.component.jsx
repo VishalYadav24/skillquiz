@@ -5,7 +5,6 @@ import Skills from "../skill_category/skills.component";
 import { Outlet } from "react-router-dom";
 import {
   Box,
-  Button,
   Card,
   CardContent,
   CardHeader,

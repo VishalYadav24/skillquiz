@@ -13,6 +13,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Image from "../../assets/annie-spratt-0ZPSX_mQ3xI-unsplash.jpg";
 import CommonStack from "../custom-styles/commonstack.component";
+import CommonButton from "../custom-styles/custombutton.component";
 
 const CustomButton = styled(Button)({
   borderColor: "#3cd458",
@@ -149,9 +150,9 @@ const Register = ({
                 }}
                 error={userPasswordError}
               />
-              <CustomButton variant="outlined" type="submit">
+              <CommonButton variant="outlined" type="submit">
                 REGISTER
-              </CustomButton>
+              </CommonButton>
             </CommonStack>
             <Divider sx={{ paddingTop: "16px" }} variant="fullWidth">
               or Continue with

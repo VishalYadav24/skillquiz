@@ -6,7 +6,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Button } from "@mui/material";
+import CommonButton from "../custom-styles/custombutton.component";
 
 const drawerWidth = 240;
 
@@ -28,7 +28,7 @@ function ResponsiveDrawer(props) {
         {questions.map((data) => {
           return (
             <ListItem key={data?.id}>
-              <Button
+              <CommonButton
                 onClick={() => handleClick("", data?.id)}
                 variant="outlined"
                 style={
@@ -42,7 +42,7 @@ function ResponsiveDrawer(props) {
                   <br />
                   {data?.id}
                 </Typography>
-              </Button>
+              </CommonButton>
             </ListItem>
           );
         })}
