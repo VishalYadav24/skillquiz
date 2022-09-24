@@ -27,7 +27,7 @@ const Skills = ({
   const handleClose = () => setOpen(false);
   return (
     <Fragment>
-      <Box textAlign="center" bgcolor="skyblue">
+      <Box textAlign="center">
         <Typography variant="h5">Choose a topic</Typography>
         <Typography varient="h6">
           Test you knowledge on various topics
@@ -36,7 +36,7 @@ const Skills = ({
       <CommonStack
         direction={{ xs: "column", sm: "row" }}
         flexWrap="wrap"
-        bgcolor="skyblue"
+        
         
       >
         {listOfTopics.map((listOfTopic) => {

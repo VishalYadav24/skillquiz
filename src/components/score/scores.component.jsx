@@ -36,7 +36,7 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
       <Box
         sx={{
           height: "100vh",
-          backgroundImage: `url(${Image})`,
+          backgroundImage:" linear-gradient(to right top, #4776e6, #5870e9, #6968eb, #7c5feb, #8e54e9);",
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}

@@ -16,6 +16,7 @@ import { useBeforeunload } from "react-beforeunload";
 import { useNavigate } from "react-router-dom";
 import CommonStack from "../custom-styles/commonstack.component";
 import { CustomButton } from "../custom-styles/custom.component";
+import CommonButton from "../custom-styles/custombutton.component";
 import ResponsiveDrawer from "../drawer/drawer.component";
 import Loader from "../loading/loader.component";
 import Timer from "../timer/timer.component";
@@ -253,9 +254,9 @@ const Questions = ({
             <Divider style={{ padding: "16px" }}>Finish Quiz</Divider>
 
             <Box textAlign="end">
-              <CustomButton variant="contained" color="success" type="submit">
+              <CommonButton variant="contained" color="success" type="submit">
                 SUBMIT
-              </CustomButton>
+              </CommonButton>
             </Box>
           </form>
         </Box>

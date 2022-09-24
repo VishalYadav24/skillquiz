@@ -1,6 +1,6 @@
 import { Button } from '@mui/material'
 
-const CommonButton = ({children,variant,onClick,startIcon,endIcon,style,type}) => {
+const CommonButton = ({children,variant,onClick,startIcon,endIcon,style,type,color}) => {
   return (
     <Button
     variant={variant}
@@ -8,6 +8,7 @@ const CommonButton = ({children,variant,onClick,startIcon,endIcon,style,type}) =
     startIcon={startIcon}
     endIcon={endIcon}
     type={type}
+    color={color}
     sx={{
         width: 300,
         color: 'blue',
