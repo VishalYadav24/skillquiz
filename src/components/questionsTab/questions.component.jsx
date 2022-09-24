@@ -186,7 +186,7 @@ const Questions = ({
             attempts={attempts}
           ></ResponsiveDrawer>
           <form onSubmit={onQuizSubmit}>
-            <Card>
+            <Card sx={{boxShadow: "0 8px 8px -4px lightblue",background:"#eee"}}>
               <CardContent>
                 <CommonStack direction="row" justifyContent="space-between">
                   <Box>
