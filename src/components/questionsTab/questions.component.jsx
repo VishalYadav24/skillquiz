@@ -1,3 +1,4 @@
+import { ArrowLeft } from "@mui/icons-material";
 import {
   Card,
   CardContent,
@@ -168,6 +169,10 @@ const Questions = ({
           <Typography variant="h4" textAlign="center" color="green">
             Sorry we are unable to fetch question at this moment!
           </Typography>
+          <CommonButton startIcon={<ArrowLeft/>} variant="outlined" onClick={()=>{
+            setUserAgreed(false);
+            navigate("/",{replace:true})
+          }}>Home</CommonButton>
         </Box>
       ) : isLoading ? (
         <Box textAlign="center">
