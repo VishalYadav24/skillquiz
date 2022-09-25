@@ -76,19 +76,27 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
             </CardContent>
             <CardActions sx={{ justifyContent: "space-between" }}>
               <CommonButton
-                variant="outlined"
+                variant="contained"
                 onClick={() => {
                   setUserAgreed(() => true);
                   setRetry(() => true);
                   setUserResponse(null);
                   navigate("/questions");
                 }}
+                sx={{
+                 background:"#e91e63",
+                 "&:hover":{
+                  background:"#fefefe",
+                  color:"#e91e63",
+                  
+                 }
+                }}
                 startIcon={<Replay />}
               >
                 Retest
               </CommonButton>
               <CommonButton
-                variant="contained"
+                variant="outlined"
                 endIcon={<Home />}
                 onClick={() => {
                   setUserAgreed(() => false);
@@ -97,6 +105,15 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
                   setQuestions([]);
                   navigate("/");
                 }}
+                sx={{
+                   borderColor:"#e91e63",
+                   color:"#e91e63",
+                  "&:hover":{
+                   background:"#e91e63",
+                  color:"#fefefe",
+                   
+                  }
+                 }}
               >
                 Home
               </CommonButton>
