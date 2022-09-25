@@ -15,8 +15,7 @@ const Skills = ({
   setQuestionLevel,
   userAgreed,
   setUserAgreed,
-  isLogined
-
+  isLogined,
 }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
@@ -26,22 +25,29 @@ const Skills = ({
   };
   const handleClose = () => setOpen(false);
   return (
-    <Fragment>
-      <Box textAlign="center">
+    <Box>
+      <Box textAlign="center" padding={4}>
         <Typography variant="h5">Choose a topic</Typography>
         <Typography varient="h6">
           Test you knowledge on various topics
         </Typography>
       </Box>
-      <CommonStack
-        direction={{ xs: "column", sm: "row" }}
-        flexWrap="wrap"
-        
-        
-      >
+      <CommonStack direction={{ xs: "column", sm: "row" }} flexWrap="wrap">
         {listOfTopics.map((listOfTopic) => {
           return (
-            <Card key={listOfTopic.id} sx={{ margin: "1rem", padding: "2rem" }}>
+            <Card
+              key={listOfTopic.id}
+              sx={{
+
+                margin: "1rem",
+                padding: "2rem",
+                "&:hover": {
+                  transform: "scale(1.1)",
+                  boxShadow: " 0 10px 40px 0 rgba(0, 0, 0, 0.4)",
+                  zIndex: "3",
+                },
+              }}
+            >
               <CardContent>
                 <Box textAlign="center">
                   <img
@@ -81,7 +87,7 @@ const Skills = ({
           );
         })}
       </CommonStack>
-    </Fragment>
+    </Box>
   );
 };
 

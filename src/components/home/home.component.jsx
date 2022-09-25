@@ -31,7 +31,7 @@ const Home = ({
   handleStartFresh,
 }) => {
   return (
-    <Fragment>
+    <Box>
       <Navbar
         user={isLogined ? user : { name: "User name" }}
         navbarHeight={navbarHeight}
@@ -64,7 +64,7 @@ const Home = ({
             </Card>
           </CommonStack>
         ) : (
-          <Box>
+          <Box padding={2}>
             {!userAgreed && (
               <Skills
                 listOfTopics={topics}
@@ -85,7 +85,7 @@ const Home = ({
           </Box>
         )}
       </Container>
-    </Fragment>
+    </Box>
   );
 };
 

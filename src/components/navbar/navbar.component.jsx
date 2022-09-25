@@ -19,7 +19,7 @@ const Navbar = ({
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ height: navbarHeight }}>
-        <Toolbar sx={{ bgcolor: "#926dde" }}>
+        <Toolbar sx={{ bgcolor: "#FEDBD3",color:'#4A4453' }}>
           <IconButton
             size="large"
             edge="start"
