@@ -3,6 +3,7 @@ import { Card, CardContent, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import Instructions from "../instructions/instructions.component";
 import CommonStack from "../custom-styles/commonstack.component";
+import CommonButton from "../custom-styles/custombutton.component";
 const Skills = ({
   listOfTopics,
   levels,
@@ -45,10 +46,12 @@ const Skills = ({
                   transform: "scale(1.1)",
                   boxShadow: " 0 10px 40px 0 rgba(0, 0, 0, 0.4)",
                   zIndex: "3",
+                  boxShadow:" 0.5rem 0.5rem black, -0.5rem -0.5rem #FF7D84"
                 },
+                border:""
               }}
             >
-              <CardContent>
+              <CardContent >
                 <Box textAlign="center">
                   <img
                     width="auto"
@@ -73,6 +76,7 @@ const Skills = ({
                     isLogined={isLogined}
                   >
                     <Typography
+                    color="secondary"
                       padding="16px"
                       variant="body"
                       onClick={() => {
