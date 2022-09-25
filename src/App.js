@@ -18,7 +18,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Quicksand",
+    fontFamily: 'Roboto',
   },
 });
 function App() {
