@@ -3,6 +3,7 @@ import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import { Menu } from "@mui/icons-material";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
+import CommonButton from "../custom-styles/custombutton.component";
 const Navbar = ({
   user,
   isLogined,
@@ -19,7 +20,7 @@ const Navbar = ({
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ height: navbarHeight }}>
-        <Toolbar sx={{ bgcolor: "#FEDBD3",color:'#4A4453' }}>
+        <Toolbar sx={{ bgcolor: "#FEDBD3", color: "#4A4453" }}>
           <IconButton
             size="large"
             edge="start"
@@ -35,13 +36,37 @@ const Navbar = ({
           </Typography>
           <Typography margin={2}>{user?.name}</Typography>
           {isLogined ? (
-            <Button variant="outlined" color="success" onClick={handleLogout}>
+            <CommonButton
+              variant="outlined"
+              sx={{
+                color: "#2F4858",
+                border: "2px solid #2F4858 ",
+                "&:hover": {
+                  color: "#2F4858",
+                  border: "2px solid #2F4858 ",
+                },
+              }}
+              onClick={handleLogout}
+            >
               Logout
-            </Button>
+            </CommonButton>
           ) : (
-            <Button color="success" variant="contained" onClick={handleLogout}>
+            <CommonButton
+              variant="contained"
+              onClick={handleLogout}
+              sx={{
+                color: "#2F4858",
+                border: "2px solid #2F4858 ",
+                background:"#fefefe",
+                "&:hover": {
+                  color: "#2F4858",
+                  border: "2px solid #2F4858 ",
+                  background:"#fefefe",
+                },
+              }}
+            >
               Login
-            </Button>
+            </CommonButton>
           )}
         </Toolbar>
       </AppBar>
