@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
+import { AppBar, Avatar, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import { Menu } from "@mui/icons-material";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
@@ -34,6 +34,7 @@ const Navbar = ({
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             SkillScore
           </Typography>
+          <Avatar sx={{bgcolor:"orange"}} >{user?.name[0]}</Avatar>
           <Typography margin={2}>{user?.name}</Typography>
           {isLogined ? (
             <CommonButton
