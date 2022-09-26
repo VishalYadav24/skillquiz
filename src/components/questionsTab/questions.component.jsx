@@ -148,6 +148,7 @@ const Questions = ({
       providedQuestions: questions,
       provideQuestionsCount: questionsRange,
       providedQuestionsLevel: questionLevel,
+      totalTimeProvided:(questionsRange * 20),
       timeSpent: totalTimeTaken,
       userResponse: userResponse,
       questionAttempted: attempts?.length,
