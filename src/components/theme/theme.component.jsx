@@ -6,7 +6,7 @@ palette:{
         main:"#2F4858"
     },
     otherColor:{
-        main:""
+        main:"#fefefe"
     }
 },
 typography: {

@@ -4,11 +4,9 @@ import Navbar from "../navbar/navbar.component";
 import Skills from "../skill_category/skills.component";
 import { Outlet } from "react-router-dom";
 import { Box, Card, CardContent, CardHeader, Typography } from "@mui/material";
-import {
-  CustomButton1,
-  CustomButton2,
-} from "../custom-styles/custom.component";
+
 import CommonStack from "../custom-styles/commonstack.component";
+import CommonButton from "../custom-styles/custombutton.component";
 const Home = ({
   setIsLogined,
   isLogined,
@@ -42,8 +40,8 @@ const Home = ({
 
       <Container>
         {showReturnDialog ? (
-          <CommonStack>
-            <Card sx={{ padding: "16px", width: "500px" }}>
+          <CommonStack justifyContent="center" alignItems="center">
+            <Card sx={{ padding: "16px", width: { xs: "250px", sm: "350px", md: "500px", lg: "500px" },marginTop:"150px",bgcolor:"#FEDBD3" }}>
               <CardHeader
                 title="Attention!"
                 subheader="You were not able to complete quiz previously"
@@ -54,12 +52,29 @@ const Home = ({
                 </Typography>
               </CardContent>
               <CardContent>
-                <CustomButton1 onClick={() => handleResume()}>
+                <CommonButton onClick={() => handleResume()} sx={{
+                  background: "#2F4858",
+                  color:"#fefefe",
+                  "&:hover": {
+                    background: "#fefefe",
+                    color: "#e91e63",
+                  },
+                }}>
                   Resume
-                </CustomButton1>
-                <CustomButton2 onClick={() => handleStartFresh()}>
+                </CommonButton>
+                <CommonButton  variant="outlined" onClick={() => handleStartFresh()} sx={{
+                  background: "#fefefe",
+                  color:"#2F4858",
+                  borderColor:"#fefefe",
+                  marginLeft:"1rem",
+                  "&:hover": {
+                    background: "#2F4858",
+                    color: "#fefefe",
+                    borderColor:"#2F4858",
+                  },
+                }}>
                   Start Fresh!
-                </CustomButton2>
+                </CommonButton>
               </CardContent>
             </Card>
           </CommonStack>
