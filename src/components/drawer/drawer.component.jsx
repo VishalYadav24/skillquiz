@@ -25,7 +25,7 @@ function ResponsiveDrawer(props) {
   const drawer = (
     <div>
       <List>
-        {questions.map((data) => {
+        {questions?.map((data) => {
           return (
             <ListItem key={data?.id}>
               <CommonButton

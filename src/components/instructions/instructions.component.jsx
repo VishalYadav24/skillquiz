@@ -40,7 +40,7 @@ const Instructions = (props) => {
   const navigate = useNavigate();
   const onStart = () => {
     handleClose();
-    navigate("/questions");
+    navigate("/questions",{replace:true});
     setUserAgreed(() => true);
   };
   return (
@@ -56,8 +56,10 @@ const Instructions = (props) => {
           <Box sx={style} component="form">
             {isLogined ? (
               <Box>
-                <Typography id="modal-title" variant="h6" component="h2" sx={{display:"flex",justifyContent:"space-evenly"}}>
+                <Box id="modal-title"   sx={{display:"flex",justifyContent:"space-evenly"}}>
+                  <Typography variant="h6">
                   Level
+                  </Typography>
                   <Select
                     variant="standard"
                     value={questionLevel}
@@ -95,7 +97,7 @@ const Instructions = (props) => {
                     })}
                   </Select>
                   <Typography variant="h6">Questions</Typography>
-                </Typography>
+                </Box>
                 <Typography
                   component="div"
                   id="modal-modal-description"

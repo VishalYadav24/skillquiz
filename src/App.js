@@ -230,6 +230,8 @@ function App() {
                   errorOccurred={errorOccurred}
                   previousUserResponse={previousUserResponse}
                   setPreviousUserResponse={setPreviousUserResponse}
+                  setIsLogined={setIsLogined}
+                  setQuestions={setQuestions}
                 />
               }
             ></Route>
