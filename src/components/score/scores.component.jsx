@@ -111,6 +111,7 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
                   "&:hover":{
                    background:"#e91e63",
                   color:"#fefefe",
+                  borderColor:"#e91e63"
                    
                   }
                  }}

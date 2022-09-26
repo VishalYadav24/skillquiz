@@ -101,6 +101,7 @@ const Instructions = (props) => {
                   id="modal-modal-description"
                   sx={{ mt: 2 }}
                   lineHeight={2}
+                  color="secondary"
                 >
                   <ul>
                     <li>Select no of question to attempt</li>
