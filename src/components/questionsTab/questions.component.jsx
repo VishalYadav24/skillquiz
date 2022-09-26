@@ -150,6 +150,7 @@ const Questions = ({
       providedQuestionsLevel: questionLevel,
       timeSpent: totalTimeTaken,
       userResponse: userResponse,
+      questionAttempted: attempts?.length,
       score: countScore?.score,
       allAttempted: attempts?.length === questions?.length,
       accidentalClose: source? true:false

@@ -5,6 +5,7 @@ import {
   CardActions,
   CardContent,
   CardHeader,
+  circularProgressClasses,
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
@@ -19,6 +20,7 @@ import {
   CustomButton2,
 } from "../custom-styles/custom.component";
 import CommonButton from "../custom-styles/custombutton.component";
+import Loader from "../loading/loader.component";
 
 const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
   const [userData, setUserData] = useState();
@@ -30,13 +32,15 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
     });
     setRetry(false);
   }, []);
-
+  const normalise = (value) =>
+    ((value - 0) * 100) / (userData?.provideQuestionsCount - 0);
   return (
     <Fragment>
       <Box
         sx={{
           height: "100vh",
-          backgroundImage:" linear-gradient(to right top, #4776e6, #5870e9, #6968eb, #7c5feb, #8e54e9);",
+          backgroundImage:
+            " linear-gradient(to right top, #4776e6, #5870e9, #6968eb, #7c5feb, #8e54e9);",
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}
@@ -48,32 +52,70 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
           flexWrap="wrap"
           height="100vh"
         >
-          <Card sx={{ padding: "16px", width: "500px" }}>
+          <Card
+            sx={{
+              padding: "16px",
+              width: { xs: "350px", sm: "450px", md: "500px", lg: "500px" },
+              textAlign: "center",
+            }}
+          >
             <CardHeader title={`Congratulation  ${userData?.name}`} />
 
-            <CardContent>
-              <CommonStack direction="row">
-                <Typography variant="h4">Your Score : </Typography>
-                <Typography variant="h4">
-                  {" "}
-                  {`${userData?.score} / ${userData?.provideQuestionsCount}`}{" "}
-                </Typography>
-              </CommonStack>
-              <CommonStack direction="column">
-                <Typography>
-                  Topic for quiz : {userData?.selectedTopic}{" "}
-                </Typography>
+              <CardContent>
+           
+                <CommonStack direction="row" justifyContent="center">
+                  <Box sx={{ position: "relative", display: "inline-flex",padding:"1rem" }}>
+                    <Loader
+                      size="150px"
+                      variant="determinate"
+                      value={normalise(userData?.score)}
+                      color="warning"
+                      sx={{
+                        [`& .${circularProgressClasses.circle}`]: {
+                          strokeLinecap: "round",
+                          transition: "1s linear all",
+                        },
+                      }}
+                    />
+                    <Box
+                      sx={{
+                        top: 0,
+                        left: 0,
+                        bottom: 0,
+                        right: 0,
+                        position: "absolute",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Typography variant="h6" component="div" color="green">
+                        {userData?.score} / {userData?.provideQuestionsCount}
+                      </Typography>
+                    </Box>
+                  </Box>
+                </CommonStack>
+                
+                <CommonStack direction="column">
+                  <Typography variant="h6">
+                    Topic for quiz : {userData?.selectedTopic}{" "}
+                  </Typography>
 
-                <Typography>
-                  Level : {userData?.providedQuestionsLevel}{" "}
-                </Typography>
+                  <Typography>
+                    Level : {userData?.providedQuestionsLevel}{" "}
+                  </Typography>
 
-                <Typography>
-                  {" "}
-                  Time Spent : {userData?.timeSpent} seconds{" "}
-                </Typography>
-              </CommonStack>
-            </CardContent>
+                  <Typography>
+                    {" "}
+                    Time Spent : {userData?.timeSpent} seconds{" "}
+                  </Typography>
+                  <Typography>
+                    {" "}
+                    Question attempted : {userData?.questionAttempted}{" "}
+                  </Typography>
+                </CommonStack>
+            
+              </CardContent>
             <CardActions sx={{ justifyContent: "space-between" }}>
               <CommonButton
                 variant="contained"
@@ -84,12 +126,11 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
                   navigate("/questions");
                 }}
                 sx={{
-                 background:"#e91e63",
-                 "&:hover":{
-                  background:"#fefefe",
-                  color:"#e91e63",
-                  
-                 }
+                  background: "#e91e63",
+                  "&:hover": {
+                    background: "#fefefe",
+                    color: "#e91e63",
+                  },
                 }}
                 startIcon={<Replay />}
               >
@@ -106,15 +147,14 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
                   navigate("/");
                 }}
                 sx={{
-                   borderColor:"#e91e63",
-                   color:"#e91e63",
-                  "&:hover":{
-                   background:"#e91e63",
-                  color:"#fefefe",
-                  borderColor:"#e91e63"
-                   
-                  }
-                 }}
+                  borderColor: "#e91e63",
+                  color: "#e91e63",
+                  "&:hover": {
+                    background: "#e91e63",
+                    color: "#fefefe",
+                    borderColor: "#e91e63",
+                  },
+                }}
               >
                 Home
               </CommonButton>
