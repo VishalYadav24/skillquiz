@@ -6,21 +6,9 @@ import Register from "./components/register/register.component.jsx";
 import { topics, levels, limit } from "./components/constants/constant.jsx";
 import axios from "axios";
 import Scores from "./components/score/scores.component";
-import { createTheme, ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import Notifications from "./components/notifications/notifications.component";
-const theme = createTheme({
-  palette: {
-    success: {
-      main: "#3cd458",
-    },
-    secondary: {
-      main: "#926dde",
-    },
-  },
-  typography: {
-    fontFamily: 'Roboto',
-  },
-});
+import defaultTheme from "./components/theme/theme.component";
 function App() {
   const navbarHeight = "64px";
   const [questions, setQuestions] = useState([]);
@@ -182,7 +170,8 @@ function App() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={defaultTheme}>
+      <CssBaseline/>
       <div className="App">
         <Notifications
           notification={notification}
