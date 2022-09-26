@@ -13,7 +13,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: {xs:"250px",sm:"300px",md:"350px",lg:"400px"},
+  width: {xs:"300px",sm:"400px",md:"500px",lg:"600px"},
   bgcolor: "#fff",
   border: "2px solid #f7f0f0",
   borderRadius:"10px",
