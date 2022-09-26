@@ -32,7 +32,7 @@ function ResponsiveDrawer(props) {
                 onClick={() => handleClick("", data?.id)}
                 variant="outlined"
                 style={
-                  attempts.includes(data?.id.toString()) ? {color: "#fff", backgroundColor: "#926dde", borderColor: "#926dde",transition:"ease-in .75s" }
+                  attempts.includes(data?.id.toString()) ? {color: "#fff", backgroundColor: "green", borderColor: "green",transition:"ease-in .75s" }
                   :
                   {}
                 }
