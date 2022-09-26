@@ -166,11 +166,11 @@ const Questions = ({
   return (
     <Fragment>
       {errorOccurred ? (
-        <Box>
-          <Typography variant="h4" textAlign="center" color="green">
+        <Box width="100%" textAlign="center">
+          <Typography variant="h5" textAlign="center" color="green">
             Sorry we are unable to fetch question at this moment!
           </Typography>
-          <CommonButton startIcon={<ArrowLeft/>} variant="outlined" onClick={()=>{
+          <CommonButton startIcon={<ArrowLeft/>} fullWidth={false} variant="outlined" onClick={()=>{
             setUserAgreed(false);
             navigate("/",{replace:true})
           }}>Home</CommonButton>
