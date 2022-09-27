@@ -82,14 +82,14 @@ const Register = ({
         localStorage.setItem("User", JSON.stringify(User));
         setIsLogined(() => true);
         setUserAgreed(() => false);
-        setNotification((notification) => {
+        setNotification(() => {
           return { message: "Registration Successful", type: "success" };
         });
         setShowNotification(() => true);
         navigate("/");
       }
     } catch (error) {
-      setNotification((notification) => {
+      setNotification(() => {
         return { message: error?.message, type: "error" };
       });
       setShowNotification(() => true);

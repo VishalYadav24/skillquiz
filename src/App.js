@@ -228,6 +228,7 @@ function App() {
                   isLoading={isLoading}
                   setIsLoading={setIsLoading}
                   errorOccurred={errorOccurred}
+                  setErrorOccurred={setErrorOccurred}
                   previousUserResponse={previousUserResponse}
                   setPreviousUserResponse={setPreviousUserResponse}
                   setIsLogined={setIsLogined}

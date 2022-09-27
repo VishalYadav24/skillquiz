@@ -40,6 +40,7 @@ const Questions = ({
   setIsLoading,
   isLoading,
   errorOccurred,
+  setErrorOccurred,
   previousUserResponse,
   setPreviousUserResponse,
   setIsLogined,
@@ -198,6 +199,7 @@ const Questions = ({
           </Typography>
           <CommonButton startIcon={<ArrowLeft/>} fullWidth={false} variant="outlined" onClick={()=>{
             setUserAgreed(false);
+            setErrorOccurred(false);
             navigate("/",{replace:true})
           }}>Home</CommonButton>
         </Box>
