@@ -111,7 +111,12 @@ const Register = ({
         component="form"
         onSubmit={handleSubmit}
       >
-        <Card sx={{ margin: " calc(100vh - 80vh) auto",boxShadow: "0px 5px 10px 0px rgba(239, 170, 170, 0.5)" }}>
+        <Card
+          sx={{
+            margin: " calc(100vh - 80vh) auto",
+            boxShadow: "0px 5px 10px 0px rgba(239, 170, 170, 0.5)",
+          }}
+        >
           <CardHeader
             sx={{ paddingTop: "32px" }}
             title="Register you account with us!"
@@ -150,7 +155,20 @@ const Register = ({
                 }}
                 error={userPasswordError}
               />
-              <CommonButton variant="outlined" type="submit">
+              <CommonButton
+                variant="outlined"
+                type="submit"
+                sx={{
+                  borderColor: "#3cd458",
+                  backgroundColor: "#fff",
+                  ":hover": {
+                    color: "#fff",
+                    backgroundColor: "#3cd458",
+                    borderColor: "#3cd458",
+                    boxShadow: "0 1px 10px rgb(60 212 88 / 40%)",
+                  },
+                }}
+              >
                 REGISTER
               </CommonButton>
             </CommonStack>
