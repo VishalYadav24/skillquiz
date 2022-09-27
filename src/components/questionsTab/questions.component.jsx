@@ -41,7 +41,9 @@ const Questions = ({
   isLoading,
   errorOccurred,
   previousUserResponse,
-  setPreviousUserResponse
+  setPreviousUserResponse,
+  setIsLogined,
+  setQuestions
 }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentOption, setCurrentOption] = useState("response");
@@ -51,6 +53,29 @@ const Questions = ({
   const navigate = useNavigate();
   const countScore = { score: 0 };
   const userData = JSON.parse(localStorage.getItem("User"));
+  const handleBackButton = (event)=>{
+    const keys = Object.keys(count)?.length;
+    if(keys){
+      try{
+        localStorage.removeItem("User");
+        setIsLogined(false);
+        setQuestions([]);
+        setAttempts([]);
+        setUserResponse(null)
+        count = {};
+      }
+      finally{
+
+        navigate("/register");
+      }
+    }
+  }
+
+  useEffect(()=>{
+    window.addEventListener("popstate",handleBackButton());
+    return ()=> window.removeEventListener("popstate",handleBackButton());
+  },[])
+
   useBeforeunload((event) => {
     if (attempts.length > 0) {
       calculateScores("closeTab");
@@ -123,7 +148,7 @@ const Questions = ({
 
   const calculateScores = (source) => {
     for (const key in userResponse) {
-      questions.map((data) => {
+      questions?.map((data) => {
         if (data.id === Number(key)) {
           if (data.answer?.id === userResponse[key]?.id) {
             if (countScore["score"]) {
