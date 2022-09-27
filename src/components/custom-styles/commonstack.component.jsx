@@ -1,3 +1,4 @@
+import { sx } from "@mui/joy/styles/styleFunctionSx";
 import { Stack } from "@mui/system";
 import React from "react";
 
@@ -12,7 +13,8 @@ const CommonStack = ({
   component,
   spacing,
   bgcolor,
-  textAlign
+  textAlign,
+  sx,
 }) => {
   return (
     <Stack
@@ -20,7 +22,8 @@ const CommonStack = ({
       justifyContent={justifyContent}
       alignItems={alignItems}
       flexWrap={flexWrap}
-      sx={{ height: { height } }}
+      height={height}
+      sx={sx}
       component={component}
       onSubmit={onSubmit}
       spacing={spacing}

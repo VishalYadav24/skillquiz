@@ -111,7 +111,7 @@ const Register = ({
         component="form"
         onSubmit={handleSubmit}
       >
-        <Card sx={{ margin: " calc(100vh - 80vh) auto" }}>
+        <Card sx={{ margin: " calc(100vh - 80vh) auto",boxShadow: "0px 5px 10px 0px rgba(239, 170, 170, 0.5)" }}>
           <CardHeader
             sx={{ paddingTop: "32px" }}
             title="Register you account with us!"
