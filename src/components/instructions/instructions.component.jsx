@@ -20,7 +20,10 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-
+/**
+ * @param {*} props - passed by paren component(Skill)
+ * @returns Instructions Screen with quiz related instruction
+ */
 const Instructions = (props) => {
   const {
     open,
@@ -38,6 +41,10 @@ const Instructions = (props) => {
     isLogined,
   } = props;
   const navigate = useNavigate();
+  /**
+   * After reading instructions and selecting question level and no of questions.User click start button 
+   * it redirects user to question screen.
+   */
   const onStart = () => {
     handleClose();
     navigate("/questions",{replace:true});
