@@ -87,7 +87,11 @@ function App() {
 
     return () => setShowNotification(false);
   }, [userAgreed]);
-
+  /**
+   * Construct questions array to be used for displaying quiz questions.
+   * @param {*} data - response from api
+   * @returns array of object - containing questions,options,answers
+   */
   const constructObject = (data) => {
     let questionsList = [];
     data.map((list, index) => {
@@ -100,7 +104,11 @@ function App() {
     });
     return questionsList;
   };
-
+  /**
+   * Construct array from Object
+   * @param {*} listOfOptions - Object containing options for questions 
+   * @returns array of options.
+   */
   const constructOptions = (listOfOptions) => {
     const optionsArray = [];
     for (const key in listOfOptions) {
@@ -114,7 +122,11 @@ function App() {
     }
     return optionsArray;
   };
-
+  /**
+   * Filter out correct answer
+   * @param {*} answers - object containing answers
+   * @returns Object containing correct answer
+   */
   const constructAnswer = (answers) => {
     let response;
 
