@@ -15,17 +15,6 @@ import Image from "../../assets/annie-spratt-0ZPSX_mQ3xI-unsplash.jpg";
 import CommonStack from "../custom-styles/commonstack.component";
 import CommonButton from "../custom-styles/custombutton.component";
 
-const CustomButton = styled(Button)({
-  borderColor: "#3cd458",
-  backgroundColor: "#fff",
-  ":hover": {
-    color: "#fff",
-    backgroundColor: "#3cd458",
-    borderColor: "#3cd458",
-    boxShadow: "0 1px 10px rgb(60 212 88 / 40%)",
-  },
-});
-
 const Register = ({
   setIsLogined,
   setNotification,
@@ -67,7 +56,10 @@ const Register = ({
     setUserNameError(false);
     setUserPasswordError(false);
   }, []);
-
+  /**
+   * Save users login info to local storage
+   * @param {*} event - submit event
+   */
   const handleSubmit = (event) => {
     event.preventDefault();
     const User = {
