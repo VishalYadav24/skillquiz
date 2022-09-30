@@ -12,6 +12,9 @@ const Navbar = ({
   setIsLogined,
 }) => {
   const navigate = useNavigate();
+  /**
+   * Move user to register screen and clear user data from local storage
+   */
   const handleLogout = () => {
     localStorage.clear();
     setIsLogined(false);

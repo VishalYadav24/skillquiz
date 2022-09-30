@@ -19,11 +19,18 @@ const Skills = ({
   isLogined,
 }) => {
   const [open, setOpen] = React.useState(false);
+  /**
+   * Control modal pop up action -open
+   */
   const handleOpen = () => {
     setOpen(true);
     setQuestionLevel("Easy");
     setQuestionsRange(5);
   };
+  /**
+   * Control modal pop up action - close
+   * @returns - none.
+   */
   const handleClose = () => setOpen(false);
   return (
     <Box>

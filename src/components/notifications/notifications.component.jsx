@@ -8,6 +8,12 @@ const Notifications = ({
   showNotification,
   setShowNotification,
 }) => {
+  /**
+   * Closes the Notification pop up
+   * @param {*} event - click event
+   * @param {*} reason 
+   * @returns none.
+   */
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;

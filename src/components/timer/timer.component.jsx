@@ -35,10 +35,18 @@ const Timer = ({
   }, [seconds]);
   return (
     <Box sx={{ position: "relative", display: "inline-flex" }}>
-      <Loader size="100px"  variant="determinate" value={normalise(seconds)} color="warning" sx={{[`& .${circularProgressClasses.circle}`]: {
-            strokeLinecap: 'round',
-            transition:"1s linear all",
-          }}} />
+      <Loader
+        size="100px"
+        variant="determinate"
+        value={normalise(seconds)}
+        color="warning"
+        sx={{
+          [`& .${circularProgressClasses.circle}`]: {
+            strokeLinecap: "round",
+            transition: "1s linear all",
+          },
+        }}
+      />
       <Box
         sx={{
           top: 0,
@@ -53,7 +61,6 @@ const Timer = ({
       >
         <Typography variant="h6" component="div" color="green">
           {minute} : {seconds}
-          
         </Typography>
       </Box>
     </Box>
