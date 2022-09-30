@@ -1,11 +1,9 @@
 import { Box, circularProgressClasses, Typography } from "@mui/material";
-import { Stack } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import Loader from "../loading/loader.component";
 
 const Timer = ({
   questionsRange,
-  totalTimeTaken,
   setTotalTimeTaken,
   setTimeOver,
 }) => {

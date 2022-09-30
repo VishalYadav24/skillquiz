@@ -148,7 +148,10 @@ function App() {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+  /**
+   *  When is user has left quiz mid way, user wil be shown option to continue quiz or start fresh.
+   * Resume -> redirect user to question page , start timer from the time at which user left quiz also display previous responses.
+   */
   const handleResume = () => {
     setShowReturnDialog(() => false);
     setUserAgreed(() => true);
@@ -159,7 +162,9 @@ function App() {
     });
     navigate("/questions");
   };
-
+  /**
+   *  Start Fresh -> Helps user to start quiz fro start.
+   */
   const handleStartFresh = () => {
     const userResponseObj = {
       ...user,
