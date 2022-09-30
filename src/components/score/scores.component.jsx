@@ -21,7 +21,11 @@ import {
 } from "../custom-styles/custom.component";
 import CommonButton from "../custom-styles/custombutton.component";
 import Loader from "../loading/loader.component";
-
+/**
+ * Shows user score based on correct answers provided by User,fetches score from local storage.
+ * @param {*} param0 
+ * @returns screen with user Result
+ */
 const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
   const [userData, setUserData] = useState();
   const navigate = useNavigate();
@@ -32,8 +36,32 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
     });
     setRetry(false);
   }, []);
+  /**
+   * Method for conversion of custom values (numbers) to scale of 0 to 100 for progress bar/circle.
+   * @param {*} value - number
+   * @returns
+   */
   const normalise = (value) =>
     ((value - 0) * 100) / (userData?.provideQuestionsCount - 0);
+  /**
+   * When user click home button , redirects user to Home.
+   */  
+  const handleHomeButton = () => {
+    setUserAgreed(() => false);
+    setRetry(() => false);
+    setUserResponse(null);
+    setQuestions([]);
+    navigate("/", { replace: true });
+  };
+  /**
+   * If user want to give re-test, user click Retest button,this redirect user to question tab with the same question which were provided earlier
+   */
+  const handleResetButton = ()=>{
+    setUserAgreed(() => true);
+    setRetry(() => true);
+    setUserResponse(null);
+    navigate("/questions",{replace:true});
+  }
   return (
     <Fragment>
       <Box
@@ -61,69 +89,70 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
           >
             <CardHeader title={`Congratulation  ${userData?.name}`} />
 
-              <CardContent>
-           
-                <CommonStack direction="row" justifyContent="center">
-                  <Box sx={{ position: "relative", display: "inline-flex",padding:"1rem" }}>
-                    <Loader
-                      size="150px"
-                      variant="determinate"
-                      value={normalise(userData?.score)}
-                      color="warning"
-                      sx={{
-                        [`& .${circularProgressClasses.circle}`]: {
-                          strokeLinecap: "round",
-                          transition: "1s linear all",
-                        },
-                      }}
-                    />
-                    <Box
-                      sx={{
-                        top: 0,
-                        left: 0,
-                        bottom: 0,
-                        right: 0,
-                        position: "absolute",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <Typography variant="h6" component="div" color="green">
-                        {userData?.score} / {userData?.provideQuestionsCount}
-                      </Typography>
-                    </Box>
+            <CardContent>
+              <CommonStack direction="row" justifyContent="center">
+                <Box
+                  sx={{
+                    position: "relative",
+                    display: "inline-flex",
+                    padding: "1rem",
+                  }}
+                >
+                  <Loader
+                    size="150px"
+                    variant="determinate"
+                    value={normalise(userData?.score)}
+                    color="warning"
+                    sx={{
+                      [`& .${circularProgressClasses.circle}`]: {
+                        strokeLinecap: "round",
+                        transition: "1s linear all",
+                      },
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      top: 0,
+                      left: 0,
+                      bottom: 0,
+                      right: 0,
+                      position: "absolute",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography variant="h6" component="div" color="green">
+                      {userData?.score} / {userData?.provideQuestionsCount}
+                    </Typography>
                   </Box>
-                </CommonStack>
-                
-                <CommonStack direction="column">
-                  <Typography variant="h6">
-                    Topic for quiz : {userData?.selectedTopic}{" "}
-                  </Typography>
+                </Box>
+              </CommonStack>
 
-                  <Typography>
-                    Level : {userData?.providedQuestionsLevel}{" "}
-                  </Typography>
+              <CommonStack direction="column">
+                <Typography variant="h6">
+                  Topic for quiz : {userData?.selectedTopic}{" "}
+                </Typography>
 
-                  <Typography>
-                    {" "}
-                    Time Spent : {userData?.timeSpent} seconds{" "}
-                  </Typography>
-                  <Typography>
-                    {" "}
-                    Question attempted : {userData?.questionAttempted}{" "}
-                  </Typography>
-                </CommonStack>
-            
-              </CardContent>
+                <Typography>
+                  Level : {userData?.providedQuestionsLevel}{" "}
+                </Typography>
+
+                <Typography>
+                  {" "}
+                  Time Spent : {userData?.timeSpent} seconds{" "}
+                </Typography>
+                <Typography>
+                  {" "}
+                  Question attempted : {userData?.questionAttempted}{" "}
+                </Typography>
+              </CommonStack>
+            </CardContent>
             <CardActions sx={{ justifyContent: "space-between" }}>
               <CommonButton
                 variant="contained"
                 onClick={() => {
-                  setUserAgreed(() => true);
-                  setRetry(() => true);
-                  setUserResponse(null);
-                  navigate("/questions");
+                  handleResetButton();
                 }}
                 sx={{
                   background: "#e91e63",
@@ -140,11 +169,7 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
                 variant="outlined"
                 endIcon={<Home />}
                 onClick={() => {
-                  setUserAgreed(() => false);
-                  setRetry(() => false);
-                  setUserResponse(null);
-                  setQuestions([]);
-                  navigate("/",{replace:true});
+                  handleHomeButton();
                 }}
                 sx={{
                   borderColor: "#e91e63",
