@@ -54,6 +54,10 @@ const Questions = ({
   const navigate = useNavigate();
   const countScore = { score: 0 };
   const userData = JSON.parse(localStorage.getItem("User"));
+  /**
+   *  Logout user if users press back button of browser in middle of quiz
+   * @param {*} event - popstate event
+   */
   const handleBackButton = (event)=>{
     const keys = Object.keys(count)?.length;
     if(keys){
@@ -67,7 +71,6 @@ const Questions = ({
         count = {};
       }
       finally{
-
         navigate("/register",{replace:true});
       }
     }
@@ -77,7 +80,9 @@ const Questions = ({
     window.addEventListener("popstate",handleBackButton());
     return ()=> window.removeEventListener("popstate",handleBackButton());
   },[])
-
+  /**
+   * Handles browser close/ tab close action when quiz has not been submitted
+   */
   useBeforeunload((event) => {
     if (attempts.length > 0) {
       calculateScores("closeTab");
@@ -106,14 +111,21 @@ const Questions = ({
       }
     }
   }, [currentOption]);
-
+   /**
+    * Handles Pagination - Page change action
+    * @param {*} event - click event
+    * @param {*} value - number - Page no.
+    */
   const handleClick = (event, value) => {
     if (value <= questions.length) {
       setCurrentQuestion(value - 1);
       handlePageMovement(value);
     }
   };
-
+  /**
+   *  Stores the option chosen by user
+   * @param {*} value -Page no
+   */
   const handlePageMovement = (value) => {
     if (value - currentQuestion + 1 === 1) {
       setCurrentOption(count[currentQuestion]?.value);
@@ -121,6 +133,10 @@ const Questions = ({
       setCurrentOption(count[value]?.value);
     }
   };
+  /**
+   *  Help in selecting radio button option selected by user as response of question
+   * @param {*} e -click event 
+   */
   const handleOptionsSelection = (e) => {
     if (count[currentQuestion + 1]) {
       count[currentQuestion + 1] = {
@@ -140,14 +156,20 @@ const Questions = ({
     setCurrentOption(count[currentQuestion + 1]?.value);
     setUserResponse(() => count);
   };
-
+  /**
+   * Handel the Quiz submission.
+   * @param {*} event - submit event
+   */
   const onQuizSubmit = (event) => {
     event.preventDefault();
     setIsLoading(() => true);
     count = {};
     calculateScores();
   };
-
+  /**
+   * Calculate the score of user.
+   * @param {*} source - string - place from where the function is called
+   */
   const calculateScores = (source) => {
     for (const key in userResponse) {
       questions?.map((data) => {
@@ -165,7 +187,10 @@ const Questions = ({
 
     submitDataToLocalStorage(source);
   };
-
+  /**
+   * Submit user data to local storage and move user to score screen
+   * @param {*} source - string - place from where the function is called
+   */
   const submitDataToLocalStorage = (source) => {
    setPreviousUserResponse(()=> null);
 
