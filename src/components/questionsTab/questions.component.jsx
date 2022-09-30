@@ -59,6 +59,7 @@ const Questions = ({
     if(keys){
       try{
         localStorage.removeItem("User");
+        setUserAgreed(false);
         setIsLogined(false);
         setQuestions([]);
         setAttempts([]);
@@ -67,7 +68,7 @@ const Questions = ({
       }
       finally{
 
-        navigate("/register");
+        navigate("/register",{replace:true});
       }
     }
   }
@@ -186,7 +187,7 @@ const Questions = ({
     localStorage.setItem("User", JSON.stringify(userResponseObj));
     if (source !== "closeTab") {
       setUserAgreed(() => false);
-      navigate("/score");
+      navigate("/score",{replace:true});
     }
   };
 

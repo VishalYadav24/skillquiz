@@ -144,7 +144,7 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
                   setRetry(() => false);
                   setUserResponse(null);
                   setQuestions([]);
-                  navigate("/");
+                  navigate("/",{replace:true});
                 }}
                 sx={{
                   borderColor: "#e91e63",
