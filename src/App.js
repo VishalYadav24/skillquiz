@@ -198,6 +198,7 @@ function App() {
         <Routes>
           <Route
             path="/"
+            data-testid="Home"
             element={
               <Home
                 navbarHeight={navbarHeight}
