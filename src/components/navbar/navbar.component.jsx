@@ -23,7 +23,7 @@ const Navbar = ({
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ height: navbarHeight }}>
-        <Toolbar sx={{ bgcolor: "#FEDBD3", color: "#4A4453" }}>
+        <Toolbar sx={{ bgcolor: "#313628", color: "#E8E9EB" }}>
           <IconButton
             size="large"
             edge="start"
@@ -38,21 +38,23 @@ const Navbar = ({
             SkillScore
           </Typography>
           
-          <Avatar sx={{bgcolor:"orange",margin:"16px"}}  >{user?.name[0]}</Avatar>
-          <Typography margin={2} sx={{display:{xs:"none",sm:"none",md:"block",lg:"block"}}}>{user?.name}</Typography>
+          <Avatar  sx={{bgcolor:"primary",margin:"16px",color:"#F06543"}}  >{user?.name[0]}</Avatar>
+          <Typography margin={2}   sx={{display:{xs:"none",sm:"none",md:"block",lg:"block"}}}>{user?.name}</Typography>
           
           {isLogined ? (
             <CommonButton
               variant="outlined"
+              onClick={handleLogout}
               sx={{
-                color: "#2F4858",
-                border: "2px solid #2F4858 ",
+                color: "#E8E9EB",
+                border: "2px solid #E8E9EB ",
+                background:"#313628",
                 "&:hover": {
-                  color: "#2F4858",
-                  border: "2px solid #2F4858 ",
+                  color: "#313628",
+                  border: "2px solid secondary ",
+                  background:"#E8E9EB",
                 },
               }}
-              onClick={handleLogout}
             >
               Logout
             </CommonButton>

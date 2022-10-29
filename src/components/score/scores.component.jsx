@@ -72,6 +72,7 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}
+        data-testId="scores"
       >
         <CommonStack
           direction="row"

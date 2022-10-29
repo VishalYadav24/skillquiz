@@ -7,6 +7,7 @@ import { Box, Card, CardContent, CardHeader, Typography } from "@mui/material";
 
 import CommonStack from "../custom-styles/commonstack.component";
 import CommonButton from "../custom-styles/custombutton.component";
+import { FavoriteOutlined } from "@mui/icons-material";
 const Home = ({
   setIsLogined,
   isLogined,
@@ -29,19 +30,36 @@ const Home = ({
   handleStartFresh,
 }) => {
   return (
-    <Box>
+    <Box sx={{ height: "100vh" }} bgcolor="#E8E9EB">
       <Navbar
         user={isLogined ? user : { name: "User name" }}
         navbarHeight={navbarHeight}
         isLogined={isLogined}
         setIsLogined={setIsLogined}
         handleDrawerToggle={handleDrawerToggle}
+        data-testid="Navbar"
       ></Navbar>
 
-      <Container>
+      <Container
+        sx={{
+          paddingBottom: "1rem",
+          bgColor: "#E8E9EB",
+          overflowX: "hidden",
+          overflowY: "auto",
+          minHeight: "calc(100vh - 112px)",
+          background:"#E8E9EB"
+        }}
+      >
         {showReturnDialog ? (
           <CommonStack justifyContent="center" alignItems="center">
-            <Card sx={{ padding: "16px", width: { xs: "250px", sm: "350px", md: "500px", lg: "500px" },marginTop:"150px",bgcolor:"#FEDBD3" }}>
+            <Card
+              sx={{
+                padding: "16px",
+                width: { xs: "250px", sm: "350px", md: "500px", lg: "500px" },
+                marginTop: "150px",
+                bgcolor: "#FEDBD3",
+              }}
+            >
               <CardHeader
                 title="Attention!"
                 subheader="You were not able to complete quiz previously"
@@ -52,27 +70,34 @@ const Home = ({
                 </Typography>
               </CardContent>
               <CardContent>
-                <CommonButton onClick={() => handleResume()} sx={{
-                  background: "#2F4858",
-                  color:"#fefefe",
-                  "&:hover": {
-                    background: "#fefefe",
-                    color: "#e91e63",
-                  },
-                }}>
-                  Resume
-                </CommonButton>
-                <CommonButton  variant="outlined" onClick={() => handleStartFresh()} sx={{
-                  background: "#fefefe",
-                  color:"#2F4858",
-                  borderColor:"#fefefe",
-                  marginLeft:"1rem",
-                  "&:hover": {
+                <CommonButton
+                  onClick={() => handleResume()}
+                  sx={{
                     background: "#2F4858",
                     color: "#fefefe",
-                    borderColor:"#2F4858",
-                  },
-                }}>
+                    "&:hover": {
+                      background: "#fefefe",
+                      color: "#e91e63",
+                    },
+                  }}
+                >
+                  Resume
+                </CommonButton>
+                <CommonButton
+                  variant="outlined"
+                  onClick={() => handleStartFresh()}
+                  sx={{
+                    background: "#fefefe",
+                    color: "#2F4858",
+                    borderColor: "#fefefe",
+                    marginLeft: "1rem",
+                    "&:hover": {
+                      background: "#2F4858",
+                      color: "#fefefe",
+                      borderColor: "#2F4858",
+                    },
+                  }}
+                >
                   Start Fresh!
                 </CommonButton>
               </CardContent>
@@ -100,6 +125,19 @@ const Home = ({
           </Box>
         )}
       </Container>
+      <Box
+        className="footer"
+        sx={{
+          color: "#E8E9EB",
+          background: "#313628",
+          width: "100%",
+          minHeight: "3rem",
+          textAlign: "center",
+          paddingTop: "1rem",
+        }}
+      >
+        <span>Made in 2022 by Vishal Yadav</span>
+      </Box>
     </Box>
   );
 };

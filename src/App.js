@@ -34,7 +34,6 @@ function App() {
     if (user) {
       const { accidentalClose } = user;
       if (accidentalClose) {
-        console.log("are bhai");
         setShowReturnDialog(() => true);
       }
     }

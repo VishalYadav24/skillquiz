@@ -1,17 +1,23 @@
-import { createTheme } from "@mui/material"
+import { createTheme } from "@mui/material";
 
 const defaultTheme = createTheme({
-palette:{
-    secondary:{
-        main:"#2F4858"
+  palette: {
+    primary: {
+      main: "#E8E9EB",
     },
-    otherColor:{
-        main:"#fefefe"
-    }
-},
-typography: {
-    fontFamily: 'Roboto',
+    secondary: {
+      main: "#313628",
+    },
+    otherColor: {
+      main: "#38618C",
+    },
+    accentColor: {
+      main: "#F06543",
+    },
   },
-})
+  typography: {
+    fontFamily: "Roboto",
+  },
+});
 
-export default defaultTheme
+export default defaultTheme;

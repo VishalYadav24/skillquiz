@@ -35,8 +35,8 @@ const Skills = ({
   return (
     <Box>
       <Box textAlign="center" padding={4}>
-        <Typography variant="h5" fontWeight="400" sx={{fontSize:{xs:"1rem",sm:"1rem",md:"1.2rem",lg:"1.5rem"}}}>Choose a topic</Typography>
-        <Typography varient="h6" fontWeight="400" sx={{fontSize:{xs:"1rem",sm:"1rem",md:"1.2rem",lg:"1.5rem"}}}>
+        <Typography variant="h4" fontWeight="700" >Choose a topic</Typography>
+        <Typography varient="h6" fontWeight="300" sx={{fontSize:{xs:"1rem",sm:"1rem",md:"1.2rem",lg:"1.5rem"}}}>
           Test you knowledge on various topics
         </Typography>
       </Box>
@@ -46,16 +46,9 @@ const Skills = ({
             <Card
               key={listOfTopic.id}
               sx={{
-
                 margin: "1rem",
-                padding: "2rem",
-                "&:hover": {
-                  transform: "scale(1.1)",
-                  boxShadow: " 0 10px 40px 0 rgba(0, 0, 0, 0.4)",
-                  zIndex: "3",
-                  boxShadow:" 0.5rem 0.5rem black, -0.5rem -0.5rem #FF7D84"
-                },
-                border:""
+                padding: "1.5rem",
+                backgroundColor:"#38618C"
               }}
             >
               <CardContent >
@@ -66,7 +59,7 @@ const Skills = ({
                     src={listOfTopic.src}
                     alt={listOfTopic.topic}
                   ></img>
-                  <Typography padding="16px" fontWeight="400" sx={{fontSize:{xs:"1rem",sm:"1rem",md:"1.2rem",lg:"1.5rem"}}}>{listOfTopic.topic}</Typography>
+                  <Typography padding="16px" fontWeight="300" color="primary" sx={{fontSize:{xs:"1rem",sm:"1rem",md:"1.2rem",lg:"1.5rem"}}}>{listOfTopic.topic}</Typography>
                   {/* Button which will check if user has registered or not */}
                   <Instructions
                     open={open}
@@ -83,7 +76,15 @@ const Skills = ({
                     isLogined={isLogined}
                   >
                     <Typography
-                    color="secondary"
+                    fontWeight="600"
+                   sx={{
+                    "&:hover": {
+                      background: "#E8E9EB",
+                      color: "#F06543",
+                      borderColor: "#E8E9EB",
+                      borderRadius:"10px"
+                    },
+                   }}
                       padding="16px"
                       variant="body"
                       onClick={() => {
