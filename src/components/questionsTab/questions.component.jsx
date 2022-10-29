@@ -235,7 +235,9 @@ const Questions = ({
           <Loader />
         </Box>
       ) : (
-        <Box>
+        <Box sx={{display:"flex",flexDirection:"row",justifyContent:"center"}}>
+          <Box sx={{position:"absolute",display:{xs:"none",sm:"none",md:"none",lg:"block",xl:"block"}}}>
+
           <ResponsiveDrawer
             questions={questions}
             navbarHeight={navbarHeight}
@@ -244,8 +246,9 @@ const Questions = ({
             handleDrawerToggle={handleDrawerToggle}
             handleClick={handleClick}
             attempts={attempts}
-          ></ResponsiveDrawer>
-          <form onSubmit={onQuizSubmit}>
+            ></ResponsiveDrawer>
+            </Box>
+          <Box component="form" onSubmit={onQuizSubmit} sx={{width:{xs:"100%",sm:"100%",md:"90%",xl:"80%",lg:"80%"}}}>
             <Card sx={{boxShadow: "0 8px 8px -4px lightblue",background:"#eee"}}>
               <CardContent>
                 <CommonStack direction="row" justifyContent="space-between">
@@ -318,7 +321,7 @@ const Questions = ({
                 SUBMIT
               </CommonButton>
             </Box>
-          </form>
+          </Box>
         </Box>
       )}
     </Fragment>

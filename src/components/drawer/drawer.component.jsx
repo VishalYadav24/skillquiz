@@ -8,7 +8,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import CommonButton from "../custom-styles/custombutton.component";
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 function ResponsiveDrawer(props) {
   const {
@@ -78,12 +78,12 @@ function ResponsiveDrawer(props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: "block", sm: "none" },
+            display: { xs: "block", sm: "block",md:"block",lg:"none",xl:"none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
               marginTop: navbarHeight,
-              height: "calc(100% - 100px)",
+              height: "100%",
             },
           }}
         >
@@ -97,7 +97,7 @@ function ResponsiveDrawer(props) {
               boxSizing: "border-box",
               width: drawerWidth,
               marginTop: navbarHeight,
-              height: "calc(100% - 100px)",
+              height: "calc(100vh - 112px)",
             },
           }}
           open
