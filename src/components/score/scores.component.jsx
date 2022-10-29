@@ -23,7 +23,7 @@ import CommonButton from "../custom-styles/custombutton.component";
 import Loader from "../loading/loader.component";
 /**
  * Shows user score based on correct answers provided by User,fetches score from local storage.
- * @param {*} param0 
+ * @param {*} param0
  * @returns screen with user Result
  */
 const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
@@ -45,7 +45,7 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
     ((value - 0) * 100) / (userData?.provideQuestionsCount - 0);
   /**
    * When user click home button , redirects user to Home.
-   */  
+   */
   const handleHomeButton = () => {
     setUserAgreed(() => false);
     setRetry(() => false);
@@ -56,23 +56,21 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
   /**
    * If user want to give re-test, user click Retest button,this redirect user to question tab with the same question which were provided earlier
    */
-  const handleResetButton = ()=>{
+  const handleResetButton = () => {
     setUserAgreed(() => true);
     setRetry(() => true);
     setUserResponse(null);
-    navigate("/questions",{replace:true});
-  }
+    navigate("/questions", { replace: true });
+  };
   return (
     <Fragment>
       <Box
         sx={{
           height: "100vh",
-          backgroundImage:
-            " linear-gradient(to right top, #4776e6, #5870e9, #6968eb, #7c5feb, #8e54e9);",
+          background: "#E8E9EB",
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}
-        data-testId="scores"
       >
         <CommonStack
           direction="row"
@@ -86,6 +84,9 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
               padding: "16px",
               width: { xs: "350px", sm: "450px", md: "500px", lg: "500px" },
               textAlign: "center",
+              background: "#38618C",
+              color: "#E8E9EB",
+              boxShadow: " 10px 20px 15px 5px darkblue",
             }}
           >
             <CardHeader title={`Congratulation  ${userData?.name}`} />
@@ -123,7 +124,7 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
                       justifyContent: "center",
                     }}
                   >
-                    <Typography variant="h6" component="div" color="green">
+                    <Typography variant="h6" component="div" color="#E8E9EB">
                       {userData?.score} / {userData?.provideQuestionsCount}
                     </Typography>
                   </Box>
@@ -156,10 +157,11 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
                   handleResetButton();
                 }}
                 sx={{
-                  background: "#e91e63",
+                  background: "#F06543",
+                  color: "#E8E9EB",
                   "&:hover": {
-                    background: "#fefefe",
-                    color: "#e91e63",
+                    background: "#E8E9EB",
+                    color: "#38618C",
                   },
                 }}
                 startIcon={<Replay />}
@@ -173,12 +175,12 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
                   handleHomeButton();
                 }}
                 sx={{
-                  borderColor: "#e91e63",
-                  color: "#e91e63",
+                  background: "#E8E9EB",
+                  color: "darkblue",
                   "&:hover": {
-                    background: "#e91e63",
-                    color: "#fefefe",
-                    borderColor: "#e91e63",
+                    background: "#F06543",
+                    color: "#E8E9EB",
+                    borderColor: "#F06543",
                   },
                 }}
               >
