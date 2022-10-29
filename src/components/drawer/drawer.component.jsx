@@ -32,7 +32,7 @@ function ResponsiveDrawer(props) {
                 onClick={() => handleClick("", data?.id)}
                 variant="outlined"
                 style={
-                  attempts.includes(data?.id.toString()) ? {color: "#fff", backgroundColor: "green", borderColor: "green",transition:"ease-in .75s" }
+                  attempts.includes(data?.id.toString()) ? {color: "#fff", backgroundColor: "#F06543", borderColor: "#F06543",transition:"ease-in .75s" }
                   :
                   {}
                 }
@@ -47,10 +47,10 @@ function ResponsiveDrawer(props) {
           );
         })}
          <Box padding="16px">
-            <Typography>
+            <Typography color="primary">
               Answered: {attempts.length}
             </Typography>
-            <Typography>
+            <Typography color="primary">
               Un-answered: { questions?.length - attempts?.length}
             </Typography>
           </Box>
@@ -98,6 +98,7 @@ function ResponsiveDrawer(props) {
               width: drawerWidth,
               marginTop: navbarHeight,
               height: "calc(100vh - 112px)",
+              background:"#38618C"
             },
           }}
           open

@@ -22,7 +22,6 @@ import ResponsiveDrawer from "../drawer/drawer.component";
 import Loader from "../loading/loader.component";
 import Timer from "../timer/timer.component";
 
-
 let count = {};
 
 const Questions = ({
@@ -44,7 +43,7 @@ const Questions = ({
   previousUserResponse,
   setPreviousUserResponse,
   setIsLogined,
-  setQuestions
+  setQuestions,
 }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentOption, setCurrentOption] = useState("response");
@@ -58,23 +57,22 @@ const Questions = ({
    *  Logout user if users press back button of browser in middle of quiz
    * @param {*} event - popstate event
    */
-  const handleBackButton = (event)=>{
+  const handleBackButton = (event) => {
     const keys = Object.keys(count)?.length;
-    if(keys){
-      try{
+    if (keys) {
+      try {
         localStorage.removeItem("User");
         setUserAgreed(false);
         setIsLogined(false);
         setQuestions([]);
         setAttempts([]);
-        setUserResponse(null)
+        setUserResponse(null);
         count = {};
-      }
-      finally{
-        navigate("/register",{replace:true});
+      } finally {
+        navigate("/register", { replace: true });
       }
     }
-  }
+  };
 
   useEffect(()=>{
     window.addEventListener("popstate",handleBackButton());
@@ -90,17 +88,18 @@ const Questions = ({
     }
   });
 
-  useEffect(()=>{
-    if(userData?.accidentalClose){
-    count = previousUserResponse ? previousUserResponse : {};
-    const firstResponse = (Object.keys(count));
-    setCurrentOption(()=> (count[firstResponse[0]]?.value || ""))};
+  useEffect(() => {
+    if (userData?.accidentalClose) {
+      count = previousUserResponse ? previousUserResponse : {};
+      const firstResponse = Object.keys(count);
+      setCurrentOption(() => count[firstResponse[0]]?.value || "");
+    }
     setUserResponse(() => count);
-  },[previousUserResponse])
+  }, [previousUserResponse]);
 
   useEffect(() => {
     if (timeOver) {
-      calculateScores();
+      calculateScores("timeover");
     }
   }, [timeOver]);
 
@@ -111,11 +110,11 @@ const Questions = ({
       }
     }
   }, [currentOption]);
-   /**
-    * Handles Pagination - Page change action
-    * @param {*} event - click event
-    * @param {*} value - number - Page no.
-    */
+  /**
+   * Handles Pagination - Page change action
+   * @param {*} event - click event
+   * @param {*} value - number - Page no.
+   */
   const handleClick = (event, value) => {
     if (value <= questions.length) {
       setCurrentQuestion(value - 1);
@@ -135,7 +134,7 @@ const Questions = ({
   };
   /**
    *  Help in selecting radio button option selected by user as response of question
-   * @param {*} e -click event 
+   * @param {*} e -click event
    */
   const handleOptionsSelection = (e) => {
     if (count[currentQuestion + 1]) {
@@ -192,7 +191,7 @@ const Questions = ({
    * @param {*} source - string - place from where the function is called
    */
   const submitDataToLocalStorage = (source) => {
-   setPreviousUserResponse(()=> null);
+    setPreviousUserResponse(() => null);
 
     const userResponseObj = {
       ...userData,
@@ -200,19 +199,19 @@ const Questions = ({
       providedQuestions: questions,
       provideQuestionsCount: questionsRange,
       providedQuestionsLevel: questionLevel,
-      totalTimeProvided:(questionsRange * 20),
+      totalTimeProvided: questionsRange * 20,
       timeSpent: totalTimeTaken,
       userResponse: userResponse,
       questionAttempted: attempts?.length,
       score: countScore?.score,
       allAttempted: attempts?.length === questions?.length,
-      accidentalClose: source? true:false
+      accidentalClose: source ? true : false,
     };
     localStorage.clear();
     localStorage.setItem("User", JSON.stringify(userResponseObj));
     if (source !== "closeTab") {
       setUserAgreed(() => false);
-      navigate("/score",{replace:true});
+      navigate("/score", { replace: true });
     }
   };
 
@@ -223,11 +222,18 @@ const Questions = ({
           <Typography variant="h5" textAlign="center" color="green">
             Sorry we are unable to fetch question at this moment!
           </Typography>
-          <CommonButton startIcon={<ArrowLeft/>} fullWidth={false} variant="outlined" onClick={()=>{
-            setUserAgreed(false);
-            setErrorOccurred(false);
-            navigate("/",{replace:true})
-          }}>Home</CommonButton>
+          <CommonButton
+            startIcon={<ArrowLeft />}
+            fullWidth={false}
+            variant="outlined"
+            onClick={() => {
+              setUserAgreed(false);
+              setErrorOccurred(false);
+              navigate("/", { replace: true });
+            }}
+          >
+            Home
+          </CommonButton>
         </Box>
       ) : isLoading ? (
         <Box textAlign="center">
@@ -235,33 +241,62 @@ const Questions = ({
           <Loader />
         </Box>
       ) : (
-        <Box sx={{display:"flex",flexDirection:"row",justifyContent:"center"}}>
-          <Box sx={{position:"absolute",display:{xs:"none",sm:"none",md:"none",lg:"block",xl:"block"}}}>
-
-          <ResponsiveDrawer
-            questions={questions}
-            navbarHeight={navbarHeight}
-            mobileOpen={mobileOpen}
-            setMobileOpen={setMobileOpen}
-            handleDrawerToggle={handleDrawerToggle}
-            handleClick={handleClick}
-            attempts={attempts}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
+          <Box
+            sx={{
+              position: "absolute",
+              display: {
+                xs: "none",
+                sm: "none",
+                md: "none",
+                lg: "block",
+                xl: "block",
+              },
+            }}
+          >
+            <ResponsiveDrawer
+              questions={questions}
+              navbarHeight={navbarHeight}
+              mobileOpen={mobileOpen}
+              setMobileOpen={setMobileOpen}
+              handleDrawerToggle={handleDrawerToggle}
+              handleClick={handleClick}
+              attempts={attempts}
             ></ResponsiveDrawer>
-            </Box>
-          <Box component="form" onSubmit={onQuizSubmit} sx={{width:{xs:"100%",sm:"100%",md:"90%",xl:"80%",lg:"80%"}}}>
-            <Card sx={{boxShadow: "0 8px 8px -4px lightblue",background:"#eee"}}>
+          </Box>
+          <Box
+            component="form"
+            onSubmit={onQuizSubmit}
+            sx={{
+              width: {
+                xs: "100%",
+                sm: "100%",
+                md: "90%",
+                xl: "80%",
+                lg: "80%",
+              },
+            }}
+          >
+            <Card
+              sx={{
+                boxShadow: "10px 8px 8px -4px #F06543",
+                background: "#fff",
+              }}
+            >
               <CardContent>
                 <CommonStack direction="row" justifyContent="space-between">
                   <Box>
                     <Typography variant="h5">{selectedTopic}</Typography>
                     <Typography>{questionLevel}</Typography>
                   </Box>
-                  {questions.length > 0 && (
-                    <CommonStack
-                      direction="row"
-                      alignItems="center"
-                    
-                    >
+                  {questions?.length > 0 && (
+                    <CommonStack direction="row" alignItems="center">
                       <Timer
                         questionsRange={questionsRange}
                         totalTimeTaken={totalTimeTaken}
@@ -283,9 +318,11 @@ const Questions = ({
                     </Typography>
                     <CommonStack direction="column" textAlign="left">
                       <FormControl>
-                        <FormLabel id="radio-options">Options</FormLabel>
+                        <FormLabel id="radio-options" color="accentColor">
+                          Options
+                        </FormLabel>
                         <RadioGroup
-                          value={currentOption|| ""}
+                          value={currentOption || ""}
                           onChange={(e) => handleOptionsSelection(e)}
                         >
                           {questions[currentQuestion]?.options.map(
@@ -294,7 +331,7 @@ const Questions = ({
                                 <FormControlLabel
                                   key={optionList?.id}
                                   value={optionList?.value}
-                                  control={<Radio />}
+                                  control={<Radio color="accentColor" />}
                                   label={optionList?.value}
                                 />
                               );
