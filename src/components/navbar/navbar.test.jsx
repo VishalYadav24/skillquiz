@@ -1,6 +1,7 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import Navbar from "./navbar.component";
+import renderer from 'react-test-renderer';
 
 describe("Navbar", () => {
   test("should display Navbar", () => {
@@ -30,6 +31,11 @@ describe("Navbar", () => {
 //     })
 //     expect(localStorage.getItem("User")).toBeNull();
 //   });
+
+// test("snapshot",()=>{
+//     const tree = renderer.create(<Navbar />,{wrapper:BrowserRouter}).toJSON();
+//     expect(tree).toMatchSnapshot();
+// });
 });
 
 const renderScreen = () => {
