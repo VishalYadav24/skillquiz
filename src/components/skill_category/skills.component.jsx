@@ -41,7 +41,7 @@ const Skills = ({
         </Typography>
       </Box>
       <CommonStack direction={{ xs: "column", sm: "row" }} flexWrap="wrap">
-        {listOfTopics.map((listOfTopic) => {
+        {listOfTopics?.map((listOfTopic) => {
           return (
             <Card
               key={listOfTopic.id}
