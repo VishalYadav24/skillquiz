@@ -84,6 +84,7 @@ function ResponsiveDrawer(props) {
               width: drawerWidth,
               marginTop: navbarHeight,
               height: "100%",
+              background:"#38618C"
             },
           }}
         >

@@ -18,11 +18,11 @@ const Navbar = ({
   const handleLogout = () => {
     localStorage.clear();
     setIsLogined(false);
-    navigate("/register");
+    navigate("/register",{replace:true});
   };
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ height: navbarHeight }}>
+      <AppBar position="static" sx={{ height: navbarHeight,'&.MuiAppBar-root':{boxShadow:"none"} }}>
         <Toolbar sx={{ bgcolor: "#313628", color: "#E8E9EB" }}>
           <IconButton
             size="large"
@@ -38,7 +38,7 @@ const Navbar = ({
             SkillScore
           </Typography>
           
-          <Avatar  sx={{bgcolor:"primary",margin:"16px",color:"#F06543"}}  >{user?.name[0]}</Avatar>
+          <Avatar src={require("../../assets/icons/young-man.png")} alt={user?.name[0]} sx={{bgcolor:"primary",margin:"16px",color:"#F06543"}}  ></Avatar>
           <Typography margin={2}   sx={{display:{xs:"none",sm:"none",md:"block",lg:"block"}}}>{user?.name}</Typography>
           
           {isLogined ? (

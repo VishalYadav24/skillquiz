@@ -29,7 +29,7 @@ const Notifications = ({
         open={showNotification}
         onClose={handleClose}
         autoHideDuration={4000}
-        anchorOrigin={{ horizontal: "right", vertical: "top" }}
+        anchorOrigin={{ horizontal: "top", vertical: "top" }}
       >
         <Alert severity={notification?.type} action={
           <IconButton size="smaller" onClick={()=> handleClose("clickaway")}>

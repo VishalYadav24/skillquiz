@@ -18,7 +18,7 @@ const style = {
   border: "2px solid #f7f0f0",
   borderRadius:"10px",
   boxShadow: 24,
-  p: 4,
+  p: 2,
 };
 /**
  * @param {*} props - passed by paren component(Skill)
@@ -63,7 +63,7 @@ const Instructions = (props) => {
           <Box sx={style} component="form">
             {isLogined ? (
               <Box>
-                <Box id="modal-title"   sx={{display:"flex",justifyContent:"space-evenly"}}>
+                <Box id="modal-title"   sx={{display:"flex",justifyContent:"center",gap:"1rem"}}>
                   <Typography variant="h6">
                   Level
                   </Typography>
@@ -83,6 +83,7 @@ const Instructions = (props) => {
                       );
                     })}
                   </Select>
+                  <Typography variant="h6">Questions</Typography>
                   <Select
                     variant="standard"
                     
@@ -103,7 +104,7 @@ const Instructions = (props) => {
                       );
                     })}
                   </Select>
-                  <Typography variant="h6">Questions</Typography>
+                 
                 </Box>
                 <Typography
                   component="div"

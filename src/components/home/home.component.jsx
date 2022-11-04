@@ -79,6 +79,7 @@ const Home = ({
                       background: "#fefefe",
                       color: "#e91e63",
                     },
+                    width:{xs:"100%",sm:"100%",md:"40%",lg:"30%",xl:"30%"}
                   }}
                 >
                   Resume
@@ -90,12 +91,14 @@ const Home = ({
                     background: "#fefefe",
                     color: "#2F4858",
                     borderColor: "#fefefe",
-                    marginLeft: "1rem",
+                    marginLeft:{xs:"0rem",sm:"0rem",md:".5rem",lg:"1rem",xl:"1rem"},
+                    marginTop:{xs:"1rem",sm:"1rem",md:"0rem",lg:"0rem",xl:"0rem"},
                     "&:hover": {
                       background: "#2F4858",
                       color: "#fefefe",
                       borderColor: "#2F4858",
                     },
+                    width:{xs:"100%",sm:"100%",md:"40%",lg:"30%",xl:"30%"}
                   }}
                 >
                   Start Fresh!

@@ -2,6 +2,7 @@ import { ArrowLeft } from "@mui/icons-material";
 import {
   Card,
   CardContent,
+  CardHeader,
   Divider,
   FormControl,
   FormControlLabel,
@@ -219,13 +220,39 @@ const Questions = ({
     <Fragment>
       {errorOccurred ? (
         <Box width="100%" textAlign="center">
-          <Typography variant="h5" textAlign="center" color="green">
-            Sorry we are unable to fetch question at this moment!
-          </Typography>
-          <CommonButton
+                  <CommonStack justifyContent="center" alignItems="center">
+            <Card
+              sx={{
+                padding: "16px",
+                width: { xs: "250px", sm: "350px", md: "500px", lg: "500px" },
+                marginTop: "150px",
+                bgcolor: "#FEDBD3",
+              }}
+            >
+              <CardHeader
+                title = { <img style={{width:"50px"}} src={require("../../assets/icons/sorry.png")} alt="Sorry Icon"/>}
+           
+                
+              />
+              <CardContent>
+                <Typography>
+                 
+                Sorry we are unable to fetch question at this moment!
+                </Typography>
+              </CardContent>
+              <CardContent>
+              <CommonButton
             startIcon={<ArrowLeft />}
             fullWidth={false}
-            variant="outlined"
+            sx={{
+              background: "#2F4858",
+              color: "#fefefe",
+              "&:hover": {
+                background: "#fefefe",
+                color: "#e91e63",
+              },
+              width:{xs:"100%",sm:"100%",md:"40%",lg:"30%",xl:"30%"}
+            }}
             onClick={() => {
               setUserAgreed(false);
               setErrorOccurred(false);
@@ -234,11 +261,19 @@ const Questions = ({
           >
             Home
           </CommonButton>
+              </CardContent>
+            </Card>
+          </CommonStack>
+         
+           
+        
+
         </Box>
+        
       ) : isLoading ? (
         <Box textAlign="center">
           <Typography>Please wait...</Typography>
-          <Loader />
+          <Loader color="accentColor" />
         </Box>
       ) : (
         <Box
