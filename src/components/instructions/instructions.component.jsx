@@ -93,7 +93,7 @@ const Instructions = (props) => {
                       setQuestionsRange(event.target?.value);
                     }}
                   >
-                    {limit.map((noOfQuestions) => {
+                    {limit?.map((noOfQuestions) => {
                       return (
                         <MenuItem
                           key={noOfQuestions?.id}
