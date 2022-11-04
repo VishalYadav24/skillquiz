@@ -75,7 +75,7 @@ const Instructions = (props) => {
                     }}
                     
                   >
-                    {levels.map((difficulty) => {
+                    {levels?.map((difficulty) => {
                       return (
                         <MenuItem key={difficulty?.id} value={difficulty.label}>
                           {difficulty.label}
