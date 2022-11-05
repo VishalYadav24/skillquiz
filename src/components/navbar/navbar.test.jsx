@@ -1,7 +1,7 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import Navbar from "./navbar.component";
-import renderer from 'react-test-renderer';
+import renderer from "react-test-renderer";
 
 describe("Navbar", () => {
   test("should display Navbar", () => {
@@ -20,26 +20,54 @@ describe("Navbar", () => {
     });
     expect(screen.getByText("Logout")).toBeInTheDocument();
   });
-//   test("should  logout  when user choose to logout", () => {
-//     const navbar = render(<Navbar isLogined={true} />, {
-//       wrapper: BrowserRouter,
-//     });
-//      const button = screen.getAllByText("Logout")[0];
-//      console.log(button)
-//     act(()=>{
-//         fireEvent.click(button);
-//     })
-//     expect(localStorage.getItem("User")).toBeNull();
-//   });
+  test("should  logout  when user choose to logout", () => {
+    const navbar = render(
+      <Navbar
+        navbarHeight={navbarHeight}
+        handleDrawerToggle={handleDrawerToggle}
+        setIsLogined={setIsLogined}
+        user={user}
+        isLogined={true}
+      />,
+      {
+        wrapper: BrowserRouter,
+      }
+    );
+    const button = screen.getAllByText("Logout")[0];
+    act(() => {
+      fireEvent.click(button);
+    });
+    expect(localStorage.getItem("User")).toBeNull();
+  });
 
-// test("snapshot",()=>{
-//     const tree = renderer.create(<Navbar />,{wrapper:BrowserRouter}).toJSON();
-//     expect(tree).toMatchSnapshot();
-// });
+  test("snapshot", () => {
+    const tree = renderer
+      .create(
+        <BrowserRouter>
+        <Navbar
+          navbarHeight={navbarHeight}
+          handleDrawerToggle={handleDrawerToggle}
+          setIsLogined={setIsLogined}
+          user={user}
+          isLogined={true}
+        />
+        </BrowserRouter>
+       
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 
 const renderScreen = () => {
   return render(<Navbar />, { wrapper: BrowserRouter });
 };
 
-const userInfo = { name: "gfg", email: "cccc@gmail.com", password: "ccc" };
+const user = { name: "gfg", email: "cccc@gmail.com", password: "ccc" };
+const navbarHeight = 65;
+const handleDrawerToggle = () => {
+  return null;
+};
+const setIsLogined = () => {
+  return null;
+};

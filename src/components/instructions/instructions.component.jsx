@@ -83,7 +83,7 @@ const Instructions = (props) => {
                       );
                     })}
                   </Select>
-                  <Typography variant="h6">Questions</Typography>
+                  <Typography data-testid="Questions" variant="h6">Questions</Typography>
                   <Select
                     variant="standard"
                     
