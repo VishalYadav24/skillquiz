@@ -29,10 +29,10 @@ const Notifications = ({
         open={showNotification}
         onClose={handleClose}
         autoHideDuration={4000}
-        anchorOrigin={{ horizontal: "top", vertical: "top" }}
+        anchorOrigin={{ horizontal: "right", vertical: "top" }}
       >
-        <Alert severity={notification?.type} action={
-          <IconButton size="smaller" onClick={()=> handleClose("clickaway")}>
+        <Alert data-testid="notification" severity={notification?.type} action={
+          <IconButton data-testid="close" size="smaller" onClick={()=> handleClose("clickaway")}>
             <Close></Close>
           </IconButton>
         }>{notification?.message}

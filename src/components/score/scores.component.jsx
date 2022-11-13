@@ -27,7 +27,7 @@ import Loader from "../loading/loader.component";
  * @returns screen with user Result
  */
 const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
     const getData = JSON.parse(localStorage.getItem("User"));

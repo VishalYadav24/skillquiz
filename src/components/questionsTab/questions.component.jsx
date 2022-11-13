@@ -75,10 +75,10 @@ const Questions = ({
     }
   };
 
-  useEffect(()=>{
-    window.addEventListener("popstate",handleBackButton());
-    return ()=> window.removeEventListener("popstate",handleBackButton());
-  },[])
+  useEffect(() => {
+    window.addEventListener("popstate", handleBackButton());
+    return () => window.removeEventListener("popstate", handleBackButton());
+  }, []);
   /**
    * Handles browser close/ tab close action when quiz has not been submitted
    */
@@ -220,7 +220,7 @@ const Questions = ({
     <Fragment>
       {errorOccurred ? (
         <Box width="100%" textAlign="center">
-                  <CommonStack justifyContent="center" alignItems="center">
+          <CommonStack justifyContent="center" alignItems="center">
             <Card
               sx={{
                 padding: "16px",
@@ -230,50 +230,54 @@ const Questions = ({
               }}
             >
               <CardHeader
-                title = { <img style={{width:"50px"}} src={require("../../assets/icons/sorry.png")} alt="Sorry Icon"/>}
-           
-                
+                title={
+                  <img
+                    style={{ width: "50px" }}
+                    src={require("../../assets/icons/sorry.png")}
+                    alt="Sorry Icon"
+                  />
+                }
               />
               <CardContent>
                 <Typography>
-                 
-                Sorry we are unable to fetch question at this moment!
+                  Sorry we are unable to fetch question at this moment!
                 </Typography>
               </CardContent>
               <CardContent>
-              <CommonButton
-            startIcon={<ArrowLeft />}
-            fullWidth={false}
-            sx={{
-              background: "#2F4858",
-              color: "#fefefe",
-              "&:hover": {
-                background: "#fefefe",
-                color: "#e91e63",
-              },
-              width:{xs:"100%",sm:"100%",md:"40%",lg:"30%",xl:"30%"}
-            }}
-            onClick={() => {
-              setUserAgreed(false);
-              setErrorOccurred(false);
-              navigate("/", { replace: true });
-            }}
-          >
-            Home
-          </CommonButton>
+                <CommonButton
+                  startIcon={<ArrowLeft />}
+                  fullWidth={false}
+                  sx={{
+                    background: "#2F4858",
+                    color: "#fefefe",
+                    "&:hover": {
+                      background: "#fefefe",
+                      color: "#e91e63",
+                    },
+                    width: {
+                      xs: "100%",
+                      sm: "100%",
+                      md: "40%",
+                      lg: "30%",
+                      xl: "30%",
+                    },
+                  }}
+                  onClick={() => {
+                    setUserAgreed(false);
+                    setErrorOccurred(false);
+                    navigate("/", { replace: true });
+                  }}
+                >
+                  Home
+                </CommonButton>
               </CardContent>
             </Card>
           </CommonStack>
-         
-           
-        
-
         </Box>
-        
       ) : isLoading ? (
         <Box textAlign="center">
           <Typography>Please wait...</Typography>
-          <Loader color="accentColor" />
+          <Loader sx={{ color: "#F06543" }} />
         </Box>
       ) : (
         <Box
@@ -303,6 +307,7 @@ const Questions = ({
               handleDrawerToggle={handleDrawerToggle}
               handleClick={handleClick}
               attempts={attempts}
+              window={()=>{return window}}
             ></ResponsiveDrawer>
           </Box>
           <Box
@@ -353,14 +358,14 @@ const Questions = ({
                     </Typography>
                     <CommonStack direction="column" textAlign="left">
                       <FormControl>
-                        <FormLabel id="radio-options" color="accentColor">
+                        {/* <FormLabel id="radio-options" sx={{color:"#F06543"}}>
                           Options
-                        </FormLabel>
+                        </FormLabel> */}
                         <RadioGroup
                           value={currentOption || ""}
                           onChange={(e) => handleOptionsSelection(e)}
                         >
-                          {questions[currentQuestion]?.options.map(
+                          {questions[currentQuestion]?.options?.map(
                             (optionList) => {
                               return (
                                 <FormControlLabel

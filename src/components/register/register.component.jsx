@@ -118,23 +118,28 @@ const Register = ({
               <TextField
                 name="Name"
                 required
-                placeholder="Name"
+                placeholder="Enter name"
                 value={userName}
                 onChange={(event) => {
                   setUserName(event.target.value);
                 }}
                 error={userNameError}
+               label="Name"
+               inputProps={{"data-testid":"userName"}}
+               
               />
               <TextField
                 name="Email"
                 required
-                placeholder="E-mail"
+                placeholder="Enter E-mail"
                 type="email"
                 value={userEmail}
                 onChange={(event) => {
                   setUserEmail(event.target.value);
                 }}
                 error={userEmailError}
+                inputProps={{"data-testid":"email"}}
+                label="E-mail"
               />
               <TextField
                 name="Password"
@@ -146,6 +151,8 @@ const Register = ({
                   setUserPassword(event.target.value);
                 }}
                 error={userPasswordError}
+                inputProps={{ "data-testid": "password"}}
+                label="Password"
               />
               <CommonButton
                 variant="outlined"

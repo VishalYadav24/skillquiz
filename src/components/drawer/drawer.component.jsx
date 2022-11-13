@@ -12,7 +12,7 @@ const drawerWidth = 200;
 
 function ResponsiveDrawer(props) {
   const {
-    window,
+   window,
     questions,
     navbarHeight,
     mobileOpen,
@@ -32,7 +32,7 @@ function ResponsiveDrawer(props) {
                 onClick={() => handleClick("", data?.id)}
                 variant="outlined"
                 style={
-                  attempts.includes(data?.id.toString()) ? {color: "#fff", backgroundColor: "#F06543", borderColor: "#F06543",transition:"ease-in .75s" }
+                  attempts.includes(data?.id?.toString()) ? {color: "#fff", backgroundColor: "#F06543", borderColor: "#F06543",transition:"ease-in .75s" }
                   :
                   {}
                 }
@@ -48,7 +48,7 @@ function ResponsiveDrawer(props) {
         })}
          <Box padding="16px">
             <Typography color="primary">
-              Answered: {attempts.length}
+              Answered: {attempts?.length}
             </Typography>
             <Typography color="primary">
               Un-answered: { questions?.length - attempts?.length}

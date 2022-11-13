@@ -57,7 +57,7 @@ const Timer = ({
           justifyContent: "center",
         }}
       >
-        <Typography variant="h6" component="div" color="green">
+        <Typography variant="h6" component="div" color="green" data-testid="time_duration">
           {minute} : {seconds}
         </Typography>
       </Box>

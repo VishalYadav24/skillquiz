@@ -9,6 +9,7 @@ import Scores from "./components/score/scores.component";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import Notifications from "./components/notifications/notifications.component";
 import defaultTheme from "./components/theme/theme.component";
+import NotFound from "./components/notfound.component";
 function App() {
   const navbarHeight = "64px";
   const [questions, setQuestions] = useState([]);
@@ -174,7 +175,7 @@ function App() {
     navigate("/questions");
   };
   /**
-   *  Start Fresh -> Helps user to start quiz fro start.
+   *  Start Fresh -> Helps user to start quiz from start.
    */
   const handleStartFresh = () => {
     const userResponseObj = {
@@ -276,6 +277,7 @@ function App() {
               />
             }
           />
+          <Route path="*" element={<NotFound/>} />
         </Routes>
       </div>
     </ThemeProvider>

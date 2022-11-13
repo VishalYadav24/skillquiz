@@ -52,7 +52,7 @@ const Instructions = (props) => {
   };
   return (
     <div>
-      <Button onClick={handleOpen}>{children}</Button>
+    
       <Modal
         open={open}
         onClose={handleClose}
@@ -92,6 +92,7 @@ const Instructions = (props) => {
                     onChange={(event) => {
                       setQuestionsRange(event.target?.value);
                     }}
+                    data-testid="noOfQuestions"
                   >
                     {limit?.map((noOfQuestions) => {
                       return (

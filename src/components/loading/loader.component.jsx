@@ -4,7 +4,7 @@ import React, { Fragment } from 'react'
 const Loader = ({variant,value,sx,size,thickness,color}) => {
   return (
     <Fragment>
-       <CircularProgress size={size} thickness={thickness} variant={variant} value={value} sx={sx} color={color}/>
+       <CircularProgress size={size}  variant={variant} value={value} sx={sx} color={color}/>
     </Fragment>
   )
 }
