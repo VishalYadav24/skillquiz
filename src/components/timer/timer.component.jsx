@@ -1,7 +1,13 @@
 import { Box, circularProgressClasses, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Loader from "../loading/loader.component";
-
+/**
+ * Shows Timer to show time progress for quiz
+ * @param {string} questionsRange - no of the questions
+ * @param {number} setTotalTimeTaken - total time taken to finish quiz
+ * @param {boolean} setTimeOver - has allocated time exhausted
+ * s 
+ */
 const Timer = ({
   questionsRange,
   setTotalTimeTaken,

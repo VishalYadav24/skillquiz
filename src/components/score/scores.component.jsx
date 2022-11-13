@@ -23,8 +23,11 @@ import CommonButton from "../custom-styles/custombutton.component";
 import Loader from "../loading/loader.component";
 /**
  * Shows user score based on correct answers provided by User,fetches score from local storage.
- * @param {*} param0
- * @returns screen with user Result
+ * @param {*} setUserAgreed -  set to true if user has registered successfully
+ * @param {*} setRetry - set to true if user has decide to retake Quiz
+ * @param {*} setUserResponse - set user response for questions
+ * @param {*} setQuestions - set questions 
+ *  screen with user Result
  */
 const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
   const [userData, setUserData] = useState(null);
@@ -38,8 +41,8 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
   }, []);
   /**
    * Method for conversion of custom values (numbers) to scale of 0 to 100 for progress bar/circle.
-   * @param {*} value - number
-   * @returns
+   * @param {number} value - number
+   * @returns {number} value number between 0 and 100
    */
   const normalise = (value) =>
     ((value - 0) * 100) / (userData?.provideQuestionsCount - 0);

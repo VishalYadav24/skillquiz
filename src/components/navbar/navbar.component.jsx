@@ -4,6 +4,16 @@ import { Menu } from "@mui/icons-material";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
 import CommonButton from "../custom-styles/custombutton.component";
+/**
+ * Navigation component
+ * @param {Object} user - user details stored in local storage
+ * @param {boolean} isLogined  - if user is logged in
+ * @param {string} navbarHeight - height of the side menu
+ * @param {@callback} handleDrawerToggle - open/close side menu
+ * @param {@callback} setIsLogined - to change isLoggedin state
+ * 
+ * 
+ */
 const Navbar = ({
   user,
   isLogined,

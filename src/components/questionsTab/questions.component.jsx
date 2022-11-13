@@ -24,7 +24,23 @@ import Loader from "../loading/loader.component";
 import Timer from "../timer/timer.component";
 
 let count = {};
-
+/**
+ * @param {Array.<Object>}  questions - list of questions
+ * @param {string}  questionsRange - no of questions
+ * @param {string | number}  navbarHeight - height of side menu
+ * @param { string}  selectedTopic - selected topic
+ * @param {string}  questionLevel - level of question
+ * @param {Array.<Object>}  userResponse - user response for questions
+ * @param {boolean}  errorOccurred - true if errorOccurred while fetching question
+ * @param {Array.<Object>} previousUserResponse - user previous response
+ * @param {boolean}  isLoading - true if questions are loading
+ * @param {@callback}  handleDrawerToggle - open/close side menu
+ * @param {@callback}  setUserResponse - set user Response
+ * @param {@callback}  setUserAgreed - set user Agreed
+ * @param {@callback}  setIsLoading -  set questions loading state
+ * @param {@callback}  setErrorOccurred - set errorOccurred
+ * @param {@callback}  setPreviousUserResponse - set PreviousUserResponse
+ */
 const Questions = ({
   questions,
   questionsRange,

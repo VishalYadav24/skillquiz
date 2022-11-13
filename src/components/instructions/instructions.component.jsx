@@ -21,8 +21,8 @@ const style = {
   p: 2,
 };
 /**
+ *  Shows  Instructions Screen with quiz related instruction
  * @param {*} props - passed by paren component(Skill)
- * @returns Instructions Screen with quiz related instruction
  */
 const Instructions = (props) => {
   const {

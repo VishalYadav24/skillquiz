@@ -14,7 +14,14 @@ import { useNavigate } from "react-router-dom";
 import Image from "../../assets/annie-spratt-0ZPSX_mQ3xI-unsplash.jpg";
 import CommonStack from "../custom-styles/commonstack.component";
 import CommonButton from "../custom-styles/custombutton.component";
-
+/**
+ * 
+ * @param {*} setIsLogined - set to true if user has registered successfully
+ * @param {*} setNotification - show notification for success or error
+ * @param {*} setShowNotification - show hide notification 
+ * @param {*} setUserAgreed - set userAgreed to true / false
+ * 
+ */
 const Register = ({
   setIsLogined,
   setNotification,

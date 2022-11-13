@@ -4,6 +4,22 @@ import { Box } from "@mui/system";
 import Instructions from "../instructions/instructions.component";
 import CommonStack from "../custom-styles/commonstack.component";
 import CommonButton from "../custom-styles/custombutton.component";
+/**
+ * Shows List Topics to take Quiz
+ * @param {Array.<Object>} listOfTopics 
+ * @param {Array.<Object>} levels  questions levels 
+ * @param {Array.<Object>} limit no of questions
+ * @param {string} selectedTopic - selected topic
+ * @param {string}stringquestionLevel -question leveboolean
+ * @param {string} questionsRange -no of questions
+ * @param {boolean} userAgreed - user agreed to instructions and ready to start quiz
+ * @param {boolean} isLogined - is user logged in
+ * @param {@callback} setSelectedTopic - set selectedTopic
+ * @param {@callback} setQuestionsRange -set no of questions
+ * @param {@callback} setQuestionLevel - setQuestionLevel
+ * @param {@callback} setUserAgreed - set userAgreed
+ * 
+ */
 const Skills = ({
   listOfTopics,
   levels,

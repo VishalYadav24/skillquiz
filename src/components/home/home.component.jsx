@@ -8,6 +8,28 @@ import { Box, Card, CardContent, CardHeader, Typography } from "@mui/material";
 import CommonStack from "../custom-styles/commonstack.component";
 import CommonButton from "../custom-styles/custombutton.component";
 import { FavoriteOutlined } from "@mui/icons-material";
+/**
+ *  Act as parent Container for application components
+ * @param {boolean}  isLogined - check if user is logged in
+ * @param {string}  selectedTopic - user selected topic for quiz
+ * @param {string}  questionLevel - check if user is logged in
+ * @param {string}  questionsRange - check if user is logged in
+ * @param {Array.<Object>} topics Topics
+ * @param {Array.<Object>}  limit -No  of questions
+ * @param {boolean}  userAgreed - check if user has read instruction and ready to start quiz
+ * @param {string}  navbarHeight - height of navbar
+ * @param {object}  user - user object stored in local storage
+ * @param {@callback} setIsLogined - to change if user is logged in
+ * @param {@callback} setSelectedTopic - to change user selected topic
+ * @param {@callback} setQuestionLevel - to change user selected question level
+ * @param {@callback} setQuestionsRange - to change user selected questions range
+ * @param {@callback} setUserAgreed - to change user agreed
+ * @param {@callback} handleDrawerToggle - to open / close drawer /side menu
+ * @param {@callback} showReturnDialog - shows up user a dialog if he wants to resume left out quiz
+ * @param {@callback} handleResume - resumes quiz
+ * @param {@callback} handleStartFresh - start quiz as if new user user is taking quiz
+ *
+ */
 const Home = ({
   setIsLogined,
   isLogined,
