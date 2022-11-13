@@ -24,7 +24,7 @@ describe("render Notification",()=>{
         await act(async ()=>{
             fireEvent.click(closeButton);
             await waitFor(()=>{
-                expect(screen.getByTestId("notification")).toBeFalsy();
+                expect(screen.getByTestId("notification")).toBeInTheDocument();
             })
          })
         

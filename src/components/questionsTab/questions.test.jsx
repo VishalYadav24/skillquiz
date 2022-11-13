@@ -2,6 +2,7 @@ import {
   act,
   fireEvent,
   render,
+  renderHook,
   screen,
   waitFor,
 } from "@testing-library/react";
@@ -57,6 +58,12 @@ describe("Questions component when no internet connection", () => {
     });
     screen.debug();
   });
+  // test("click on home button to go back to home screen", async () => {
+  //   const user = userEvent.setup();
+  //   renderQuestion(false, false);
+
+  //   screen.debug();
+  // });
 });
 
 describe("snapshot test", () => {
@@ -85,7 +92,6 @@ describe("snapshot test", () => {
             setIsLogined={setIsLogined}
             setQuestions={setQuestions}
             attempts={[]}
-            // handleClick={()=>{return null}}
           />
         </MemoryRouter>
       )
@@ -160,137 +166,135 @@ const setUserResponse = () => {
 const questionsRange = 5;
 const selectedTopic = "JavaScript";
 const navbarHeight = 64;
-const mobileOpen = false;
+const mobileOpen = true;
 const questionLevel = "Easy";
 const userResponse = {};
 
 const previousUserResponse = {};
 const questions = [
-  [
-    {
-      id: 1,
-      question: "How do you round the number 7.25, to the nearest integer?",
-      options: [
-        {
-          id: 1,
-          value: "Math.round(7.25)",
-        },
-        {
-          id: 2,
-          value: "round(7.25)",
-        },
-        {
-          id: 3,
-          value: "rnd(7.25)",
-        },
-        {
-          id: 4,
-          value: "Math.rnd(7.25)",
-        },
-      ],
-      answer: {
+  {
+    id: 1,
+    question: "How do you round the number 7.25, to the nearest integer?",
+    options: [
+      {
         id: 1,
-        value: "answer_a_correct",
+        value: "Math.round(7.25)",
       },
-    },
-    {
-      id: 2,
-      question: 'How do you call a function named "myFunction"?',
-      options: [
-        {
-          id: 1,
-          value: "myFunction()",
-        },
-        {
-          id: 2,
-          value: "call myFunction()",
-        },
-        {
-          id: 3,
-          value: "call function myFunction()",
-        },
-      ],
-      answer: {
-        id: 1,
-        value: "answer_a_correct",
-      },
-    },
-    {
-      id: 3,
-      question: "How do you declare a JavaScript variable?",
-      options: [
-        {
-          id: 1,
-          value: "v carName;",
-        },
-        {
-          id: 2,
-          value: "variable carName;",
-        },
-        {
-          id: 3,
-          value: "var carName;",
-        },
-      ],
-      answer: {
-        id: 3,
-        value: "answer_c_correct",
-      },
-    },
-    {
-      id: 4,
-      question: "Which event occurs when the user clicks on an HTML element?",
-      options: [
-        {
-          id: 1,
-          value: "onchange",
-        },
-        {
-          id: 2,
-          value: "onmouseclick",
-        },
-        {
-          id: 3,
-          value: "onmouseover",
-        },
-        {
-          id: 4,
-          value: "onclick",
-        },
-      ],
-      answer: {
-        id: 4,
-        value: "answer_d_correct",
-      },
-    },
-    {
-      id: 5,
-      question:
-        "What is the correct JavaScript syntax to change the content of the HTML element below?",
-      options: [
-        {
-          id: 1,
-          value: '#demo.innerHTML = "Hello World!";',
-        },
-        {
-          id: 2,
-          value: 'document.getElementById("demo").innerHTML = "Hello World!";',
-        },
-        {
-          id: 3,
-          value: 'document.getElement("p").innerHTML = "Hello World!";',
-        },
-        {
-          id: 4,
-          value: 'document.getElementByName("p").innerHTML = "Hello World!";',
-        },
-      ],
-      answer: {
+      {
         id: 2,
-        value: "answer_b_correct",
+        value: "round(7.25)",
       },
+      {
+        id: 3,
+        value: "rnd(7.25)",
+      },
+      {
+        id: 4,
+        value: "Math.rnd(7.25)",
+      },
+    ],
+    answer: {
+      id: 1,
+      value: "answer_a_correct",
     },
-  ],
+  },
+  {
+    id: 2,
+    question: 'How do you call a function named "myFunction"?',
+    options: [
+      {
+        id: 1,
+        value: "myFunction()",
+      },
+      {
+        id: 2,
+        value: "call myFunction()",
+      },
+      {
+        id: 3,
+        value: "call function myFunction()",
+      },
+    ],
+    answer: {
+      id: 1,
+      value: "answer_a_correct",
+    },
+  },
+  {
+    id: 3,
+    question: "How do you declare a JavaScript variable?",
+    options: [
+      {
+        id: 1,
+        value: "v carName;",
+      },
+      {
+        id: 2,
+        value: "variable carName;",
+      },
+      {
+        id: 3,
+        value: "var carName;",
+      },
+    ],
+    answer: {
+      id: 3,
+      value: "answer_c_correct",
+    },
+  },
+  {
+    id: 4,
+    question: "Which event occurs when the user clicks on an HTML element?",
+    options: [
+      {
+        id: 1,
+        value: "onchange",
+      },
+      {
+        id: 2,
+        value: "onmouseclick",
+      },
+      {
+        id: 3,
+        value: "onmouseover",
+      },
+      {
+        id: 4,
+        value: "onclick",
+      },
+    ],
+    answer: {
+      id: 4,
+      value: "answer_d_correct",
+    },
+  },
+  {
+    id: 5,
+    question:
+      "What is the correct JavaScript syntax to change the content of the HTML element below?",
+    options: [
+      {
+        id: 1,
+        value: '#demo.innerHTML = "Hello World!";',
+      },
+      {
+        id: 2,
+        value: 'document.getElementById("demo").innerHTML = "Hello World!";',
+      },
+      {
+        id: 3,
+        value: 'document.getElement("p").innerHTML = "Hello World!";',
+      },
+      {
+        id: 4,
+        value: 'document.getElementByName("p").innerHTML = "Hello World!";',
+      },
+    ],
+    answer: {
+      id: 2,
+      value: "answer_b_correct",
+    },
+  },
 ];
 
 const userData = {
