@@ -19,7 +19,13 @@ const Timer = ({
     : questionsRange * 20;
   const [seconds, setSeconds] = useState(totalTime % 60);
   const [minute, setMinute] = useState(Math.floor(totalTime / 60));
-  const normalise = (value) => ((value - 0) * 100) / (59 - 0);
+  const maxTimeAlloted = [
+    {question:5,maxTime:120},
+    {question:10,maxTime:240},
+    {question:15,maxTime:300},
+    {question:20,maxTime:420},
+  ]
+  const normalise = (value) => ((value - 0) * 100) / (maxTimeAlloted?.find(data=> data?.question === questionsRange )?.maxTime - 0);
   useEffect(() => {
     const Timer =
       seconds > 0 &&
@@ -42,7 +48,7 @@ const Timer = ({
       <Loader
         size="100px"
         variant="determinate"
-        value={normalise(seconds)}
+        value={normalise((60*minute)+seconds)}
         color="warning"
         sx={{
           [`& .${circularProgressClasses.circle}`]: {

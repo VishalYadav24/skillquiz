@@ -187,6 +187,7 @@ const Questions = ({
    * @param {*} source - string - place from where the function is called
    */
   const calculateScores = (source) => {
+    count = {};
     for (const key in userResponse) {
       questions?.map((data) => {
         if (data.id === Number(key)) {
