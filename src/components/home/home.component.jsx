@@ -52,7 +52,7 @@ const Home = ({
   handleStartFresh,
 }) => {
   return (
-    <Box sx={{ height: "100vh" }} bgcolor="#E8E9EB">
+    <Box sx={{ height: "100vh" }} bgcolor="primary.main">
       <Navbar
         user={isLogined ? user : { name: "User name" }}
         navbarHeight={navbarHeight}
@@ -69,7 +69,7 @@ const Home = ({
           overflowX: "hidden",
           overflowY: "auto",
           minHeight: "calc(100vh - 112px)",
-          background:"#E8E9EB"
+          backgroundColor:"primary.main"
         }}
       >
         {showReturnDialog ? (
