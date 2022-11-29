@@ -153,8 +153,8 @@ const Home = ({
       <Box
         className="footer"
         sx={{
-          color: "#E8E9EB",
-          background: "#313628",
+          color: "primary.main",
+          backgroundColor: "primary.light",
           width: "100%",
           minHeight: "3rem",
           textAlign: "center",
