@@ -24,7 +24,11 @@ function ResponsiveDrawer(props) {
 
   const drawer = (
     <div>
-      <List>
+      <List sx={{
+              display:"grid",
+              gridTemplateColumns:{lg:"repeat(5,120px)",xl:"repeat(5,120px)",sm:"repeat(2,120px)",md:"repeat(3,120px)",xs:"repeat(2,120px)"},
+              gap:"1rem"
+            }}>
         {questions?.map((data) => {
           return (
             <ListItem key={data?.id}>
@@ -36,7 +40,9 @@ function ResponsiveDrawer(props) {
                   :
                   {}
                 }
-                sx={{color: "black",border:"1px solid black"}}
+                sx={{color: "black",border:"1px solid black",'&.MuiButtonBase-root.MuiButton-root:hover':{
+                  color: "black",border:"1px solid black"
+                }}}
               >
                 <Typography variant="span">
                   Question
@@ -47,15 +53,15 @@ function ResponsiveDrawer(props) {
             </ListItem>
           );
         })}
-         <Box padding="16px">
-            <Typography color="primary.light">
+      </List>
+      <Box padding="16px">
+            <Typography >
               Answered: {attempts?.length}
             </Typography>
-            <Typography color="primary.light">
+            <Typography >
               Un-answered: { questions?.length - attempts?.length}
             </Typography>
           </Box>
-      </List>
     </div>
   );
 
@@ -82,7 +88,7 @@ function ResponsiveDrawer(props) {
             display: { xs: "block", sm: "block",md:"block",lg:"none",xl:"none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
-              width: drawerWidth,
+              width: "100%",
               marginTop: navbarHeight,
               height: "100%",
               background:"#38618C"
