@@ -54,7 +54,11 @@ const Timer = ({
           [`& .${circularProgressClasses.circle}`]: {
             strokeLinecap: "round",
             transition: "1s linear all",
+          
           },
+          boxShadow:"inset 0 0 10px 1px blue",
+          borderRadius:"50%",
+          
         }}
       />
       <Box

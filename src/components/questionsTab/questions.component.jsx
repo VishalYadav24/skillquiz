@@ -342,7 +342,7 @@ const Questions = ({
           >
             <Card
               sx={{
-                boxShadow: "10px 8px 8px -4px #F06543",
+                boxShadow: "5px 5px 30px blue",
                 background: "#fff",
               }}
             >
