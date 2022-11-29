@@ -32,8 +32,8 @@ const Navbar = ({
   };
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ height: navbarHeight,'&.MuiAppBar-root':{boxShadow:"none"} }}>
-        <Toolbar sx={{ bgcolor: "#313628", color: "#E8E9EB" }}>
+      <AppBar position="static" color="primary" sx={{ height: navbarHeight,'&.MuiAppBar-root':{boxShadow:"none"} }}>
+        <Toolbar >
           <IconButton
             size="large"
             edge="start"
@@ -53,16 +53,13 @@ const Navbar = ({
           
           {isLogined ? (
             <CommonButton
-              variant="outlined"
+              variant="text"
               onClick={handleLogout}
               sx={{
-                color: "#E8E9EB",
-                border: "2px solid #E8E9EB ",
-                background:"#313628",
+                color: "black",
+                background:"primary",
                 "&:hover": {
-                  color: "#313628",
-                  border: "2px solid secondary ",
-                  background:"#E8E9EB",
+                  color: "primary.dark",
                 },
               }}
             >
