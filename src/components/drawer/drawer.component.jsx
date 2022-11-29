@@ -24,11 +24,7 @@ function ResponsiveDrawer(props) {
 
   const drawer = (
     <div>
-      <List sx={{
-              display:"grid",
-              gridTemplateColumns:{lg:"repeat(5,120px)",xl:"repeat(5,120px)",sm:"repeat(2,120px)",md:"repeat(3,120px)",xs:"repeat(2,120px)"},
-              gap:"1rem"
-            }}>
+      <List style={questions.length > 5 ? {display:"grid",gridTemplateColumns:"repeat(5,120px)"}   : {display:"grid",gridTemplateColumns:"repeat(1,120px)"} }>
         {questions?.map((data) => {
           return (
             <ListItem key={data?.id}>
