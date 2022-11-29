@@ -388,7 +388,7 @@ const Questions = ({
                                 <FormControlLabel
                                   key={optionList?.id}
                                   value={optionList?.value}
-                                  control={<Radio color="accentColor" />}
+                                  control={<Radio  />}
                                   label={optionList?.value}
                                 />
                               );

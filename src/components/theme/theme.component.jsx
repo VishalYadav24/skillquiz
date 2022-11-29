@@ -3,21 +3,15 @@ import { createTheme } from "@mui/material";
 const defaultTheme = createTheme({
   palette: {
     primary: {
-      main: "#E8E9EB",
+     main:"#fefefe",
+     dark:"#03256C",
+     light:"#2541B2",
+     common:"#1768AC"
     },
     secondary: {
-      main: "#313628",
+    main:"#DF2935"
     },
-    otherColor: {
-      main: "#38618C",
-    },
-    accentColor: {
-      main: "#F06543",
-    },
-  },
-  typography: {
-    fontFamily: "Roboto",
-  },
+  }
 });
 
 export default defaultTheme;
