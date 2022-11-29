@@ -44,7 +44,7 @@ const Navbar = ({
           >
             <Menu />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1,fontFamily:"monospace",fontSize:"2rem" }}>
             SkillScore
           </Typography>
           

@@ -36,6 +36,7 @@ function ResponsiveDrawer(props) {
                   :
                   {}
                 }
+                sx={{color: "black",border:"1px solid black"}}
               >
                 <Typography variant="span">
                   Question
@@ -47,10 +48,10 @@ function ResponsiveDrawer(props) {
           );
         })}
          <Box padding="16px">
-            <Typography color="primary">
+            <Typography color="primary.light">
               Answered: {attempts?.length}
             </Typography>
-            <Typography color="primary">
+            <Typography color="primary.light">
               Un-answered: { questions?.length - attempts?.length}
             </Typography>
           </Box>
@@ -99,7 +100,9 @@ function ResponsiveDrawer(props) {
               width: drawerWidth,
               marginTop: navbarHeight,
               height: "calc(100vh - 112px)",
-              background:"#38618C"
+              backgroundColor:"primary.main",
+              borderRight:"none",
+              color:"black"
             },
           }}
           open

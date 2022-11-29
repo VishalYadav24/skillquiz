@@ -51,14 +51,14 @@ const Skills = ({
   return (
     <Box>
       <Box textAlign="center" padding={4}>
-        <Typography variant="h4" fontWeight="700">
+        <Typography variant="h4" fontWeight="700" fontSize="1.8rem">
           Choose a topic
         </Typography>
         <Typography
           varient="h6"
           fontWeight="300"
           sx={{
-            fontSize: { xs: "1rem", sm: "1rem", md: "1.2rem", lg: "1.5rem" },
+            fontSize: { xs: "1rem", sm: "1rem", md: "1rem", lg: "1.5rem" },
           }}
         >
           Test you knowledge on various topics
@@ -72,7 +72,9 @@ const Skills = ({
               sx={{
                 margin: "1rem",
                 padding: "1.5rem",
-                backgroundColor: "#38618C",
+                backgroundColor: "primary.dark",
+                 boxShadow:"5px 5px 20px #2541B2"
+
               }}
             >
               <CardContent>
@@ -116,6 +118,7 @@ const Skills = ({
                   <Button onClick={handleOpen}   data-testid="takeQuizButton">
                     <Typography
                       fontWeight="600"
+                      fontFamily="monospace"
                       sx={{
                         "&:hover": {
                           background: "#E8E9EB",

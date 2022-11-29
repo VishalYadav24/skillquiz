@@ -23,12 +23,12 @@ export const CustomButton2 = styled(Button)({
 });
 
 export const CustomButton = styled(Button)({
-  borderColor: "#3cd458",
+  borderColor: "success",
   backgroundColor: "#fff",
   ":hover": {
-    color: "#fff",
-    backgroundColor: "#3cd458",
-    borderColor: "#3cd458",
-    boxShadow: "0 1px 10px rgb(60 212 88 / 40%)",
+    color: "#fefefe",
+    backgroundColor: "#DF2935",
+    borderColor: "#DF2935",
+    boxShadow: "0 1px 10px #DF2935",
   },
 });

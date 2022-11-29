@@ -388,7 +388,9 @@ const Questions = ({
                                 <FormControlLabel
                                   key={optionList?.id}
                                   value={optionList?.value}
-                                  control={<Radio  />}
+                                  control={<Radio sx={{color:"secondary.main", '&.Mui-checked': {
+                                    color:"secondary.main",
+                                  }}}  />}
                                   label={optionList?.value}
                                 />
                               );
