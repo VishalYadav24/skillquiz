@@ -21,6 +21,7 @@ import {
 } from "../custom-styles/custom.component";
 import CommonButton from "../custom-styles/custombutton.component";
 import Loader from "../loading/loader.component";
+import Space from "../../assets/space.jpg";
 /**
  * Shows user score based on correct answers provided by User,fetches score from local storage.
  * @param {*} setUserAgreed -  set to true if user has registered successfully
@@ -70,7 +71,7 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
       <Box
         sx={{
           height: "100vh",
-          background: "#E8E9EB",
+          backgroundImage: `url(${Space})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}
@@ -87,9 +88,10 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
               padding: "16px",
               width: { xs: "350px", sm: "450px", md: "500px", lg: "500px" },
               textAlign: "center",
-              background: "#38618C",
+              backgroundColor: "primary.dark",
               color: "#E8E9EB",
-              boxShadow: " 10px 20px 15px 5px darkblue",
+              boxShadow: " 0px 0px 25px 0px  #fefefe",
+              border: "5px solid #fefefe"
             }}
           >
             <CardHeader title={`Congratulation  ${userData?.name}`} />
@@ -112,7 +114,12 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
                       [`& .${circularProgressClasses.circle}`]: {
                         strokeLinecap: "round",
                         transition: "1s linear all",
+                        animationDuration:"1s"
+                        
                       },
+                      borderRadius: "100%",
+                      boxShadow: "inset 0 0 0px 11px #fefefe",
+                      backgroundColor: "transparent",
                     }}
                   />
                   <Box
@@ -128,7 +135,9 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
                     }}
                   >
                     <Typography variant="h6" component="div" color="#E8E9EB">
-                      {userData?.score} / {userData?.provideQuestionsCount}
+                     <Typography variant="span" fontSize="1.8rem">
+                     {userData?.score}
+                      </Typography> / {userData?.provideQuestionsCount}
                     </Typography>
                   </Box>
                 </Box>
@@ -160,7 +169,7 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
                   handleResetButton();
                 }}
                 sx={{
-                  background: "#F06543",
+                  backgroundColor: "secondary.main",
                   color: "#E8E9EB",
                   "&:hover": {
                     background: "#E8E9EB",
@@ -179,10 +188,10 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
                 }}
                 sx={{
                   background: "#E8E9EB",
-                  color: "darkblue",
+                  color: "primary.light",
                   "&:hover": {
-                    background: "#F06543",
-                    color: "#E8E9EB",
+                    backgroundColor: "secondary.main",
+                    color: "primary.main",
                     borderColor: "#F06543",
                   },
                 }}

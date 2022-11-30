@@ -56,8 +56,9 @@ const Timer = ({
             transition: "1s linear all",
           
           },
-          boxShadow:"inset 0 0 10px 1px blue",
-          borderRadius:"50%",
+          borderRadius: "100%",
+          boxShadow: "inset 0 0 0px 8px lightblue",
+          backgroundColor: "transparent",
           
         }}
       />

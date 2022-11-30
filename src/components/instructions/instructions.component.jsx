@@ -64,7 +64,7 @@ const Instructions = (props) => {
             {isLogined ? (
               <Box>
                 <Box id="modal-title"   sx={{display:"flex",justifyContent:"center",gap:"1rem"}}>
-                  <Typography variant="h6" color="primary.dark">
+                  <Typography variant="h6" color="primary.dark" fontFamily="'Space Mono', monospace">
                   Level
                   </Typography>
                   <Select
@@ -73,7 +73,7 @@ const Instructions = (props) => {
                     onChange={(event) => {
                       setQuestionLevel(event.target.value);
                     }}
-                    sx={{color:"secondary.main"}}
+                    sx={{color:"secondary.main",fontFamily:"'Space Mono', monospace"}}
                   >
                     {levels?.map((difficulty) => {
                       return (
@@ -83,10 +83,10 @@ const Instructions = (props) => {
                       );
                     })}
                   </Select>
-                  <Typography data-testid="Questions" color="primary.dark" variant="h6">Questions</Typography>
+                  <Typography data-testid="Questions" color="primary.dark" variant="h6" fontFamily="'Space Mono', monospace">Questions</Typography>
                   <Select
                     variant="standard"
-                    sx={{color:"secondary.main"}}
+                    sx={{color:"secondary.main",fontFamily:"'Space Mono', monospace"}}
                     value={questionsRange}
                     defaultValue={5}
                     onChange={(event) => {
@@ -113,6 +113,7 @@ const Instructions = (props) => {
                   sx={{ mt: 2 }}
                   lineHeight={2}
                   color="black"
+                  fontFamily="'Space Mono', monospace"
                 >
                   <ul>
                     <li>Select no of question to attempt</li>
