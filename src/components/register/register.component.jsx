@@ -7,11 +7,12 @@ import {
   Divider,
   styled,
   TextField,
+  Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Image from "../../assets/annie-spratt-0ZPSX_mQ3xI-unsplash.jpg";
+import Image from "../../assets/space.jpg";
 import CommonStack from "../custom-styles/commonstack.component";
 import CommonButton from "../custom-styles/custombutton.component";
 /**
@@ -98,7 +99,6 @@ const Register = ({
   return (
     <Box
       sx={{
-        height: "100vh",
         backgroundImage: `url(${Image})`,
         backgroundPosition: "center",
         backgroundSize: "cover",
@@ -113,15 +113,18 @@ const Register = ({
         <Card
           sx={{
             margin: " calc(100vh - 80vh) auto",
-            boxShadow: "0px 5px 10px 0px rgba(239, 170, 170, 0.5)",
+            boxShadow: "0px 0 30px #fefefe",
           }}
         >
           <CardHeader
-            sx={{ paddingTop: "32px" }}
-            title="Register you account with us!"
+            sx={{ paddingTop: "32px"}}
+            title={<Typography variant="h5" fontFamily="Space Mono,monospace">
+Register you account with us!
+            </Typography>
+          }
           ></CardHeader>
           <CardContent>
-            <CommonStack spacing={2}>
+            <CommonStack spacing={2} sx={{color:"red"}}>
               <TextField
                 name="Name"
                 required
@@ -133,7 +136,7 @@ const Register = ({
                 error={userNameError}
                label="Name"
                inputProps={{"data-testid":"userName"}}
-               
+               color="success"
               />
               <TextField
                 name="Email"
@@ -147,6 +150,7 @@ const Register = ({
                 error={userEmailError}
                 inputProps={{"data-testid":"email"}}
                 label="E-mail"
+                color="success"
               />
               <TextField
                 name="Password"
@@ -160,6 +164,7 @@ const Register = ({
                 error={userPasswordError}
                 inputProps={{ "data-testid": "password"}}
                 label="Password"
+                color="success"
               />
               <CommonButton
                 variant="outlined"
@@ -167,8 +172,9 @@ const Register = ({
                 sx={{
                   borderColor: "#3cd458",
                   backgroundColor: "#fff",
+                  color:"green",
                   ":hover": {
-                    color: "#fff",
+                    color: "#fefefe",
                     backgroundColor: "#3cd458",
                     borderColor: "#3cd458",
                     boxShadow: "0 1px 10px rgb(60 212 88 / 40%)",

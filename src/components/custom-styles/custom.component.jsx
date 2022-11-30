@@ -23,8 +23,9 @@ export const CustomButton2 = styled(Button)({
 });
 
 export const CustomButton = styled(Button)({
-  borderColor: "success",
-  backgroundColor: "#fff",
+  borderColor: "green",
+  backgroundColor: "#fefefe",
+  color:"green",
   ":hover": {
     color: "#fefefe",
     backgroundColor: "#DF2935",

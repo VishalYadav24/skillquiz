@@ -11,7 +11,13 @@ const defaultTheme = createTheme({
     secondary: {
     main:"#DF2935"
     },
-  }
+  },
+  // typography: {
+  //   fontFamily: [
+  //     "'Roboto',sans-serif",
+  //     "'Space Mono', monospace",
+  //   ]
+  // }
 });
 
 export default defaultTheme;
