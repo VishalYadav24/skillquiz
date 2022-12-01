@@ -135,8 +135,9 @@ Register you account with us!
                 }}
                 error={userNameError}
                label="Name"
-               inputProps={{"data-testid":"userName"}}
+               inputProps={{"data-testid":"userName", maxlength:"25"}}
                color="success"
+              
               />
               <TextField
                 name="Email"

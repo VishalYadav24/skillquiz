@@ -113,7 +113,7 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
                     sx={{
                       [`& .${circularProgressClasses.circle}`]: {
                         strokeLinecap: "round",
-                        transition: "1s linear all",
+                        transition: "1.8s linear all",
                         animationDuration:"1s"
                         
                       },
