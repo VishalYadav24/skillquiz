@@ -243,13 +243,14 @@ const Questions = ({
                 padding: "16px",
                 width: { xs: "250px", sm: "350px", md: "500px", lg: "500px" },
                 marginTop: "150px",
-                bgcolor: "#FEDBD3",
+                bgcolor: "primary.main",
+                border:"3px solid #03256C"
               }}
             >
               <CardHeader
                 title={
                   <img
-                    style={{ width: "50px" }}
+                    style={{ width: "50px",boxShadow:" 0 0 20px blue",borderRadius:"50%" }}
                     src={require("../../assets/icons/sorry.png")}
                     alt="Sorry Icon"
                   />
@@ -265,11 +266,11 @@ const Questions = ({
                   startIcon={<ArrowLeft />}
                   fullWidth={false}
                   sx={{
-                    background: "#2F4858",
-                    color: "#fefefe",
+                    backgroundColor: "secondary.main",
+                    color: "primary.main",
                     "&:hover": {
-                      background: "#fefefe",
-                      color: "#e91e63",
+                      backgroundColor: "primary.common",
+                      color: "primary.main",
                     },
                     width: {
                       xs: "100%",
@@ -292,7 +293,7 @@ const Questions = ({
           </CommonStack>
         </Box>
       ) : isLoading ? (
-        <Box textAlign="center">
+        <Box textAlign="center" sx={{paddingTop:"20%"}}>
           <Typography>Please wait...</Typography>
           <Loader sx={{ color: "#F06543" }} />
         </Box>

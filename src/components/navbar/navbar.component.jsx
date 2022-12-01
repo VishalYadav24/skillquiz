@@ -49,7 +49,7 @@ const Navbar = ({
           </Typography>
           
           <Avatar src={require("../../assets/icons/young-man.png")} alt={user?.name[0]} sx={{bgcolor:"primary",margin:"16px",color:"#F06543"}}  ></Avatar>
-          <Typography margin={2}   sx={{display:{xs:"none",sm:"none",md:"block",lg:"block"}}}>{user?.name}</Typography>
+          <Typography margin={2}   sx={{display:{xs:"none",sm:"none",md:"block",lg:"block"}}} color="primary.dark" fontFamily="'Space Mono', monospace" fontWeight="700">{user?.name}</Typography>
           
           {isLogined ? (
             <CommonButton

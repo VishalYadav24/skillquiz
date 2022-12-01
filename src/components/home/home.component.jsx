@@ -69,7 +69,7 @@ const Home = ({
           overflowX: "hidden",
           overflowY: "auto",
           minHeight: "calc(100vh - 112px)",
-          backgroundColor:"primary.main"
+          backgroundColor: "primary.main",
         }}
       >
         {showReturnDialog ? (
@@ -79,16 +79,26 @@ const Home = ({
                 padding: "16px",
                 width: { xs: "250px", sm: "350px", md: "500px", lg: "500px" },
                 marginTop: "150px",
-                bgcolor: "#FEDBD3",
+                bgcolor: "primary",
+                boxShadow: "0px 0px 20px blue",
+                border: "4px solid #03256C",
               }}
             >
               <CardHeader
-                title="Attention!"
-                subheader="You were not able to complete quiz previously"
+                title={
+                  <Typography variant="h5" color="primary.dark">
+                    Attention!
+                  </Typography>
+                }
+                subheader={
+                  <Typography color="primary.light">
+                    You were not able to complete quiz previously
+                  </Typography>
+                }
               />
               <CardContent>
-                <Typography>
-                  Do you wish to resume from where you left
+                <Typography color="primary.light">
+                  Do you wish to resume from where you left ?
                 </Typography>
               </CardContent>
               <CardContent>
@@ -101,7 +111,13 @@ const Home = ({
                       background: "#fefefe",
                       color: "#e91e63",
                     },
-                    width:{xs:"100%",sm:"100%",md:"40%",lg:"30%",xl:"30%"}
+                    width: {
+                      xs: "100%",
+                      sm: "100%",
+                      md: "40%",
+                      lg: "30%",
+                      xl: "30%",
+                    },
                   }}
                 >
                   Resume
@@ -113,17 +129,35 @@ const Home = ({
                     background: "#fefefe",
                     color: "#2F4858",
                     borderColor: "#fefefe",
-                    marginLeft:{xs:"0rem",sm:"0rem",md:".5rem",lg:"1rem",xl:"1rem"},
-                    marginTop:{xs:"1rem",sm:"1rem",md:"0rem",lg:"0rem",xl:"0rem"},
+                    marginLeft: {
+                      xs: "0rem",
+                      sm: "0rem",
+                      md: ".5rem",
+                      lg: "1rem",
+                      xl: "1rem",
+                    },
+                    marginTop: {
+                      xs: "1rem",
+                      sm: "1rem",
+                      md: "0rem",
+                      lg: "0rem",
+                      xl: "0rem",
+                    },
                     "&:hover": {
                       background: "#2F4858",
                       color: "#fefefe",
                       borderColor: "#2F4858",
                     },
-                    width:{xs:"100%",sm:"100%",md:"40%",lg:"30%",xl:"30%"}
+                    width: {
+                      xs: "100%",
+                      sm: "100%",
+                      md: "40%",
+                      lg: "30%",
+                      xl: "30%",
+                    },
                   }}
                 >
-                  Start Fresh!
+                  Start Fresh
                 </CommonButton>
               </CardContent>
             </Card>

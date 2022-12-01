@@ -118,7 +118,7 @@ const Register = ({
         >
           <CardHeader
             sx={{ paddingTop: "32px"}}
-            title={<Typography variant="h5" fontFamily="Space Mono,monospace">
+            title={<Typography variant="h5" fontWeight="600" fontFamily="Space Mono,monospace">
 Register you account with us!
             </Typography>
           }

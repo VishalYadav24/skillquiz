@@ -63,7 +63,7 @@ const Instructions = (props) => {
           <Box sx={style} component="form">
             {isLogined ? (
               <Box>
-                <Box id="modal-title"   sx={{display:"flex",justifyContent:"center",gap:"1rem"}}>
+                <Box id="modal-title"   sx={{display:"flex",justifyContent:"center",gap:".5rem"}}>
                   <Typography variant="h6" color="primary.dark" fontFamily="'Space Mono', monospace">
                   Level
                   </Typography>
