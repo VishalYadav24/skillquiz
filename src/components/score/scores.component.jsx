@@ -61,8 +61,8 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
    * If user want to give re-test, user click Retest button,this redirect user to question tab with the same question which were provided earlier
    */
   const handleResetButton = () => {
-    setUserAgreed(() => true);
-    setRetry(() => true);
+    setUserAgreed( true); // todo replace with normal boolean value
+    setRetry(true); // 
     setUserResponse(null);
     navigate("/questions", { replace: true });
   };

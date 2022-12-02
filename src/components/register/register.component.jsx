@@ -135,7 +135,7 @@ Register you account with us!
                 }}
                 error={userNameError}
                label="Name"
-               inputProps={{"data-testid":"userName", maxlength:"25"}}
+               inputProps={{"data-testid":"userName", "maxlength":"25"}}
                color="success"
               
               />
