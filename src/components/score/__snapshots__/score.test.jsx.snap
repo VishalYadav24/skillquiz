@@ -2,13 +2,13 @@
 
 exports[`snapshot test snapshot Score 1`] = `
 <div
-  className="MuiBox-root css-tognv"
+  className="MuiBox-root css-1s5vvty"
 >
   <div
     className="MuiStack-root css-1anbbb7-MuiStack-root"
   >
     <div
-      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-10bwwws-MuiPaper-root-MuiCard-root"
+      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1vcr12g-MuiPaper-root-MuiCard-root"
     >
       <div
         className="MuiCardHeader-root css-185gdzj-MuiCardHeader-root"
@@ -34,7 +34,7 @@ exports[`snapshot test snapshot Score 1`] = `
           >
             <span
               aria-valuenow={NaN}
-              className="MuiCircularProgress-root MuiCircularProgress-determinate MuiCircularProgress-colorWarning css-1onqtb4-MuiCircularProgress-root"
+              className="MuiCircularProgress-root MuiCircularProgress-determinate MuiCircularProgress-colorWarning css-xz9loa-MuiCircularProgress-root"
               role="progressbar"
               style={
                 Object {
@@ -70,6 +70,9 @@ exports[`snapshot test snapshot Score 1`] = `
               <div
                 className="MuiTypography-root MuiTypography-h6 css-pa88fb-MuiTypography-root"
               >
+                <span
+                  className="MuiTypography-root MuiTypography-span css-fgkswi-MuiTypography-root"
+                />
                  / 
               </div>
             </div>
@@ -111,7 +114,7 @@ exports[`snapshot test snapshot Score 1`] = `
         className="MuiCardActions-root MuiCardActions-spacing css-1fjc5kp-MuiCardActions-root"
       >
         <button
-          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1pc3wdo-MuiButtonBase-root-MuiButton-root"
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-wlmnnu-MuiButtonBase-root-MuiButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -147,7 +150,7 @@ exports[`snapshot test snapshot Score 1`] = `
           Retest
         </button>
         <button
-          className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-1rcarow-MuiButtonBase-root-MuiButton-root"
+          className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-qam763-MuiButtonBase-root-MuiButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}

@@ -8,12 +8,12 @@ exports[`snapshot test snapshot Skills 1`] = `
     className="MuiBox-root css-jmdsto"
   >
     <h4
-      className="MuiTypography-root MuiTypography-h4 css-1313egv-MuiTypography-root"
+      className="MuiTypography-root MuiTypography-h4 css-1lw9fw4-MuiTypography-root"
     >
       Choose a topic
     </h4>
     <p
-      className="MuiTypography-root MuiTypography-body1 css-8p1c9s-MuiTypography-root"
+      className="MuiTypography-root MuiTypography-body1 css-u030s2-MuiTypography-root"
       varient="h6"
     >
       Test you knowledge on various topics
@@ -23,7 +23,7 @@ exports[`snapshot test snapshot Skills 1`] = `
     className="MuiStack-root css-1fldpa7-MuiStack-root"
   >
     <div
-      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1o2i9jz-MuiPaper-root-MuiCard-root"
+      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-10g526f-MuiPaper-root-MuiCard-root"
     >
       <div
         className="MuiCardContent-root css-46bh2p-MuiCardContent-root"
@@ -64,7 +64,7 @@ exports[`snapshot test snapshot Skills 1`] = `
             type="button"
           >
             <span
-              className="MuiTypography-root MuiTypography-body css-v53lc9-MuiTypography-root"
+              className="MuiTypography-root MuiTypography-body css-6dq5cv-MuiTypography-root"
               onClick={[Function]}
             >
               Take a quiz
@@ -74,7 +74,7 @@ exports[`snapshot test snapshot Skills 1`] = `
       </div>
     </div>
     <div
-      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1o2i9jz-MuiPaper-root-MuiCard-root"
+      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-10g526f-MuiPaper-root-MuiCard-root"
     >
       <div
         className="MuiCardContent-root css-46bh2p-MuiCardContent-root"
@@ -115,7 +115,7 @@ exports[`snapshot test snapshot Skills 1`] = `
             type="button"
           >
             <span
-              className="MuiTypography-root MuiTypography-body css-v53lc9-MuiTypography-root"
+              className="MuiTypography-root MuiTypography-body css-6dq5cv-MuiTypography-root"
               onClick={[Function]}
             >
               Take a quiz
@@ -125,7 +125,7 @@ exports[`snapshot test snapshot Skills 1`] = `
       </div>
     </div>
     <div
-      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1o2i9jz-MuiPaper-root-MuiCard-root"
+      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-10g526f-MuiPaper-root-MuiCard-root"
     >
       <div
         className="MuiCardContent-root css-46bh2p-MuiCardContent-root"
@@ -166,7 +166,7 @@ exports[`snapshot test snapshot Skills 1`] = `
             type="button"
           >
             <span
-              className="MuiTypography-root MuiTypography-body css-v53lc9-MuiTypography-root"
+              className="MuiTypography-root MuiTypography-body css-6dq5cv-MuiTypography-root"
               onClick={[Function]}
             >
               Take a quiz
@@ -176,7 +176,7 @@ exports[`snapshot test snapshot Skills 1`] = `
       </div>
     </div>
     <div
-      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1o2i9jz-MuiPaper-root-MuiCard-root"
+      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-10g526f-MuiPaper-root-MuiCard-root"
     >
       <div
         className="MuiCardContent-root css-46bh2p-MuiCardContent-root"
@@ -217,7 +217,7 @@ exports[`snapshot test snapshot Skills 1`] = `
             type="button"
           >
             <span
-              className="MuiTypography-root MuiTypography-body css-v53lc9-MuiTypography-root"
+              className="MuiTypography-root MuiTypography-body css-6dq5cv-MuiTypography-root"
               onClick={[Function]}
             >
               Take a quiz

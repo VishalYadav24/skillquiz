@@ -5,6 +5,8 @@ import {
   renderHook,
   screen,
   waitFor,
+  waitForElementToBeRemoved,
+  within,
 } from "@testing-library/react";
 import { BrowserRouter, MemoryRouter, Route, Router } from "react-router-dom";
 import renderer from "react-test-renderer";
@@ -56,14 +58,30 @@ describe("Questions component when no internet connection", () => {
         ).toBeInTheDocument();
       });
     });
-    screen.debug();
   });
-  // test("click on home button to go back to home screen", async () => {
-  //   const user = userEvent.setup();
-  //   renderQuestion(false, false);
-
-  //   screen.debug();
-  // });
+  test("load questions", async () => {
+    const user = userEvent.setup();
+    renderQuestion(false, false);
+   const selectedTopic=screen.getByText("JavaScript");
+   const questionlevel = screen.getByText("Easy");
+   expect(selectedTopic).toHaveTextContent("JavaScript");
+   expect(questionlevel).toHaveTextContent("Easy");
+  });
+  test("pagination , moving bac forth on  questions page", async () => {
+    const user = userEvent.setup();
+    renderQuestion(false, false);
+    const questions = (screen.getAllByTestId("questions"))[0];
+    expect(questions).toHaveTextContent('1 . How do you round the number 7.25, to the nearest integer?');
+    const pageTwo = (screen.getByText("2"));
+    act(async()=>{
+      await fireEvent.click(pageTwo);
+      waitFor(async ()=>{
+        const questions = (screen.getAllByTestId("questions"))[0];
+       await expect(questions).toHaveTextContent('2 . How do you call a function named "myFunction"?');
+      })
+    })
+    
+  });
 });
 
 describe("snapshot test", () => {
@@ -98,6 +116,23 @@ describe("snapshot test", () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
+  test("submit quiz",()=>{
+    renderQuestion(false, false);
+    const submitButton = screen.getByText("SUBMIT");
+   const options = within(screen.getByTestId("options")).getAllByTestId("RadioButtonUncheckedIcon");
+   act(async()=>{
+    fireEvent.click(options[0]);
+    const selectedOption =  within(screen.getByTestId("options")).getAllByTestId("RadioButtonCheckedIcon");
+    expect(selectedOption[0]).toBeInTheDocument();
+    
+   })
+    act(async()=>{
+      fireEvent.click(submitButton);
+     await expect(location.pathname).toBe('/score');
+     
+    })
+   
+  })
 });
 
 
@@ -222,7 +257,7 @@ const questions = [
   },
   {
     id: 3,
-    question: "How do you declare a JavaScript variable?",
+    question: "How do you declare a HTML variable?",
     options: [
       {
         id: 1,
@@ -271,7 +306,7 @@ const questions = [
   {
     id: 5,
     question:
-      "What is the correct JavaScript syntax to change the content of the HTML element below?",
+      "What is the correct HTML syntax to change the content of the HTML element below?",
     options: [
       {
         id: 1,
@@ -372,5 +407,5 @@ const userData = {
   questionAttempted: 3,
   score: 1,
   allAttempted: false,
-  accidentalClose: true,
+  accidentalClose: false,
 };

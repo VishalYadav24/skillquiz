@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Button, Card, CardContent, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import Instructions from "../instructions/instructions.component";
@@ -34,7 +34,7 @@ const Skills = ({
   setUserAgreed,
   isLogined,
 }) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   /**
    * Control modal pop up action -open
    */

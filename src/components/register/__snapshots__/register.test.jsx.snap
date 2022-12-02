@@ -2,14 +2,14 @@
 
 exports[`snapshot test snapshot <Register/> 1`] = `
 <div
-  className="MuiBox-root css-1nasgve"
+  className="MuiBox-root css-nupfsh"
 >
   <form
     className="MuiStack-root css-w004l2-MuiStack-root"
     onSubmit={[Function]}
   >
     <div
-      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1r906xv-MuiPaper-root-MuiCard-root"
+      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-t7360v-MuiPaper-root-MuiCard-root"
     >
       <div
         className="MuiCardHeader-root css-3f2h87-MuiCardHeader-root"
@@ -17,24 +17,24 @@ exports[`snapshot test snapshot <Register/> 1`] = `
         <div
           className="MuiCardHeader-content css-1qbkelo-MuiCardHeader-content"
         >
-          <span
-            className="MuiTypography-root MuiTypography-h5 MuiCardHeader-title css-1qvr50w-MuiTypography-root"
+          <h5
+            className="MuiTypography-root MuiTypography-h5 css-1ljv0ac-MuiTypography-root"
           >
             Register you account with us!
-          </span>
+          </h5>
         </div>
       </div>
       <div
         className="MuiCardContent-root css-46bh2p-MuiCardContent-root"
       >
         <div
-          className="MuiStack-root css-1p5q5e5-MuiStack-root"
+          className="MuiStack-root css-14dtsvt-MuiStack-root"
         >
           <div
             className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
           >
             <label
-              className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary Mui-required MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+              className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorSuccess Mui-required MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1lwa3th-MuiFormLabel-root-MuiInputLabel-root"
               data-shrink={false}
               htmlFor=":r0:"
               id=":r0:-label"
@@ -49,7 +49,7 @@ exports[`snapshot test snapshot <Register/> 1`] = `
               </span>
             </label>
             <div
-              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorSuccess MuiInputBase-formControl css-kzf2d7-MuiInputBase-root-MuiOutlinedInput-root"
               onClick={[Function]}
             >
               <input
@@ -59,6 +59,7 @@ exports[`snapshot test snapshot <Register/> 1`] = `
                 data-testid="userName"
                 disabled={false}
                 id=":r0:"
+                maxlength="25"
                 name="Name"
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -89,7 +90,7 @@ exports[`snapshot test snapshot <Register/> 1`] = `
             className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
           >
             <label
-              className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary Mui-required MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+              className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorSuccess Mui-required MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1lwa3th-MuiFormLabel-root-MuiInputLabel-root"
               data-shrink={false}
               htmlFor=":r1:"
               id=":r1:-label"
@@ -104,7 +105,7 @@ exports[`snapshot test snapshot <Register/> 1`] = `
               </span>
             </label>
             <div
-              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorSuccess MuiInputBase-formControl css-kzf2d7-MuiInputBase-root-MuiOutlinedInput-root"
               onClick={[Function]}
             >
               <input
@@ -144,7 +145,7 @@ exports[`snapshot test snapshot <Register/> 1`] = `
             className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
           >
             <label
-              className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary Mui-required MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+              className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorSuccess Mui-required MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1lwa3th-MuiFormLabel-root-MuiInputLabel-root"
               data-shrink={false}
               htmlFor=":r2:"
               id=":r2:-label"
@@ -159,7 +160,7 @@ exports[`snapshot test snapshot <Register/> 1`] = `
               </span>
             </label>
             <div
-              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorSuccess MuiInputBase-formControl css-kzf2d7-MuiInputBase-root-MuiOutlinedInput-root"
               onClick={[Function]}
             >
               <input
@@ -196,7 +197,7 @@ exports[`snapshot test snapshot <Register/> 1`] = `
             </div>
           </div>
           <button
-            className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-10qpwss-MuiButtonBase-root-MuiButton-root"
+            className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-1widhd9-MuiButtonBase-root-MuiButton-root"
             disabled={false}
             onBlur={[Function]}
             onContextMenu={[Function]}

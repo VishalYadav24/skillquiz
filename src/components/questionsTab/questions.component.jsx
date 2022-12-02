@@ -369,13 +369,13 @@ const Questions = ({
               <CardContent>
                 <Box>
                   <CommonStack spacing={2} alignItems="self-start">
-                    <Typography variant="h6">
+                    <Typography variant="h6" data-testid="questions">
                       {`${currentQuestion + 1} . ${
                         questions[currentQuestion]?.question
                       }`}
                     </Typography>
                     <CommonStack direction="column" textAlign="left">
-                      <FormControl>
+                      <FormControl data-testid="options">
                         {/* <FormLabel id="radio-options" sx={{color:"#F06543"}}>
                           Options
                         </FormLabel> */}
@@ -414,7 +414,7 @@ const Questions = ({
             <Divider style={{ padding: "16px" }}>Finish Quiz</Divider>
 
             <Box textAlign="end">
-              <CommonButton variant="contained" color="success" type="submit">
+              <CommonButton variant="contained" color="success" type="submit" data-testid="submit">
                 SUBMIT
               </CommonButton>
             </Box>
