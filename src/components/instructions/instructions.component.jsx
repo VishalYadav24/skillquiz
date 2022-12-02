@@ -74,6 +74,7 @@ const Instructions = (props) => {
                       setQuestionLevel(event.target.value);
                     }}
                     sx={{color:"secondary.main",fontFamily:"'Space Mono', monospace"}}
+                    data-testid="questionLevel"
                   >
                     {levels?.map((difficulty) => {
                       return (

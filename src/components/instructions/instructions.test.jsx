@@ -15,28 +15,28 @@ describe("Instructions", () => {
      expect(location?.pathname).toBe("/questions");
     });
   });
-  test("snapshot home component", async () => {
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <Instructions
-            open={true}
-            handleClose={handleClose}
-            levels={levels}
-            limit={limit}
-            questionLevel={questionLevel}
-            setQuestionLevel={setQuestionLevel}
-            questionsRange={questionsRange}
-            setQuestionsRange={setQuestionsRange}
-            userAgreed={false}
-            setUserAgreed={setUserAgreed}
-            isLogined={true}
-          />
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
+  // test("snapshot home component", async () => {
+  //   const tree = renderer
+  //     .create(
+  //       <BrowserRouter>
+  //         <Instructions
+  //           open={true}
+  //           handleClose={handleClose}
+  //           levels={levels}
+  //           limit={limit}
+  //           questionLevel={questionLevel}
+  //           setQuestionLevel={setQuestionLevel}
+  //           questionsRange={questionsRange}
+  //           setQuestionsRange={setQuestionsRange}
+  //           userAgreed={false}
+  //           setUserAgreed={setUserAgreed}
+  //           isLogined={true}
+  //         />
+  //       </BrowserRouter>
+  //     )
+  //     .toJSON();
+  //   expect(tree).toMatchSnapshot();
+  // });
 });
 
 const renderInstructions = (userAgreed, isLogined) => {
