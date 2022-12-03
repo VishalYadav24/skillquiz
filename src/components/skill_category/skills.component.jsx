@@ -64,7 +64,7 @@ const Skills = ({
           Test you knowledge on various topics
         </Typography>
       </Box>
-      <CommonStack direction={{ xs: "column", sm: "row" }} flexWrap="wrap">
+      <CommonStack direction={{ xs: "column", sm: "row" }} flexWrap="wrap" justifyContent="center">
         {listOfTopics?.map((listOfTopic) => {
           return (
             <Card
