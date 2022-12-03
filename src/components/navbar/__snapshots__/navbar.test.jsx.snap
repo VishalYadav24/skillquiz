@@ -48,10 +48,10 @@ exports[`Navbar snapshot 1`] = `
         SkillScore
       </div>
       <div
-        className="MuiAvatar-root MuiAvatar-circular css-1upnl6o-MuiAvatar-root"
+        className="MuiAvatar-root MuiAvatar-circular css-4428vk-MuiAvatar-root"
       >
         <img
-          alt="g"
+          alt="User Name"
           className="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
           src="young-man.png"
         />
@@ -62,7 +62,7 @@ exports[`Navbar snapshot 1`] = `
         gfg
       </p>
       <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-yh9u5j-MuiButtonBase-root-MuiButton-root"
+        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-103i3hd-MuiButtonBase-root-MuiButton-root"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}

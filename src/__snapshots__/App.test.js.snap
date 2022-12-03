@@ -55,10 +55,10 @@ exports[`snapshot test snapshot App 1`] = `
             SkillScore
           </div>
           <div
-            className="MuiAvatar-root MuiAvatar-circular css-1ccmir4-MuiAvatar-root"
+            className="MuiAvatar-root MuiAvatar-circular css-itr3sl-MuiAvatar-root"
           >
             <img
-              alt="U"
+              alt="User Name"
               className="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
               src="young-man.png"
             />
@@ -69,7 +69,7 @@ exports[`snapshot test snapshot App 1`] = `
             User name
           </p>
           <button
-            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-l9u126-MuiButtonBase-root-MuiButton-root"
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1p15xzl-MuiButtonBase-root-MuiButton-root"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -117,7 +117,7 @@ exports[`snapshot test snapshot App 1`] = `
             </p>
           </div>
           <div
-            className="MuiStack-root css-1fldpa7-MuiStack-root"
+            className="MuiStack-root css-1fkxkcb-MuiStack-root"
           >
             <div
               className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1i5fr42-MuiPaper-root-MuiCard-root"

@@ -57,9 +57,12 @@ const Navbar = ({
               onClick={handleLogout}
               sx={{
                 color: "black",
-                background:"primary",
+                border: "2px solid black ",
+                background:"#fefefe",
                 "&:hover": {
-                  color: "primary.dark",
+                  color: "black",
+                  border: "2px solid black ",
+                  background:"#fefefe",
                 },
               }}
             >
@@ -70,13 +73,13 @@ const Navbar = ({
               variant="contained"
               onClick={handleLogout}
               sx={{
-                color: "#2F4858",
-                border: "2px solid #2F4858 ",
-                background:"#fefefe",
+                color: "black",
+                border: "2px solid black ",
+                backgroundColor:"primary.main",
                 "&:hover": {
-                  color: "#2F4858",
-                  border: "2px solid #2F4858 ",
-                  background:"#fefefe",
+                  color: "black",
+                  border: "2px solid black ",
+                  backgroundColor:"primary.main",
                 },
               }}
             >

@@ -50,10 +50,10 @@ exports[`Home component snapshot home component 1`] = `
           SkillScore
         </div>
         <div
-          className="MuiAvatar-root MuiAvatar-circular css-1upnl6o-MuiAvatar-root"
+          className="MuiAvatar-root MuiAvatar-circular css-4428vk-MuiAvatar-root"
         >
           <img
-            alt="U"
+            alt="User Name"
             className="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
             src="young-man.png"
           />
@@ -64,7 +64,7 @@ exports[`Home component snapshot home component 1`] = `
           User name
         </p>
         <button
-          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1yuxq5f-MuiButtonBase-root-MuiButton-root"
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-e02zu3-MuiButtonBase-root-MuiButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -112,7 +112,7 @@ exports[`Home component snapshot home component 1`] = `
           </p>
         </div>
         <div
-          className="MuiStack-root css-1fldpa7-MuiStack-root"
+          className="MuiStack-root css-1fkxkcb-MuiStack-root"
         >
           <div
             className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-10g526f-MuiPaper-root-MuiCard-root"
