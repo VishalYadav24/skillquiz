@@ -109,7 +109,7 @@ const Questions = ({
     if (userData?.accidentalClose) {
       count = previousUserResponse ? previousUserResponse : {};
       const firstResponse = Object.keys(count);
-      setCurrentOption(() => count[firstResponse[0]]?.value || "");
+      setCurrentOption(count[firstResponse[0]]?.value || "");
     }
     setUserResponse(() => count);
   }, [previousUserResponse]);
@@ -170,7 +170,7 @@ const Questions = ({
       };
     }
     setCurrentOption(count[currentQuestion + 1]?.value);
-    setUserResponse(() => count);
+    setUserResponse(count);
   };
   /**
    * Handel the Quiz submission.
@@ -178,7 +178,7 @@ const Questions = ({
    */
   const onQuizSubmit = (event) => {
     event.preventDefault();
-    setIsLoading(() => true);
+    setIsLoading(true);
     count = {};
     calculateScores();
   };
@@ -209,7 +209,7 @@ const Questions = ({
    * @param {*} source - string - place from where the function is called
    */
   const submitDataToLocalStorage = (source) => {
-    setPreviousUserResponse(() => null);
+    setPreviousUserResponse(null);
 
     const userResponseObj = {
       ...userData,
