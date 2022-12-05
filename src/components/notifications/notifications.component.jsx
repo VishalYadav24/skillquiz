@@ -18,7 +18,7 @@ const Notifications = ({
     if (reason === "clickaway") {
       return;
     }
-     setShowNotification(()=>false);
+     setShowNotification(false);
   };
 
 
