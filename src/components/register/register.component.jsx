@@ -80,19 +80,19 @@ const Register = ({
       if (!userNameError && !userEmailError && !userPasswordError) {
         localStorage.clear();
         localStorage.setItem("User", JSON.stringify(User));
-        setIsLogined(() => true);
-        setUserAgreed(() => false);
+        setIsLogined( true);
+        setUserAgreed( false);
         setNotification(() => {
           return { message: "Registration Successful", type: "success" };
         });
-        setShowNotification(() => true);
+        setShowNotification( true);
         navigate("/");
       }
     } catch (error) {
       setNotification(() => {
         return { message: error?.message, type: "error" };
       });
-      setShowNotification(() => true);
+      setShowNotification( true);
     }
   };
 
