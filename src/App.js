@@ -35,7 +35,7 @@ function App() {
     if (user) {
       const { accidentalClose } = user;
       if (accidentalClose) {
-        setShowReturnDialog(() => true);
+        setShowReturnDialog(true);
       }
     }
   }, []);
@@ -52,8 +52,8 @@ function App() {
             if (response.status) {
               setQuestions(() => constructObject(response.data));
 
-              setIsLoading(() => false);
-              setErrorOccurred(() => false);
+              setIsLoading(false);
+              setErrorOccurred(false);
             }
           }
           if (retry) {
@@ -69,8 +69,8 @@ function App() {
                 setSelectedTopic(() => selectedTopic);
                 setQuestionLevel(() => providedQuestionsLevel);
               }
-              setIsLoading(() => false);
-              setErrorOccurred(() => false);
+              setIsLoading( false);
+              setErrorOccurred(false);
             }
           }
         }
@@ -79,8 +79,8 @@ function App() {
           return { message: error.message, type: "error" };
         });
         setShowNotification(true);
-        setErrorOccurred(() => true);
-        setIsLoading(() => false);
+        setErrorOccurred( true);
+        setIsLoading(false);
       }
     };
     getQuestions();
@@ -165,9 +165,9 @@ function App() {
    * Resume -> redirect user to question page , start timer from the time at which user left quiz also display previous responses.
    */
   const handleResume = () => {
-    setShowReturnDialog(() => false);
-    setUserAgreed(() => true);
-    setRetry(() => true);
+    setShowReturnDialog(false);
+    setUserAgreed( true);
+    setRetry(true);
     setUserResponse(null);
     setQuestionsRange(() => {
       return user?.provideQuestionsCount;
