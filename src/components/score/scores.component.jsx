@@ -51,8 +51,8 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
    * When user click home button , redirects user to Home.
    */
   const handleHomeButton = () => {
-    setUserAgreed(() => false);
-    setRetry(() => false);
+    setUserAgreed( false);
+    setRetry( false);
     setUserResponse(null);
     setQuestions([]);
     navigate("/", { replace: true });
