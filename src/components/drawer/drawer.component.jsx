@@ -24,6 +24,9 @@ function ResponsiveDrawer(props) {
 
   const drawer = (
     <div>
+      <Typography  padding={2}>
+        Question
+        </Typography>
       <List style={questions.length > 5 ? {display:"grid",gridTemplateColumns:"repeat(5,120px)"}   : {display:"grid",gridTemplateColumns:"repeat(1,120px)"} }>
         {questions?.map((data) => {
           return (
@@ -41,8 +44,6 @@ function ResponsiveDrawer(props) {
                 }}}
               >
                 <Typography variant="span">
-                  Question
-                  <br />
                   {data?.id}
                 </Typography>
               </CommonButton>

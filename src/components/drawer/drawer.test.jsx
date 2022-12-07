@@ -16,7 +16,7 @@ describe("snapshot test",()=>{
     //     ReactDOM.createPortal.mockClear()
     //   })
     
-    test("snapshot drawer", () => {
+    test(" drawer", () => {
       render(
         <ResponsiveDrawer
           questions={questions}
