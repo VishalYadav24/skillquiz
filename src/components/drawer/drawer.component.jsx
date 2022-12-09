@@ -88,7 +88,7 @@ function ResponsiveDrawer(props) {
               width: "100%",
               marginTop: navbarHeight,
               height: "100%",
-              background:"#38618C"
+              background:"lightgray"
             },
           }}
         >
