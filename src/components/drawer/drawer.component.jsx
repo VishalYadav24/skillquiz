@@ -85,8 +85,8 @@ function ResponsiveDrawer(props) {
             display: { xs: "block", sm: "block",md:"block",lg:"none",xl:"none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
-              width: "100%",
-              marginTop: navbarHeight,
+              width: "50%",
+              // marginTop: navbarHeight,
               height: "100%",
               background:"lightgray"
             },
