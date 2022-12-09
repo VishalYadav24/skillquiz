@@ -48,7 +48,7 @@ const Navbar = ({
             SkillScore
           </Typography>
           
-          <Avatar src={require("../../assets/icons/young-man.png")} alt={"User Name"} sx={{bgcolor:"primary",margin:"16px"}}  ></Avatar>
+          <Avatar src={require("../../assets/icons/young-man.png")} alt={"User Name"} sx={{bgcolor:"primary",margin:"16px",boxShadow:" inset 0 0  10px blue"}}  ></Avatar>
           <Typography margin={2}   sx={{display:{xs:"none",sm:"none",md:"block",lg:"block"}}} color="primary.dark" fontFamily="'Space Mono', monospace" fontWeight="700">{user?.name}</Typography>
           
           {isLogined ? (
