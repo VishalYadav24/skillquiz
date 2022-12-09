@@ -35,9 +35,9 @@ function ResponsiveDrawer(props) {
                 onClick={() => handleClick("", data?.id)}
                 variant="outlined"
                 style={
-                  attempts.includes(data?.id?.toString()) ? {color: "#fff", backgroundColor: "#F06543", borderColor: "#F06543",transition:"ease-in .75s" }
+                  attempts.includes(data?.id?.toString()) ? {color: "#fff", backgroundColor: "#F06543",borderRadius:"50px", borderColor: "#F06543",transition:"ease-in .75s" }
                   :
-                  {}
+                  {borderRadius:"50px"}
                 }
                 sx={{color: "black",border:"1px solid black",'&.MuiButtonBase-root.MuiButton-root:hover':{
                   color: "black",border:"1px solid black"
