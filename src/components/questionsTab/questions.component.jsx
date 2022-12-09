@@ -228,7 +228,7 @@ const Questions = ({
     localStorage.clear();
     localStorage.setItem("User", JSON.stringify(userResponseObj));
     if (source !== "closeTab") {
-      setUserAgreed(() => false);
+      setUserAgreed(false);
       navigate("/score", { replace: true });
     }
   };
