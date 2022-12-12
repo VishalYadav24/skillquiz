@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import renderer from "react-test-renderer";
 import ResponsiveDrawer from "./drawer.component";
-import toJson from 'enzyme-to-json';
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 
 describe("snapshot test",()=>{
