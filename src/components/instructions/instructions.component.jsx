@@ -46,9 +46,10 @@ const Instructions = (props) => {
    * it redirects user to question screen.
    */
   const onStart = () => {
+    setUserAgreed(true);
     handleClose();
     navigate("/questions",{replace:true});
-    setUserAgreed(() => true);
+   
   };
   return (
     <div>
