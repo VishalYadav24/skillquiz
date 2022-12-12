@@ -14,7 +14,7 @@ const Notifications = ({
    * @param {*} reason 
    * @returns none.
    */
-  const handleClose = (event, reason) => {
+  const handleClose = ( reason) => {
     if (reason === "clickaway") {
       return;
     }
