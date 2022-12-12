@@ -111,7 +111,7 @@ const Questions = ({
       const firstResponse = Object.keys(count);
       setCurrentOption(count[firstResponse[0]]?.value || "");
     }
-    setUserResponse(() => count);
+    setUserResponse(count);
   }, [previousUserResponse]);
 
   useEffect(() => {
@@ -154,21 +154,21 @@ const Questions = ({
    * @param {*} e -click event
    */
   const handleOptionsSelection = (e) => {
-    if (count[currentQuestion + 1]) {
+  //  if (count[currentQuestion + 1]) {
       count[currentQuestion + 1] = {
         id: questions[currentQuestion].options.find(
           (data) => data.value === e.target.value
         )?.id,
         value: e.target.value,
       };
-    } else {
+   // } else {
       count[currentQuestion + 1] = {
         id: questions[currentQuestion].options.find(
           (data) => data.value === e.target.value
         )?.id,
         value: e.target.value,
       };
-    }
+   // }
     setCurrentOption(count[currentQuestion + 1]?.value);
     setUserResponse(count);
   };
