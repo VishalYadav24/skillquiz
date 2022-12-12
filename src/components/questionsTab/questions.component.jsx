@@ -162,12 +162,12 @@ const Questions = ({
         value: e.target.value,
       };
    // } else {
-      count[currentQuestion + 1] = {
-        id: questions[currentQuestion].options.find(
-          (data) => data.value === e.target.value
-        )?.id,
-        value: e.target.value,
-      };
+      // count[currentQuestion + 1] = {
+      //   id: questions[currentQuestion].options.find(
+      //     (data) => data.value === e.target.value
+      //   )?.id,
+      //   value: e.target.value,
+      // };
    // }
     setCurrentOption(count[currentQuestion + 1]?.value);
     setUserResponse(count);
