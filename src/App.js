@@ -75,9 +75,8 @@ function App() {
           }
         }
       } catch (error) {
-        setNotification((notification) => {
-          return { message: error.message, type: "error" };
-        });
+        setNotification( { message: error.message, type: "error" }
+        );
         setShowNotification(true);
         setErrorOccurred( true);
         setIsLoading(false);
@@ -94,7 +93,7 @@ function App() {
    */
   const constructObject = (data) => {
     let questionsList = [];
-    data.map((list, index) => {
+    data?.map((list, index) => {
       questionsList.push({
         id: index + 1,
         question: list?.question,
