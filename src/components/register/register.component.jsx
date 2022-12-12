@@ -163,7 +163,7 @@ Register you account with us!
                   setUserPassword(event.target.value);
                 }}
                 error={userPasswordError}
-                inputProps={{ "data-testid": "password"}}
+                inputProps={{ "data-testid": "password","minLength":3}}
                 label="Password"
                 color="success"
               />
