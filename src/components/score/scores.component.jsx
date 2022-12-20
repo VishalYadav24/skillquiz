@@ -64,9 +64,9 @@ const Scores = ({ setUserAgreed, setRetry, setUserResponse, setQuestions }) => {
     setUserAgreed( true); // todo replace with normal boolean value
     setRetry(true); // 
     setUserResponse(null);
-    setTimeout(() => {
+  
       navigate("/questions", { replace: true });
-    }, 800);
+  
     
   };
   return (
