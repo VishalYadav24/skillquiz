@@ -67,14 +67,14 @@ describe("Questions component when no internet connection", () => {
    expect(selectedTopic).toHaveTextContent("JavaScript");
    expect(questionlevel).toHaveTextContent("Easy");
   });
-  test("pagination , moving bac forth on  questions page", async () => {
+  test("pagination , moving back forth on  questions page", async () => {
     const user = userEvent.setup();
     renderQuestion(false, false);
     const questions = (screen.getAllByTestId("questions"))[0];
     expect(questions).toHaveTextContent('1 . How do you round the number 7.25, to the nearest integer?');
-    const pageTwo = (screen.getByText("2"));
+    const pageTwo = (screen.getAllByText("2"));
     act(async()=>{
-      await fireEvent.click(pageTwo);
+      await fireEvent.click(pageTwo[0]);
       waitFor(async ()=>{
         const questions = (screen.getAllByTestId("questions"))[0];
        await expect(questions).toHaveTextContent('2 . How do you call a function named "myFunction"?');
