@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshot test snapshot Timer 1`] = `
+exports[` <Timer/> snapshot Timer 1`] = `
 <div
   className="MuiBox-root css-rmz4vk"
 >

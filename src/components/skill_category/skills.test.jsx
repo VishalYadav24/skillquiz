@@ -4,7 +4,33 @@ import { BrowserRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
 import Skills from "./skills.component";
 
-describe("snapshot test", () => {
+// describe("snapshot test", () => {
+//   test("snapshot Skills", () => {
+//     const tree = renderer
+//       .create(
+//         <BrowserRouter>
+//           <Skills
+//             isLogined={isLogined}
+//             setUserAgreed={setUserAgreed}
+//             setQuestionLevel={setQuestionLevel}
+//             selectedTopic={selectedTopic}
+//             questionLevel={questionLevel}
+//             questionsRange={questionsRange}
+//             setQuestionsRange={setQuestionsRange}
+//             userAgreed={userAgreed}
+//             levels={levels}
+//             limit={limit}
+//             listOfTopics={listOfTopics}
+//             setSelectedTopic={setSelectedTopic}
+//           />
+//         </BrowserRouter>
+//       )
+//       .toJSON();
+//     expect(tree).toMatchSnapshot();
+//   });
+// });
+
+describe("Skills", () => {
   test("snapshot Skills", () => {
     const tree = renderer
       .create(
@@ -28,9 +54,6 @@ describe("snapshot test", () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
-});
-
-describe("Skills", () => {
   test("Take a quiz button opens instructions dialog", async() => {
     const user = userEvent.setup();
     const skillsComponent = render(

@@ -5,7 +5,25 @@ import Register from "./register.component";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
 
-describe("snapshot test", () => {
+// describe("snapshot test", () => {
+//   test("snapshot <Register/>", () => {
+//     const tree = renderer
+//       .create(
+//         <BrowserRouter>
+//           <Register
+//             setIsLogined={setIsLogined}
+//             setNotification={setNotification}
+//             setShowNotification={setShowNotification}
+//             setUserAgreed={setUserAgreed}
+//           />
+//         </BrowserRouter>
+//       )
+//       .toJSON();
+//     expect(tree).toMatchSnapshot();
+//   });
+// });
+
+describe("<Register/>", () => {
   test("snapshot <Register/>", () => {
     const tree = renderer
       .create(
@@ -21,9 +39,6 @@ describe("snapshot test", () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
-});
-
-describe("<Register/>", () => {
   test("Name field validations", async() => {
    
     render(

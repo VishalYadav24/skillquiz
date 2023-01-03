@@ -82,9 +82,6 @@ describe("Questions component when no internet connection", () => {
     })
     
   });
-});
-
-describe("snapshot test", () => {
   test("displays Please wait message when questions are loading", () => {
     const tree = renderer
       .create(
@@ -134,6 +131,57 @@ describe("snapshot test", () => {
    
   })
 });
+
+// describe("snapshot test", () => {
+//   test("displays Please wait message when questions are loading", () => {
+//     const tree = renderer
+//       .create(
+//         <MemoryRouter initialEntries={["/questions"]}>
+//           <Questions
+//             questions={questions}
+//             selectedTopic={selectedTopic}
+//             questionLevel={questionLevel}
+//             questionsRange={questionsRange}
+//             navbarHeight={navbarHeight}
+//             mobileOpen={mobileOpen}
+//             setMobileOpen={setMobileOpen}
+//             handleDrawerToggle={handleDrawerToggle}
+//             userResponse={userResponse}
+//             setUserResponse={setUserResponse}
+//             setUserAgreed={setUserAgreed}
+//             isLoading={true}
+//             setIsLoading={setIsLoading}
+//             errorOccurred={false}
+//             setErrorOccurred={setErrorOccurred}
+//             previousUserResponse={previousUserResponse}
+//             setPreviousUserResponse={setPreviousUserResponse}
+//             setIsLogined={setIsLogined}
+//             setQuestions={setQuestions}
+//             attempts={[]}
+//           />
+//         </MemoryRouter>
+//       )
+//       .toJSON();
+//     expect(tree).toMatchSnapshot();
+//   });
+//   test("submit quiz",()=>{
+//     renderQuestion(false, false);
+//     const submitButton = screen.getByText("SUBMIT");
+//    const options = within(screen.getByTestId("options")).getAllByTestId("RadioButtonUncheckedIcon");
+//    act(async()=>{
+//     fireEvent.click(options[0]);
+//     const selectedOption =  within(screen.getByTestId("options")).getAllByTestId("RadioButtonCheckedIcon");
+//     expect(selectedOption[0]).toBeInTheDocument();
+    
+//    })
+//     act(async()=>{
+//       fireEvent.click(submitButton);
+//      await expect(location.pathname).toBe('/score');
+     
+//     })
+   
+//   })
+// });
 
 
 const renderQuestion = (errorOccurred, isLoading) => {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshot test snapshot <Register/> 1`] = `
+exports[`<Register/> snapshot <Register/> 1`] = `
 <div
   className="MuiBox-root css-nupfsh"
 >
@@ -170,6 +170,7 @@ exports[`snapshot test snapshot <Register/> 1`] = `
                 data-testid="password"
                 disabled={false}
                 id=":r2:"
+                minLength={3}
                 name="Password"
                 onAnimationStart={[Function]}
                 onBlur={[Function]}

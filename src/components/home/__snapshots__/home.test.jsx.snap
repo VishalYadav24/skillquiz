@@ -50,7 +50,7 @@ exports[`Home component snapshot home component 1`] = `
           SkillScore
         </div>
         <div
-          className="MuiAvatar-root MuiAvatar-circular css-4428vk-MuiAvatar-root"
+          className="MuiAvatar-root MuiAvatar-circular css-fx535s-MuiAvatar-root"
         >
           <img
             alt="User Name"

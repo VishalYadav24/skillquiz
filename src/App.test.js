@@ -5,18 +5,18 @@ import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 import App from "./App";
 
-describe("snapshot test", () => {
-  test("snapshot App", () => {
-    const tree = renderer
-      .create(
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-});
+// describe("snapshot test", () => {
+//   test("snapshot App", () => {
+//     const tree = renderer
+//       .create(
+//         <BrowserRouter>
+//           <App />
+//         </BrowserRouter>
+//       )
+//       .toJSON();
+//     expect(tree).toMatchSnapshot();
+//   });
+// });
 
 describe("<App />", () => {
   const server = setupServer(
@@ -37,6 +37,17 @@ describe("<App />", () => {
       </BrowserRouter>
     );
     expect(screen.getByText("Attention!")).toBeInTheDocument();
+  });
+
+  test("snapshot App", () => {
+    const tree = renderer
+      .create(
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   test("call api for response ", () => {

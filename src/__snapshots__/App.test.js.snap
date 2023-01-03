@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshot test snapshot App 1`] = `
+exports[`<App /> snapshot App 1`] = `
 <div
   className="App"
 >
@@ -55,7 +55,7 @@ exports[`snapshot test snapshot App 1`] = `
             SkillScore
           </div>
           <div
-            className="MuiAvatar-root MuiAvatar-circular css-itr3sl-MuiAvatar-root"
+            className="MuiAvatar-root MuiAvatar-circular css-itb7qy-MuiAvatar-root"
           >
             <img
               alt="User Name"
@@ -66,10 +66,10 @@ exports[`snapshot test snapshot App 1`] = `
           <p
             className="MuiTypography-root MuiTypography-body1 css-2lae6c-MuiTypography-root"
           >
-            User name
+            xvxvxxv
           </p>
           <button
-            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1p15xzl-MuiButtonBase-root-MuiButton-root"
+            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-10vccbw-MuiButtonBase-root-MuiButton-root"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -87,7 +87,7 @@ exports[`snapshot test snapshot App 1`] = `
             tabIndex={0}
             type="button"
           >
-            Login
+            Logout
           </button>
         </div>
       </header>

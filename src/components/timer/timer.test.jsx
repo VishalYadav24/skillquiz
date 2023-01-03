@@ -3,7 +3,25 @@ import { BrowserRouter } from "react-router-dom";
 import renderer, { act } from "react-test-renderer";
 import Timer from "./timer.component";
 
-describe("snapshot test", () => {
+// describe("snapshot test", () => {
+//   test("snapshot Timer", () => {
+//     const tree = renderer
+//       .create(
+//         <BrowserRouter>
+//           <Timer
+//             questionsRange={questionsRange}
+//             setTotalTimeTaken={setTotalTimeTaken}
+//             setTimeOver={setTimeOver}
+//           />
+//         </BrowserRouter>
+//       )
+//       .toJSON();
+//     expect(tree).toMatchSnapshot();
+//   });
+// });
+
+
+describe(" <Timer/>", () => {
   test("snapshot Timer", () => {
     const tree = renderer
       .create(
@@ -18,10 +36,6 @@ describe("snapshot test", () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
-});
-
-
-describe(" <Timer/>", () => {
   test("construct timer", () => {
    localStorage.clear();
    localStorage.setItem("User",JSON.stringify(getUserData(false)));
