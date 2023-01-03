@@ -3,24 +3,6 @@ import { BrowserRouter } from "react-router-dom";
 import renderer, { act } from "react-test-renderer";
 import Timer from "./timer.component";
 
-// describe("snapshot test", () => {
-//   test("snapshot Timer", () => {
-//     const tree = renderer
-//       .create(
-//         <BrowserRouter>
-//           <Timer
-//             questionsRange={questionsRange}
-//             setTotalTimeTaken={setTotalTimeTaken}
-//             setTimeOver={setTimeOver}
-//           />
-//         </BrowserRouter>
-//       )
-//       .toJSON();
-//     expect(tree).toMatchSnapshot();
-//   });
-// });
-
-
 describe(" <Timer/>", () => {
   test("snapshot Timer", () => {
     const tree = renderer

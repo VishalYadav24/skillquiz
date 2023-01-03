@@ -10,31 +10,6 @@ import { BrowserRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
 import Scores from "./scores.component";
 
-// describe("snapshot test", () => {
-//   beforeEach(() => {
-//     localStorage.clear();
-//     localStorage.setItem("User", JSON.stringify(userData));
-//   });
-//   afterAll(() => {
-//     localStorage.clear();
-//   });
-//   test("snapshot Score", () => {
-//     const tree = renderer
-//       .create(
-//         <BrowserRouter>
-//           <Scores
-//             setUserAgreed={setUserAgreed}
-//             setRetry={setRetry}
-//             setUserResponse={setUserResponse}
-//             setQuestions={setQuestions}
-//           />
-//         </BrowserRouter>
-//       )
-//       .toJSON();
-//     expect(tree).toMatchSnapshot();
-//   });
-// });
-
 describe("Scores", () => {
   beforeEach(() => {
     localStorage.clear();
